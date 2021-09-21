@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_myButton.dart';
 import 'package:my_trainer/widgets/widget_myDarkRedButton.dart';
 
 class HomePage extends StatefulWidget {
@@ -60,104 +59,106 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
       backgroundColor: Theme.of(context).backgroundColor,
-      body: SingleChildScrollView(
-        child: Container(
-          width: double.infinity,
-          child: Column(
-            children: [
-              Container(
-                margin: EdgeInsets.fromLTRB(0, 16, 0, 24),
-                child: Column(
-                  children: [
-                    Text(
-                      'Alunos',
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                    WidgetMyDarkRedButton(
-                      'Cadastrar',
-                      proximaPag: 'cadastrar_dados',
-                    ),
-                    WidgetMyDarkRedButton(
-                      'Consultar',
-                      proximaPag: 'consultar_aluno',
-                    ),
-                  ],
+      body: ListView(
+        children: [
+          Container(
+            width: double.infinity,
+            child: Column(
+              children: [
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 16, 0, 24),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Alunos',
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
+                      WidgetMyDarkRedButton(
+                        'Cadastrar',
+                        proximaPag: 'cadastrar_dados',
+                      ),
+                      WidgetMyDarkRedButton(
+                        'Consultar',
+                        proximaPag: 'consultar_aluno',
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
-                child: Column(
-                  children: [
-                    Text(
-                      'Sessões',
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                    WidgetMyDarkRedButton(
-                      'Agendar',
-                      proximaPag: 'agendar',
-                    ),
-                    WidgetMyDarkRedButton(
-                      'Consultar',
-                      proximaPag: 'consultar_sessao',
-                    ),
-                  ],
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Sessões',
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
+                      WidgetMyDarkRedButton(
+                        'Agendar',
+                        proximaPag: 'agendar',
+                      ),
+                      WidgetMyDarkRedButton(
+                        'Consultar',
+                        proximaPag: 'consultar_sessao',
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
-                child: Column(
-                  children: [
-                    Text(
-                      'Treinos',
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                    WidgetMyDarkRedButton(
-                      'Cadastrar',
-                      proximaPag: 'cadastrar_treino',
-                    ),
-                    WidgetMyDarkRedButton(
-                      'Consultar',
-                      proximaPag: 'consultar_treino',
-                    ),
-                  ],
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Treinos',
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
+                      WidgetMyDarkRedButton(
+                        'Cadastrar',
+                        proximaPag: 'cadastrar_treino',
+                      ),
+                      WidgetMyDarkRedButton(
+                        'Consultar',
+                        proximaPag: 'consultar_treino',
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
-                child: Column(
-                  children: [
-                    Text(
-                      'Relatórios',
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                    WidgetMyDarkRedButton(
-                      'Feedback',
-                      proximaPag: 'feedback',
-                    ),
-                  ],
+                Container(
+                  margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Relatórios',
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
+                      WidgetMyDarkRedButton(
+                        'Feedback',
+                        proximaPag: 'feedback',
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              Container(
-                child: Column(
-                  children: [
-                    Text(
-                      'Renda',
-                      style: Theme.of(context).textTheme.headline4,
-                    ),
-                    WidgetMyDarkRedButton(
-                      'Adicionar',
-                      proximaPag: 'adicionar_renda',
-                    ),
-                    WidgetMyDarkRedButton(
-                      'Consultar',
-                      proximaPag: 'consultar_renda',
-                    ),
-                  ],
+                Container(
+                  child: Column(
+                    children: [
+                      Text(
+                        'Renda',
+                        style: Theme.of(context).textTheme.headline4,
+                      ),
+                      WidgetMyDarkRedButton(
+                        'Adicionar',
+                        proximaPag: 'adicionar_renda',
+                      ),
+                      WidgetMyDarkRedButton(
+                        'Consultar',
+                        proximaPag: 'consultar_renda',
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

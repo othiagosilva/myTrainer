@@ -11,6 +11,7 @@ class CadastrarDados extends StatefulWidget {
 }
 
 class _CadastrarDadosState extends State<CadastrarDados> {
+  var codigo;
   var nome;
   var idade;
   var peso;
@@ -71,255 +72,257 @@ class _CadastrarDadosState extends State<CadastrarDados> {
         ],
       ),
       backgroundColor: Theme.of(context).backgroundColor,
-      body: SingleChildScrollView(
-        child: Container(
-          padding: EdgeInsets.all(32.5),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              WidgetTextField('Nome', nome),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Idade', idade),
-                  ),
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Peso', peso),
-                  ),
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Altura', altura),
-                  ),
-                ],
-              ),
-              Container(
-                margin: EdgeInsets.all(16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
+      body: ListView(
+        children: [
+          Container(
+            padding: EdgeInsets.all(32.5),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                WidgetTextField('Nome', nome),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      child: Row(
-                        children: [
-                          Radio(
-                            value: "m",
-                            groupValue: genero,
-                            onChanged: (value) {
-                              setState(() {
-                                genero = value.toString();
-                              });
-                            },
-                            fillColor: MaterialStateProperty.all<Color>(
-                              Theme.of(context).primaryColor,
-                            ),
-                          ),
-                          Text(
-                            'Masculino',
-                            style: Theme.of(context).textTheme.headline6,
-                          ),
-                        ],
-                      ),
+                      width: 120,
+                      child: WidgetTextField('Idade', idade),
                     ),
                     Container(
-                      child: Row(
-                        children: [
-                          Radio(
-                            value: "f",
-                            groupValue: genero,
-                            onChanged: (value) {
-                              setState(() {
-                                genero = value.toString();
-                              });
-                            },
-                            fillColor: MaterialStateProperty.all<Color>(
-                              Theme.of(context).primaryColor,
-                            ),
-                          ),
-                          Text(
-                            'Feminino',
-                            style: Theme.of(context).textTheme.headline6,
-                          ),
-                        ],
-                      ),
+                      width: 120,
+                      child: WidgetTextField('Peso', peso),
+                    ),
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Altura', altura),
                     ),
                   ],
                 ),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Cintura', cintura),
+                Container(
+                  margin: EdgeInsets.all(16),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            Radio(
+                              value: "m",
+                              groupValue: genero,
+                              onChanged: (value) {
+                                setState(() {
+                                  genero = value.toString();
+                                });
+                              },
+                              fillColor: MaterialStateProperty.all<Color>(
+                                Theme.of(context).primaryColor,
+                              ),
+                            ),
+                            Text(
+                              'Masculino',
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Row(
+                          children: [
+                            Radio(
+                              value: "f",
+                              groupValue: genero,
+                              onChanged: (value) {
+                                setState(() {
+                                  genero = value.toString();
+                                });
+                              },
+                              fillColor: MaterialStateProperty.all<Color>(
+                                Theme.of(context).primaryColor,
+                              ),
+                            ),
+                            Text(
+                              'Feminino',
+                              style: Theme.of(context).textTheme.headline6,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Quadril', quadril),
-                  ),
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Abdômen', perimetroAbdomen),
-                  ),
-                ],
-              ),
-              Container(
-                margin: EdgeInsets.all(40),
-                child: Text('DOBRAS CUTÂNEAS',
-                    style: Theme.of(context).textTheme.headline2),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 135,
-                    child: WidgetTextField('SubEscapular', dobraSubEscapular),
-                  ),
-                  Container(
-                    width: 135,
-                    child: WidgetTextField('Tricipital', dobraTricipital),
-                  ),
-                  Container(
-                    width: 135,
-                    child: WidgetTextField('Peitoral', dobraPeitoral),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 135,
-                    child: WidgetTextField('Axilar Médio', dobraAxilarMedio),
-                  ),
-                  Container(
-                    width: 135,
-                    child: WidgetTextField('Supra Ilíaca', dobraSupraIliaca),
-                  ),
-                  Container(
-                    width: 135,
-                    child: WidgetTextField('Abdômen', dobraAbdomen),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 135,
-                    child: WidgetTextField('Coxa', dobraCoxa),
-                  ),
-                  Container(
-                    width: 135,
-                    child: WidgetTextField('Soma', somaDobra),
-                  ),
-                ],
-              ),
-              Container(
-                margin: EdgeInsets.all(40),
-                child: Text('PERIMETRIA',
-                    style: Theme.of(context).textTheme.headline2),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Tórax', perimetroTorax),
-                  ),
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Braço Rel', perimetroBracoRel),
-                  ),
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Braço Con', perimetroBracoCon),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Antrebraços', perimetroAntebraco),
-                  ),
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Abdômen', perimetroAbdomen),
-                  ),
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Cintura', perimetroCintura),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Quadril', perimetroQuadril),
-                  ),
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Coxas', perimetroCoxas),
-                  ),
-                  Container(
-                    width: 120,
-                    child:
-                        WidgetTextField('Panturrilhas', perimetroPanturrilha),
-                  ),
-                ],
-              ),
-              Container(
-                margin: EdgeInsets.all(40),
-                child: WidgetTextField('Limitações', limitacoes),
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('IMC', imc),
-                  ),
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Razão CQ', razaoCinturaQuadril),
-                  ),
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('% Gordura', percentualGordura),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Massa Magra', massaMagra),
-                  ),
-                  Container(
-                    width: 120,
-                    child: WidgetTextField('Massa Gorda', massaGorda),
-                  ),
-                ],
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  WidgetMyButton('Cadastrar'),
-                  WidgetMyDarkRedButton(
-                    'Cancelar',
-                    proximaPag: 'home',
-                  ),
-                ],
-              ),
-            ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Cintura', cintura),
+                    ),
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Quadril', quadril),
+                    ),
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Abdômen', perimetroAbdomen),
+                    ),
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.all(40),
+                  child: Text('DOBRAS CUTÂNEAS',
+                      style: Theme.of(context).textTheme.headline2),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 135,
+                      child: WidgetTextField('SubEscapular', dobraSubEscapular),
+                    ),
+                    Container(
+                      width: 135,
+                      child: WidgetTextField('Tricipital', dobraTricipital),
+                    ),
+                    Container(
+                      width: 135,
+                      child: WidgetTextField('Peitoral', dobraPeitoral),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 135,
+                      child: WidgetTextField('Axilar Médio', dobraAxilarMedio),
+                    ),
+                    Container(
+                      width: 135,
+                      child: WidgetTextField('Supra Ilíaca', dobraSupraIliaca),
+                    ),
+                    Container(
+                      width: 135,
+                      child: WidgetTextField('Abdômen', dobraAbdomen),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 135,
+                      child: WidgetTextField('Coxa', dobraCoxa),
+                    ),
+                    Container(
+                      width: 135,
+                      child: WidgetTextField('Soma', somaDobra),
+                    ),
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.all(40),
+                  child: Text('PERIMETRIA',
+                      style: Theme.of(context).textTheme.headline2),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Tórax', perimetroTorax),
+                    ),
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Braço Rel', perimetroBracoRel),
+                    ),
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Braço Con', perimetroBracoCon),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Antrebraços', perimetroAntebraco),
+                    ),
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Abdômen', perimetroAbdomen),
+                    ),
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Cintura', perimetroCintura),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Quadril', perimetroQuadril),
+                    ),
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Coxas', perimetroCoxas),
+                    ),
+                    Container(
+                      width: 120,
+                      child:
+                          WidgetTextField('Panturrilhas', perimetroPanturrilha),
+                    ),
+                  ],
+                ),
+                Container(
+                  margin: EdgeInsets.all(40),
+                  child: WidgetTextField('Limitações', limitacoes),
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('IMC', imc),
+                    ),
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Razão CQ', razaoCinturaQuadril),
+                    ),
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('% Gordura', percentualGordura),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Massa Magra', massaMagra),
+                    ),
+                    Container(
+                      width: 120,
+                      child: WidgetTextField('Massa Gorda', massaGorda),
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    WidgetMyButton('Cadastrar'),
+                    WidgetMyDarkRedButton(
+                      'Cancelar',
+                      proximaPag: 'home',
+                    ),
+                  ],
+                ),
+              ],
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

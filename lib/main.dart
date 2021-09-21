@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/view/register_page.dart';
+import 'package:my_trainer/view/treinador/aluno/alterar_excluir_dados.dart';
 import 'package:my_trainer/view/treinador/aluno/cadastrar_dados_aluno.dart';
 import 'package:my_trainer/view/treinador/aluno/consultar_aluno.dart';
+import 'package:my_trainer/view/treinador/aluno/consultar_dados.dart';
 import 'package:my_trainer/view/treinador/home_page.dart';
 import 'package:my_trainer/view/treinador/relatorio/feedback.dart';
 import 'package:my_trainer/view/treinador/renda/adicionar.dart';
@@ -61,6 +63,8 @@ void main() {
         'about': (context) => AboutPage(),
         'cadastrar_dados': (context) => CadastrarDados(),
         'consultar_aluno': (context) => ConsultarAluno(),
+        'consultar_dados': (context) => ConsultarDados(),
+        'alterar_excluir': (context) => AlterarExcluir(),
         'agendar': (context) => AgendarSessao(),
         'consultar_sessao': (context) => ConsultarSessao(),
         'cadastrar_treino': (context) => CadastrarTreino(),

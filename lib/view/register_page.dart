@@ -80,7 +80,10 @@ class _RegisterPageState extends State<RegisterPage> {
                 ),
               ],
             ),
-            WidgetMyButton('Cadastrar'),
+            WidgetMyButton(
+              'Cadastrar',
+              Theme.of(context).primaryColor,
+            ),
           ],
         ),
       ),

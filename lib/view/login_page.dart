@@ -68,10 +68,22 @@ class _LoginPageState extends State<LoginPage> {
             ),
             WidgetTextField('Email', txtEmail),
             WidgetTextField('Senha', txtPassword),
-            WidgetMyButton('Entrar', proximaPag: 'home'),
-            WidgetMyButton('Cadastre-se', proximaPag: 'register'),
+            WidgetMyButton(
+              'Entrar',
+              Theme.of(context).primaryColor,
+              proximaPag: 'home',
+            ),
+            WidgetMyButton(
+              'Cadastre-se',
+              Theme.of(context).primaryColor,
+              proximaPag: 'register',
+            ),
             Container(
-              child: WidgetMyButton('Sobre', proximaPag: 'about'),
+              child: WidgetMyButton(
+                'Sobre',
+                Theme.of(context).primaryColor,
+                proximaPag: 'about',
+              ),
             ),
           ],
         ),

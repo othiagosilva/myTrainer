@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/widgets/widget_myButton.dart';
-import 'package:my_trainer/widgets/widget_myDarkRedButton.dart';
 import 'package:my_trainer/widgets/widget_textField.dart';
 
 class CadastrarDados extends StatefulWidget {
@@ -312,9 +311,13 @@ class _CadastrarDadosState extends State<CadastrarDados> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    WidgetMyButton('Cadastrar'),
-                    WidgetMyDarkRedButton(
+                    WidgetMyButton(
+                      'Cadastrar',
+                      Theme.of(context).primaryColor,
+                    ),
+                    WidgetMyButton(
                       'Cancelar',
+                      Theme.of(context).accentColor,
                       proximaPag: 'home',
                     ),
                   ],

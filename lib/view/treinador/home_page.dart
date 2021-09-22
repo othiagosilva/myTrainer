@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_myDarkRedButton.dart';
+import 'package:my_trainer/widgets/widget_myButton.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -73,12 +73,14 @@ class _HomePageState extends State<HomePage> {
                         'Alunos',
                         style: Theme.of(context).textTheme.headline4,
                       ),
-                      WidgetMyDarkRedButton(
+                      WidgetMyButton(
                         'Cadastrar',
+                        Theme.of(context).accentColor,
                         proximaPag: 'cadastrar_dados',
                       ),
-                      WidgetMyDarkRedButton(
+                      WidgetMyButton(
                         'Consultar',
+                        Theme.of(context).accentColor,
                         proximaPag: 'consultar_aluno',
                       ),
                     ],
@@ -92,12 +94,14 @@ class _HomePageState extends State<HomePage> {
                         'Sessões',
                         style: Theme.of(context).textTheme.headline4,
                       ),
-                      WidgetMyDarkRedButton(
+                      WidgetMyButton(
                         'Agendar',
+                        Theme.of(context).accentColor,
                         proximaPag: 'agendar',
                       ),
-                      WidgetMyDarkRedButton(
+                      WidgetMyButton(
                         'Consultar',
+                        Theme.of(context).accentColor,
                         proximaPag: 'consultar_sessao',
                       ),
                     ],
@@ -111,12 +115,14 @@ class _HomePageState extends State<HomePage> {
                         'Treinos',
                         style: Theme.of(context).textTheme.headline4,
                       ),
-                      WidgetMyDarkRedButton(
+                      WidgetMyButton(
                         'Cadastrar',
+                        Theme.of(context).accentColor,
                         proximaPag: 'cadastrar_treino',
                       ),
-                      WidgetMyDarkRedButton(
+                      WidgetMyButton(
                         'Consultar',
+                        Theme.of(context).accentColor,
                         proximaPag: 'consultar_treino',
                       ),
                     ],
@@ -130,8 +136,9 @@ class _HomePageState extends State<HomePage> {
                         'Relatórios',
                         style: Theme.of(context).textTheme.headline4,
                       ),
-                      WidgetMyDarkRedButton(
+                      WidgetMyButton(
                         'Feedback',
+                        Theme.of(context).accentColor,
                         proximaPag: 'feedback',
                       ),
                     ],
@@ -144,12 +151,14 @@ class _HomePageState extends State<HomePage> {
                         'Renda',
                         style: Theme.of(context).textTheme.headline4,
                       ),
-                      WidgetMyDarkRedButton(
+                      WidgetMyButton(
                         'Adicionar',
+                        Theme.of(context).accentColor,
                         proximaPag: 'adicionar_renda',
                       ),
-                      WidgetMyDarkRedButton(
+                      WidgetMyButton(
                         'Consultar',
+                        Theme.of(context).accentColor,
                         proximaPag: 'consultar_renda',
                       ),
                     ],

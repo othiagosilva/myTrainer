@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 class WidgetMyButton extends StatelessWidget {
   final rotulo;
   final proximaPag;
-  const WidgetMyButton(this.rotulo, {this.proximaPag, Key? key})
+  final cor;
+  const WidgetMyButton(this.rotulo, this.cor, {this.proximaPag, Key? key})
       : super(key: key);
 
   @override
@@ -19,7 +20,7 @@ class WidgetMyButton extends StatelessWidget {
         ),
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(
-            Theme.of(context).primaryColor,
+            cor,
           ),
           elevation: MaterialStateProperty.all<double>(0),
           fixedSize: MaterialStateProperty.all<Size>(

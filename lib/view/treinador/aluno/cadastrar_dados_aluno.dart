@@ -299,11 +299,11 @@ class _CadastrarDadosState extends State<CadastrarDados> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Container(
-                      width: 120,
+                      width: 140,
                       child: WidgetTextField('Massa Magra', massaMagra),
                     ),
                     Container(
-                      width: 120,
+                      width: 140,
                       child: WidgetTextField('Massa Gorda', massaGorda),
                     ),
                   ],

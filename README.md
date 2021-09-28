@@ -13,7 +13,7 @@ O protótipo da aplicação pode ser encontrado através do link: https://www.fi
 As versões do protótipo para testes de usabilidade podem ser encontrada através dos links: 
 
 
-Versão usuário treinador = https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A2
+Versão usuário treinador = https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A2&show-proto-sidebar=1
 
 
-Versão usuário aluno = https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=16%3A10&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A2
+Versão usuário aluno = https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=188%3A520&show-proto-sidebar=1

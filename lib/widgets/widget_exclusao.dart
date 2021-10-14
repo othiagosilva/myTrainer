@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_myButton.dart';
+import 'package:my_trainer/widgets/widget_NavButton.dart';
 
 class WidgetExclusao extends StatefulWidget {
   final texto;
@@ -30,7 +30,7 @@ class _WidgetExclusaoState extends State<WidgetExclusao> {
         ),
       ),
       actions: [
-        WidgetMyButton(
+        WidgetNavButton(
           'Confirmar',
           Theme.of(context).primaryColor,
         ),

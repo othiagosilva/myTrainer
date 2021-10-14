@@ -1,4 +1,6 @@
-class Dados {
+import 'package:my_trainer/view/usuario.dart';
+
+class Aluno extends Usuario {
   var cod;
   var nome;
   var idade;
@@ -30,6 +32,4 @@ class Dados {
   var massaMagra;
   var massaGorda;
   var genero;
-
-  Dados(this.nome, this.idade);
 }

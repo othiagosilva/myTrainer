@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_myButton.dart';
+import 'package:my_trainer/widgets/widget_NavButton.dart';
 import 'package:my_trainer/widgets/widget_textField.dart';
+import 'package:my_trainer/view/treinador/aluno/dados_aluno.dart';
 
 class CadastrarDados extends StatefulWidget {
   const CadastrarDados({Key? key}) : super(key: key);
@@ -10,37 +11,33 @@ class CadastrarDados extends StatefulWidget {
 }
 
 class _CadastrarDadosState extends State<CadastrarDados> {
-  var codigo;
-  var nome;
-  var idade;
-  var peso;
-  var altura;
-  var cintura;
-  var quadril;
-  var perimetroAbdomen;
-  var dobraSubEscapular;
-  var dobraTricipital;
-  var dobraPeitoral;
-  var dobraAxilarMedio;
-  var dobraSupraIliaca;
-  var dobraAbdomen;
-  var dobraCoxa;
-  var somaDobra;
-  var perimetroTorax;
-  var perimetroBracoRel;
-  var perimetroBracoCon;
-  var perimetroAntebraco;
-  var perimetroCintura;
-  var perimetroQuadril;
-  var perimetroCoxas;
-  var perimetroPanturrilha;
-  var limitacoes;
-  var imc;
-  var razaoCinturaQuadril;
-  var percentualGordura;
-  var massaMagra;
-  var massaGorda;
-  String genero = 'm';
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  var cod = 1;
+  TextEditingController nome = TextEditingController();
+  TextEditingController idade = TextEditingController();
+  TextEditingController peso = TextEditingController();
+  TextEditingController altura = TextEditingController();
+  TextEditingController cintura = TextEditingController();
+  TextEditingController quadril = TextEditingController();
+  TextEditingController perimetroAbdomen = TextEditingController();
+  TextEditingController dobraSubEscapular = TextEditingController();
+  TextEditingController dobraTricipital = TextEditingController();
+  TextEditingController dobraPeitoral = TextEditingController();
+  TextEditingController dobraAxilarMedio = TextEditingController();
+  TextEditingController dobraSupraIliaca = TextEditingController();
+  TextEditingController dobraAbdomen = TextEditingController();
+  TextEditingController dobraCoxa = TextEditingController();
+  TextEditingController perimetroTorax = TextEditingController();
+  TextEditingController perimetroBracoRel = TextEditingController();
+  TextEditingController perimetroBracoCon = TextEditingController();
+  TextEditingController perimetroAntebraco = TextEditingController();
+  TextEditingController perimetroCintura = TextEditingController();
+  TextEditingController perimetroQuadril = TextEditingController();
+  TextEditingController perimetroCoxas = TextEditingController();
+  TextEditingController perimetroPanturrilha = TextEditingController();
+  TextEditingController limitacoes = TextEditingController();
+  var genero = 'm';
+  Aluno aluno = new Aluno();
 
   @override
   Widget build(BuildContext context) {
@@ -78,69 +75,75 @@ class _CadastrarDadosState extends State<CadastrarDados> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                WidgetTextField('Nome', nome),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Idade', idade),
-                    ),
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Peso', peso),
-                    ),
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Altura', altura),
-                    ),
-                  ],
-                ),
-                Container(
-                  margin: EdgeInsets.all(16),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                Form(
+                  key: formKey,
+                  child: Column(
                     children: [
-                      Container(
-                        child: Row(
-                          children: [
-                            Radio(
-                              value: "m",
-                              groupValue: genero,
-                              onChanged: (value) {
-                                setState(() {
-                                  genero = value.toString();
-                                });
-                              },
-                              fillColor: MaterialStateProperty.all<Color>(
-                                Theme.of(context).primaryColor,
-                              ),
-                            ),
-                            Text(
-                              'Masculino',
-                              style: Theme.of(context).textTheme.headline6,
-                            ),
-                          ],
-                        ),
+                      WidgetTextField('Nome', nome),
+                      linha3Campos(
+                        120,
+                        'Idade',
+                        idade,
+                        120,
+                        'Peso',
+                        peso,
+                        120,
+                        'Altura',
+                        altura,
                       ),
+                      //
+                      // CONSTRUÇÃO DOS RADIOS.
+                      //
                       Container(
+                        margin: EdgeInsets.all(16),
                         child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Radio(
-                              value: "f",
-                              groupValue: genero,
-                              onChanged: (value) {
-                                setState(() {
-                                  genero = value.toString();
-                                });
-                              },
-                              fillColor: MaterialStateProperty.all<Color>(
-                                Theme.of(context).primaryColor,
+                            Container(
+                              child: Row(
+                                children: [
+                                  Radio(
+                                    value: "m",
+                                    groupValue: genero,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        genero = value.toString();
+                                      });
+                                    },
+                                    fillColor: MaterialStateProperty.all<Color>(
+                                      Theme.of(context).primaryColor,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Masculino',
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
+                                  ),
+                                ],
                               ),
                             ),
-                            Text(
-                              'Feminino',
-                              style: Theme.of(context).textTheme.headline6,
+                            Container(
+                              child: Row(
+                                children: [
+                                  Radio(
+                                    value: "f",
+                                    groupValue: genero,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        genero = value.toString();
+                                      });
+                                    },
+                                    fillColor: MaterialStateProperty.all<Color>(
+                                      Theme.of(context).primaryColor,
+                                    ),
+                                  ),
+                                  Text(
+                                    'Feminino',
+                                    style:
+                                        Theme.of(context).textTheme.headline6,
+                                  ),
+                                ],
+                              ),
                             ),
                           ],
                         ),
@@ -148,178 +151,103 @@ class _CadastrarDadosState extends State<CadastrarDados> {
                     ],
                   ),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Cintura', cintura),
-                    ),
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Quadril', quadril),
-                    ),
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Abdômen', perimetroAbdomen),
-                    ),
-                  ],
-                ),
+
+                linha2Campos(120, 'Cintura', cintura, 120, 'Quadril', quadril),
+                //
+                // DOBRAS CUTÂNEAS
+                //
                 Container(
                   margin: EdgeInsets.all(40),
                   child: Text('DOBRAS CUTÂNEAS',
                       style: Theme.of(context).textTheme.headline2),
                 ),
+                linha3Campos(
+                    135,
+                    'SubEscapular',
+                    dobraSubEscapular,
+                    135,
+                    'Tricipital',
+                    dobraTricipital,
+                    135,
+                    'Peitoral',
+                    dobraPeitoral),
+                linha3Campos(
+                    135,
+                    'Axilar Médio',
+                    dobraAxilarMedio,
+                    135,
+                    'Supra Ilíaca',
+                    dobraSupraIliaca,
+                    135,
+                    'Abdômen',
+                    dobraAbdomen),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      width: 135,
-                      child: WidgetTextField('SubEscapular', dobraSubEscapular),
-                    ),
-                    Container(
-                      width: 135,
-                      child: WidgetTextField('Tricipital', dobraTricipital),
-                    ),
-                    Container(
-                      width: 135,
-                      child: WidgetTextField('Peitoral', dobraPeitoral),
-                    ),
+                    campo(135, 'Coxa', dobraCoxa),
                   ],
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 135,
-                      child: WidgetTextField('Axilar Médio', dobraAxilarMedio),
-                    ),
-                    Container(
-                      width: 135,
-                      child: WidgetTextField('Supra Ilíaca', dobraSupraIliaca),
-                    ),
-                    Container(
-                      width: 135,
-                      child: WidgetTextField('Abdômen', dobraAbdomen),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 135,
-                      child: WidgetTextField('Coxa', dobraCoxa),
-                    ),
-                    Container(
-                      width: 135,
-                      child: WidgetTextField('Soma', somaDobra),
-                    ),
-                  ],
-                ),
+                //
+                // PERIMETRIA
+                //
                 Container(
                   margin: EdgeInsets.all(40),
                   child: Text('PERIMETRIA',
                       style: Theme.of(context).textTheme.headline2),
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Tórax', perimetroTorax),
-                    ),
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Braço Rel', perimetroBracoRel),
-                    ),
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Braço Con', perimetroBracoCon),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Antrebraços', perimetroAntebraco),
-                    ),
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Abdômen', perimetroAbdomen),
-                    ),
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Cintura', perimetroCintura),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Quadril', perimetroQuadril),
-                    ),
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Coxas', perimetroCoxas),
-                    ),
-                    Container(
-                      width: 120,
-                      child:
-                          WidgetTextField('Panturrilhas', perimetroPanturrilha),
-                    ),
-                  ],
-                ),
+                linha3Campos(120, 'Tórax', perimetroTorax, 120, 'Braço Rel',
+                    perimetroBracoRel, 120, 'Braço Con', perimetroBracoCon),
+                linha3Campos(
+                    120,
+                    'Antrebraços',
+                    perimetroAntebraco,
+                    120,
+                    'Abdômen',
+                    perimetroAbdomen,
+                    120,
+                    'Cintura',
+                    perimetroCintura),
+                linha3Campos(120, 'Quadril', perimetroQuadril, 120, 'Coxas',
+                    perimetroCoxas, 120, 'Panturrilhas', perimetroPanturrilha),
                 Container(
                   margin: EdgeInsets.all(40),
                   child: WidgetTextField('Limitações', limitacoes),
                 ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Container(
+                //       width: 120,
+                //       child: WidgetTextField('IMC', imc),
+                //     ),
+                //     Container(
+                //       width: 120,
+                //       child: WidgetTextField('Razão CQ', razaoCinturaQuadril),
+                //     ),
+                //     Container(
+                //       width: 120,
+                //       child: WidgetTextField('% Gordura', percentualGordura),
+                //     ),
+                //   ],
+                // ),
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                //   children: [
+                //     Container(
+                //       width: 140,
+                //       child: WidgetTextField('Massa Magra', massaMagra),
+                //     ),
+                //     Container(
+                //       width: 140,
+                //       child: WidgetTextField('Massa Gorda', massaGorda),
+                //     ),
+                //   ],
+                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('IMC', imc),
-                    ),
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('Razão CQ', razaoCinturaQuadril),
-                    ),
-                    Container(
-                      width: 120,
-                      child: WidgetTextField('% Gordura', percentualGordura),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Container(
-                      width: 140,
-                      child: WidgetTextField('Massa Magra', massaMagra),
-                    ),
-                    Container(
-                      width: 140,
-                      child: WidgetTextField('Massa Gorda', massaGorda),
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    WidgetMyButton(
-                      'Cadastrar',
-                      Theme.of(context).primaryColor,
-                    ),
-                    WidgetMyButton(
-                      'Cancelar',
-                      Theme.of(context).accentColor,
-                      proximaPag: 'home',
-                    ),
+                    botaoCadastrar(),
+                    botaoCancelar(),
                   ],
                 ),
               ],
@@ -327,6 +255,161 @@ class _CadastrarDadosState extends State<CadastrarDados> {
           ),
         ],
       ),
+    );
+  }
+
+  botaoCadastrar() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 8),
+      child: ElevatedButton(
+        child: Text(
+          'Cadastrar',
+          style: TextStyle(
+            fontSize: 24,
+          ),
+        ),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(
+            Theme.of(context).primaryColor,
+          ),
+          elevation: MaterialStateProperty.all<double>(0),
+          fixedSize: MaterialStateProperty.all<Size>(
+            Size(200, 50),
+          ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+          ),
+        ),
+        onPressed: () {
+          if (formKey.currentState!.validate()) {
+            aluno.cod = cod.toString();
+            aluno.nome = (nome.text);
+            aluno.idade = (idade.text);
+            aluno.peso = (peso.text);
+            aluno.altura = (altura.text);
+            aluno.cintura = (cintura.text);
+            aluno.quadril = (quadril.text);
+            aluno.perimetroAbdomen = (perimetroAbdomen.text);
+            aluno.dobraSubEscapular = (dobraSubEscapular.text);
+            aluno.dobraTricipital = (dobraTricipital.text);
+            aluno.dobraPeitoral = (dobraPeitoral.text);
+            aluno.dobraAxilarMedio = (dobraAxilarMedio.text);
+            aluno.dobraSupraIliaca = (dobraSupraIliaca.text);
+            aluno.dobraAbdomen = (dobraAbdomen.text);
+            aluno.dobraCoxa = (dobraCoxa.text);
+            aluno.perimetroTorax = (perimetroTorax.text);
+            aluno.perimetroBracoRel = (perimetroBracoRel.text);
+            aluno.perimetroBracoCon = (perimetroBracoCon.text);
+            aluno.perimetroAntebraco = (perimetroAntebraco.text);
+            aluno.perimetroCintura = (perimetroCintura.text);
+            aluno.perimetroQuadril = (perimetroQuadril.text);
+            aluno.perimetroCoxas = (perimetroCoxas.text);
+            aluno.perimetroPanturrilha = (perimetroPanturrilha.text);
+            aluno.limitacoes = (limitacoes.text);
+            aluno.genero = (genero);
+            cod++;
+            setState(() {
+              nome.text = "";
+              idade.text = "";
+              peso.text = "";
+              altura.text = "";
+              cintura.text = "";
+              quadril.text = "";
+              perimetroAbdomen.text = "";
+              dobraSubEscapular.text = "";
+              dobraTricipital.text = "";
+              dobraPeitoral.text = "";
+              dobraAxilarMedio.text = "";
+              dobraSupraIliaca.text = "";
+              dobraAbdomen.text = "";
+              dobraCoxa.text = "";
+              perimetroTorax.text = "";
+              perimetroBracoRel.text = "";
+              perimetroBracoCon.text = "";
+              perimetroAntebraco.text = "";
+              perimetroCintura.text = "";
+              perimetroQuadril.text = "";
+              perimetroCoxas.text = "";
+              perimetroPanturrilha.text = "";
+              limitacoes.text = "";
+              genero = "m";
+              FocusScope.of(context).unfocus();
+            });
+            // Navigator.pushNamed(context, 'consultar_aluno', arguments: aluno); DESABLITADO POR MOTIVOS DE ERROS
+            ScaffoldMessenger.of(context).showSnackBar(
+              SnackBar(
+                content: Text(
+                  'Aluno Cadastrado com sucesso',
+                  style: Theme.of(context).textTheme.headline3,
+                ),
+                duration: Duration(seconds: 2),
+              ),
+            );
+          }
+        },
+      ),
+    );
+  }
+
+  botaoCancelar() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 8),
+      child: ElevatedButton(
+        child: Text(
+          'Cancelar',
+          style: TextStyle(
+            fontSize: 24,
+          ),
+        ),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(
+            Theme.of(context).accentColor,
+          ),
+          elevation: MaterialStateProperty.all<double>(0),
+          fixedSize: MaterialStateProperty.all<Size>(
+            Size(200, 50),
+          ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+          ),
+        ),
+        onPressed: () {
+          Navigator.pop(context);
+        },
+      ),
+    );
+  }
+
+  campo(tamanho, rotulo, variavel) {
+    return Container(
+      width: tamanho,
+      child: WidgetTextField(rotulo, variavel),
+    );
+  }
+
+  linha3Campos(tamanho, rotulo, variavel, tamanho1, rotulo1, variavel1,
+      tamanho2, rotulo2, variavel2) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        campo(tamanho, rotulo, variavel),
+        campo(tamanho1, rotulo1, variavel1),
+        campo(tamanho2, rotulo2, variavel2),
+      ],
+    );
+  }
+
+  linha2Campos(tamanho, rotulo, variavel, tamanho1, rotulo1, variavel1) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        campo(tamanho, rotulo, variavel),
+        campo(tamanho1, rotulo1, variavel1),
+      ],
     );
   }
 }

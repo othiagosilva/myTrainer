@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_myButton.dart';
+import 'package:my_trainer/widgets/widget_NavButton.dart';
+
+import '../usuario.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,6 +13,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final Usuario obj = ModalRoute.of(context)!.settings.arguments as Usuario;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -19,7 +22,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               Text(
-                'thiago.silva',
+                obj.usuario,
                 style: TextStyle(fontSize: 16),
               ),
               Text(
@@ -73,12 +76,12 @@ class _HomePageState extends State<HomePage> {
                         'Alunos',
                         style: Theme.of(context).textTheme.headline4,
                       ),
-                      WidgetMyButton(
+                      WidgetNavButton(
                         'Cadastrar',
                         Theme.of(context).accentColor,
                         proximaPag: 'cadastrar_dados',
                       ),
-                      WidgetMyButton(
+                      WidgetNavButton(
                         'Consultar',
                         Theme.of(context).accentColor,
                         proximaPag: 'consultar_aluno',
@@ -94,12 +97,12 @@ class _HomePageState extends State<HomePage> {
                         'Sessões',
                         style: Theme.of(context).textTheme.headline4,
                       ),
-                      WidgetMyButton(
+                      WidgetNavButton(
                         'Agendar',
                         Theme.of(context).accentColor,
                         proximaPag: 'agendar',
                       ),
-                      WidgetMyButton(
+                      WidgetNavButton(
                         'Consultar',
                         Theme.of(context).accentColor,
                         proximaPag: 'consultar_sessao',
@@ -115,12 +118,12 @@ class _HomePageState extends State<HomePage> {
                         'Treinos',
                         style: Theme.of(context).textTheme.headline4,
                       ),
-                      WidgetMyButton(
+                      WidgetNavButton(
                         'Cadastrar',
                         Theme.of(context).accentColor,
                         proximaPag: 'cadastrar_treino',
                       ),
-                      WidgetMyButton(
+                      WidgetNavButton(
                         'Consultar',
                         Theme.of(context).accentColor,
                         proximaPag: 'consultar_treino',
@@ -136,7 +139,7 @@ class _HomePageState extends State<HomePage> {
                         'Relatórios',
                         style: Theme.of(context).textTheme.headline4,
                       ),
-                      WidgetMyButton(
+                      WidgetNavButton(
                         'Feedback',
                         Theme.of(context).accentColor,
                         proximaPag: 'feedback',
@@ -151,12 +154,12 @@ class _HomePageState extends State<HomePage> {
                         'Renda',
                         style: Theme.of(context).textTheme.headline4,
                       ),
-                      WidgetMyButton(
+                      WidgetNavButton(
                         'Adicionar',
                         Theme.of(context).accentColor,
                         proximaPag: 'adicionar_renda',
                       ),
-                      WidgetMyButton(
+                      WidgetNavButton(
                         'Consultar',
                         Theme.of(context).accentColor,
                         proximaPag: 'consultar_renda',

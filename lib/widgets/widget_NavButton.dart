@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-class WidgetMyButton extends StatelessWidget {
+class WidgetNavButton extends StatelessWidget {
   final rotulo;
   final proximaPag;
   final cor;
-  const WidgetMyButton(this.rotulo, this.cor, {this.proximaPag, Key? key})
+  const WidgetNavButton(this.rotulo, this.cor, {this.proximaPag, Key? key})
       : super(key: key);
 
   @override

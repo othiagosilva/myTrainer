@@ -27,6 +27,12 @@ class _WidgetTextFieldState extends State<WidgetTextField> {
           TextFormField(
             style: Theme.of(context).textTheme.headline5,
             controller: this.widget.variavel,
+            validator: (value) {
+              if (value == null || value.isEmpty) {
+                return 'Obrigatório';
+              }
+              return null;
+            },
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderSide: BorderSide(color: Theme.of(context).primaryColor),

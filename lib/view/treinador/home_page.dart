@@ -155,11 +155,6 @@ class _HomePageState extends State<HomePage> {
                         style: Theme.of(context).textTheme.headline4,
                       ),
                       WidgetNavButton(
-                        'Adicionar',
-                        Theme.of(context).accentColor,
-                        proximaPag: 'adicionar_renda',
-                      ),
-                      WidgetNavButton(
                         'Consultar',
                         Theme.of(context).accentColor,
                         proximaPag: 'consultar_renda',

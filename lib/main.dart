@@ -6,7 +6,6 @@ import 'package:my_trainer/view/treinador/aluno/consultar_aluno.dart';
 import 'package:my_trainer/view/treinador/aluno/consultar_dados.dart';
 import 'package:my_trainer/view/treinador/home_page.dart';
 import 'package:my_trainer/view/treinador/relatorio/feedback.dart';
-import 'package:my_trainer/view/treinador/renda/adicionar.dart';
 import 'package:my_trainer/view/treinador/renda/consultar_renda.dart';
 import 'package:my_trainer/view/treinador/sessao/agendar.dart';
 import 'package:my_trainer/view/treinador/sessao/consultar_sessao.dart';
@@ -70,7 +69,6 @@ void main() {
         'cadastrar_treino': (context) => CadastrarTreino(),
         'consultar_treino': (context) => ConsultarTreino(),
         'feedback': (context) => RelatorioFeedback(),
-        'adicionar_renda': (context) => AdicionarRenda(),
         'consultar_renda': (context) => ConsultarRenda(),
       },
     ),

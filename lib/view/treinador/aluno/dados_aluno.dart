@@ -32,4 +32,8 @@ class Aluno extends Usuario {
   var massaMagra;
   var massaGorda;
   var genero;
+
+  setAltura(altura) {
+    this.altura = altura;
+  }
 }

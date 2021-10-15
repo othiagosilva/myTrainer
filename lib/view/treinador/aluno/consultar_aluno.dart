@@ -9,8 +9,10 @@ class ConsultarAluno extends StatefulWidget {
 }
 
 class _ConsultarAlunoState extends State<ConsultarAluno> {
+  var alunos = [];
+
   @override
-  Widget build(BuildContext context) {
+  void initState() {
     // Inserção de dados
     Aluno aluno1 = new Aluno();
     aluno1.nome = 'Thiago Silva';
@@ -24,11 +26,14 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
     aluno2.idade = '29';
     aluno2.peso = '82';
     aluno2.altura = '177';
-    var alunos = [];
+
     alunos.add(aluno1);
     alunos.add(aluno2);
-    // alunos.add(ModalRoute.of(context)!.settings.arguments); COMENTADO POR ENQUNATO DEVIDO A ERROS
-    // Começo da tela
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -57,67 +62,68 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: ListView.builder(
-          itemCount: alunos.length,
-          itemBuilder: (context, index) {
-            return Container(
-              padding: EdgeInsets.all(16),
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        width: 235,
-                        child: Text(
-                          'Nome',
-                          style: Theme.of(context).textTheme.headline3,
-                        ),
-                      ),
-                      Text(
-                        'Cód',
+        itemCount: alunos.length,
+        itemBuilder: (context, index) {
+          return Container(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              children: [
+                Row(
+                  children: [
+                    Container(
+                      width: 235,
+                      child: Text(
+                        'Nome',
                         style: Theme.of(context).textTheme.headline3,
                       ),
-                    ],
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        width: 210,
-                        child: Text(
-                          alunos[index].nome,
-                          style: TextStyle(
-                            fontSize: 24,
-                          ),
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.all(8),
-                        width: 50,
-                        child: Text(
-                          alunos[index].cod,
-                          style: TextStyle(
-                            fontSize: 24,
-                          ),
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(16),
+                    ),
+                    Text(
+                      'Cód',
+                      style: Theme.of(context).textTheme.headline3,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      width: 210,
+                      child: Text(
+                        alunos[index].nome,
+                        style: TextStyle(
+                          fontSize: 24,
                         ),
                       ),
-                      botaoAlterar(alunos, index),
-                      botaoConsultar(alunos, index),
-                      botaoExcluir(alunos, index),
-                    ],
-                  )
-                ],
-              ),
-            );
-          }),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                    Container(
+                      padding: EdgeInsets.all(8),
+                      width: 50,
+                      child: Text(
+                        alunos[index].cod,
+                        style: TextStyle(
+                          fontSize: 24,
+                        ),
+                      ),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                    ),
+                    botaoAlterar(alunos, index),
+                    botaoConsultar(alunos, index),
+                    botaoExcluir(alunos, index),
+                  ],
+                )
+              ],
+            ),
+          );
+        },
+      ),
     );
   }
 
@@ -243,7 +249,14 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
                         ),
                       ),
                       onPressed: () {
-                        alunos.removeAt(index);
+                        setState(() {
+                          alunos.remove(alunos[index]);
+                          Navigator.pop(context);
+                          ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                            content: Text('Aluno removido com sucesso'),
+                            duration: Duration(seconds: 2),
+                          ));
+                        });
                       },
                     ),
                   ),

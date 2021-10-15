@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/view/treinador/aluno/dados_aluno.dart';
-import 'package:my_trainer/widgets/widget_NavButton.dart';
 
 class AlterarExcluir extends StatefulWidget {
   const AlterarExcluir({Key? key}) : super(key: key);
@@ -12,35 +11,7 @@ class AlterarExcluir extends StatefulWidget {
 class _AlterarExcluirState extends State<AlterarExcluir> {
   @override
   Widget build(BuildContext context) {
-    // criação de dados
     final Aluno aluno = ModalRoute.of(context)!.settings.arguments as Aluno;
-    // Aluno aluno = new Aluno();
-    // aluno.nome = 'Thiago Silva';
-    // aluno.idade = '19';
-    // aluno.peso = '82';
-    // aluno.altura = '177';
-    // aluno.cintura = '80';
-    // aluno.quadril = '80';
-    // aluno.perimetroAbdomen = '80';
-    // aluno.dobraSubEscapular = '80';
-    // aluno.dobraTricipital = '80';
-    // aluno.dobraPeitoral = '80';
-    // aluno.dobraAxilarMedio = '80';
-    // aluno.dobraSupraIliaca = '80';
-    // aluno.dobraAbdomen = '80';
-    // aluno.dobraCoxa = '80';
-    // aluno.somaDobra = '80';
-    // aluno.perimetroTorax = '80';
-    // aluno.perimetroBracoRel = '80';
-    // aluno.perimetroBracoCon = '80';
-    // aluno.perimetroAntebraco = '80';
-    // aluno.perimetroCintura = '80';
-    // aluno.perimetroQuadril = '80';
-    // aluno.perimetroCoxas = '80';
-    // aluno.perimetroPanturrilha = '80';
-    // aluno.limitacoes =
-    //     'Lorem ipsum Lorem ipsum Lorem ipsumLorem ipsum Lorem ipsum';
-    // aluno.genero = 'M';
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -294,12 +265,6 @@ class _AlterarExcluirState extends State<AlterarExcluir> {
           TextFormField(
             style: Theme.of(context).textTheme.headline5,
             controller: TextEditingController(text: variavel),
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Obrigatório';
-              }
-              return null;
-            },
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderSide: BorderSide(color: Theme.of(context).primaryColor),

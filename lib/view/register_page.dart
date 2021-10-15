@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/view/usuario.dart';
-import 'package:my_trainer/widgets/widget_NavButton.dart';
 import 'package:my_trainer/widgets/widget_textField.dart';
 
 class RegisterPage extends StatefulWidget {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_NavButton.dart';
 import 'package:my_trainer/widgets/widget_textField.dart';
 import 'package:my_trainer/view/treinador/aluno/dados_aluno.dart';
 
@@ -337,7 +336,6 @@ class _CadastrarDadosState extends State<CadastrarDados> {
               genero = "m";
               FocusScope.of(context).unfocus();
             });
-            // Navigator.pushNamed(context, 'consultar_aluno', arguments: aluno); DESABLITADO POR MOTIVOS DE ERROS
             ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(

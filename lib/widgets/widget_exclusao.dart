@@ -36,7 +36,7 @@ class _WidgetExclusaoState extends State<WidgetExclusao> {
         ),
         MyButton(
           'Cancelar',
-          Theme.of(context).accentColor,
+          Theme.of(context).colorScheme.secondary,
         ),
       ],
     );

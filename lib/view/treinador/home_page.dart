@@ -78,12 +78,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                       WidgetNavButton(
                         'Cadastrar',
-                        Theme.of(context).accentColor,
+                        Theme.of(context).colorScheme.secondary,
                         proximaPag: 'cadastrar_dados',
                       ),
                       WidgetNavButton(
                         'Consultar',
-                        Theme.of(context).accentColor,
+                        Theme.of(context).colorScheme.secondary,
                         proximaPag: 'consultar_aluno',
                       ),
                     ],
@@ -99,12 +99,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                       WidgetNavButton(
                         'Agendar',
-                        Theme.of(context).accentColor,
+                        Theme.of(context).colorScheme.secondary,
                         proximaPag: 'agendar',
                       ),
                       WidgetNavButton(
                         'Consultar',
-                        Theme.of(context).accentColor,
+                        Theme.of(context).colorScheme.secondary,
                         proximaPag: 'consultar_sessao',
                       ),
                     ],
@@ -120,12 +120,12 @@ class _HomePageState extends State<HomePage> {
                       ),
                       WidgetNavButton(
                         'Cadastrar',
-                        Theme.of(context).accentColor,
+                        Theme.of(context).colorScheme.secondary,
                         proximaPag: 'cadastrar_treino',
                       ),
                       WidgetNavButton(
                         'Consultar',
-                        Theme.of(context).accentColor,
+                        Theme.of(context).colorScheme.secondary,
                         proximaPag: 'consultar_treino',
                       ),
                     ],
@@ -141,7 +141,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       WidgetNavButton(
                         'Feedback',
-                        Theme.of(context).accentColor,
+                        Theme.of(context).colorScheme.secondary,
                         proximaPag: 'feedback',
                       ),
                     ],
@@ -156,7 +156,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       WidgetNavButton(
                         'Consultar',
-                        Theme.of(context).accentColor,
+                        Theme.of(context).colorScheme.secondary,
                         proximaPag: 'consultar_renda',
                       ),
                     ],

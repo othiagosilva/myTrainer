@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/view/register_page.dart';
 import 'package:my_trainer/view/treinador/aluno/alterar_excluir_dados.dart';
@@ -14,15 +15,21 @@ import 'package:my_trainer/view/treinador/treinos/consultar_treino.dart';
 import 'view/about_page.dart';
 import 'view/login_page.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
+
+  final ThemeData theme = ThemeData();
+
   runApp(
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'myTrainer',
-      theme: ThemeData(
+      theme: theme.copyWith(
         primaryColor: Color.fromRGBO(198, 26, 26, 1),
         backgroundColor: Color.fromRGBO(17, 17, 17, 1),
-        accentColor: Color.fromRGBO(71, 9, 9, 1),
+        colorScheme:
+            theme.colorScheme.copyWith(secondary: Color.fromRGBO(71, 9, 9, 1)),
         textTheme: TextTheme(
           headline1: TextStyle(
             fontSize: 32,

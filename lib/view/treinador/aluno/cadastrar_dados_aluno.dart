@@ -363,7 +363,7 @@ class _CadastrarDadosState extends State<CadastrarDados> {
         ),
         style: ButtonStyle(
           backgroundColor: MaterialStateProperty.all<Color>(
-            Theme.of(context).accentColor,
+            Theme.of(context).colorScheme.secondary,
           ),
           elevation: MaterialStateProperty.all<double>(0),
           fixedSize: MaterialStateProperty.all<Size>(

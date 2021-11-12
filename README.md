@@ -50,14 +50,14 @@ Versão usuário treinador: https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/m
 Versão usuário aluno: https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=188%3A520&show-proto-sidebar=1
 
 <a id="English-version"></a>
-# English Version
+# English
 <h1 align="center"> myTrainer </h1>
 <p align="center"> For trainers, coachs and athletes </p>
 
 ### PS
 Before I write about the solution this app provides you should know that it currently is the 1st version of my conclusion work for college and I'm still developing it, some functionalities still doesn't work or aren't completed.
 
-# 🎯 Now let's go to matters.
+# 🎯 Now let's go to what matters.
 
 This app simplify the work rotine of a trainer or coach. How? Let me show you
 

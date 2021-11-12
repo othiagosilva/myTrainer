@@ -33,6 +33,7 @@ Os alunos poderão escrever o feedback dos treinos via app e o treinador pode co
 Uma interface onde é possível inserir, editar e excluir sua renda, fornecendo um controle sobre suas finanças.
 
 # 🚀 Para o Futuro
+- [ ] Refatoração de código
 - [ ] Implantar a funcionalidade de agendamento.
 - [ ] Implantar a funcionalidade de treino.
 - [ ] Implantar o firebase authentication.
@@ -89,8 +90,9 @@ Clients can write feedbacks of the classes or workouts in the app.
 A interface where you can add, edit and exclude your gains. A simple tool to help with your finnances.
 
 # 🚀 Next steps
-- [ ] Code schedule function.
-- [ ] Code workout function.
+- [ ] Code Refactoring
+- [ ] Implement schedule function.
+- [ ] Implement workout function.
 - [ ] Implement firebase auth.
 - [ ] Implement firebase storage.
 - [ ] Create client user interfaces and it's functions.

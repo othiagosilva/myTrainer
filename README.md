@@ -1,17 +1,17 @@
 ![](https://user-images.githubusercontent.com/66854577/141378066-27ddf4f7-76e7-4375-ae00-64c7666ce4a7.png) <br>
 ![](http://img.shields.io/static/v1?label=STATUS&message=IN%20PROGRESS&color=GREEN&style=for-the-badge)
 
-# English
+# Languages
+The main language is brazilian portuguese. <br>
 Click [here](#English-version) for the english version.
 
-# Português Brasileiro
 <h1 align="center"> myTrainer </h1>
 <p align="center"> Para treinadores, personal trainers e atletas</p>
 
 ### PS
 Antes de escrever sobre a solução que o produto oferece, vale ressaltar que essa é a 1ª versão do meu TCC e ainda estou desenvolvendo ele, logo há funcionalidades que não estão terminadas.
 
-# 🎯 Agora vamos para o que interessa
+# 🎯 Funcionalidades
 
 O app simplifica o trabalho do profissional de educação físcia. Como? Vou te mostrar.
 
@@ -67,7 +67,7 @@ Versão usuário aluno: https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTra
 ### PS
 Before I write about the solution this app provides you should know that it currently is the 1st version of my conclusion work for college and I'm still developing it, some functionalities still doesn't work or aren't completed.
 
-# 🎯 Now let's go to what matters.
+# 🎯 Functions
 
 This app simplify the work rotine of a trainer or coach. How? Let me show you
 

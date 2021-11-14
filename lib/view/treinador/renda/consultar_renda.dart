@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/view/treinador/renda/renda.dart';
+import 'package:my_trainer/widgets/widget_logout.dart';
 
 class ConsultarRenda extends StatefulWidget {
   const ConsultarRenda({Key? key}) : super(key: key);
@@ -44,18 +45,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
           color: Theme.of(context).primaryColor,
         ),
         actions: [
-          Container(
-            padding: EdgeInsets.fromLTRB(0, 0, 16, 0),
-            child: IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, 'login');
-              },
-              icon: Icon(
-                Icons.logout,
-                size: 32,
-              ),
-            ),
-          ),
+          WidgetLogout(),
         ],
       ),
       backgroundColor: Theme.of(context).backgroundColor,

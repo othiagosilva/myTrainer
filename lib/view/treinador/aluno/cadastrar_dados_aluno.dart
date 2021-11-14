@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_trainer/widgets/widget_logout.dart';
 import 'package:my_trainer/widgets/widget_textField.dart';
 import 'package:my_trainer/view/treinador/aluno/dados_aluno.dart';
 
@@ -52,18 +53,7 @@ class _CadastrarDadosState extends State<CadastrarDados> {
           color: Theme.of(context).primaryColor,
         ),
         actions: [
-          Container(
-            padding: EdgeInsets.fromLTRB(0, 0, 16, 0),
-            child: IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, 'login');
-              },
-              icon: Icon(
-                Icons.logout,
-                size: 32,
-              ),
-            ),
-          ),
+          WidgetLogout(),
         ],
       ),
       backgroundColor: Theme.of(context).backgroundColor,

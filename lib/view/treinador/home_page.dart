@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/widgets/widget_NavButton.dart';
-
-import '../usuario.dart';
+import 'package:my_trainer/widgets/widget_logout.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -13,7 +12,7 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final Usuario obj = ModalRoute.of(context)!.settings.arguments as Usuario;
+    final usuario = ModalRoute.of(context)!.settings.arguments as String;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -22,7 +21,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             children: [
               Text(
-                obj.usuario,
+                usuario,
                 style: TextStyle(fontSize: 16),
               ),
               Text(
@@ -47,18 +46,7 @@ class _HomePageState extends State<HomePage> {
           color: Theme.of(context).primaryColor,
         ),
         actions: [
-          Container(
-            padding: EdgeInsets.fromLTRB(0, 0, 16, 0),
-            child: IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, 'login');
-              },
-              icon: Icon(
-                Icons.logout,
-                size: 32,
-              ),
-            ),
-          ),
+          WidgetLogout(),
         ],
       ),
       backgroundColor: Theme.of(context).backgroundColor,

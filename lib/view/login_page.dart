@@ -1,5 +1,5 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_trainer/view/usuario.dart';
 import 'package:my_trainer/widgets/widget_NavButton.dart';
 import 'package:my_trainer/widgets/widget_textField.dart';
 
@@ -11,8 +11,9 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  var txtUsuario = TextEditingController();
-  var txtPassword = TextEditingController();
+  var txtEmail = TextEditingController();
+  var txtSenha = TextEditingController();
+  bool isLoading = false;
   final formKey = GlobalKey<FormState>();
 
   @override
@@ -57,7 +58,7 @@ class _LoginPageState extends State<LoginPage> {
                   ),
                 ],
               ),
-              WidgetTextField('Usuário', txtUsuario),
+              WidgetTextField('Email', txtEmail),
               Container(
                 padding: EdgeInsets.symmetric(vertical: 8),
                 child: Column(
@@ -71,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                     TextFormField(
                       style: Theme.of(context).textTheme.headline5,
-                      controller: txtPassword,
+                      controller: txtSenha,
                       validator: (value) {
                         if (value == null || value.isEmpty) {
                           return 'Insira a Senha';
@@ -125,12 +126,10 @@ class _LoginPageState extends State<LoginPage> {
                     ),
                   ),
                   onPressed: () {
-                    if (formKey.currentState!.validate()) {
-                      var obj = new Usuario();
-                      obj.usuario = txtUsuario.text;
-                      obj.senha = txtPassword.text;
-                      Navigator.pushNamed(context, 'home', arguments: obj);
-                    }
+                    setState(() {
+                      isLoading = true;
+                    });
+                    login(txtEmail.text, txtSenha.text);
                   },
                 ),
               ),
@@ -149,6 +148,31 @@ class _LoginPageState extends State<LoginPage> {
             ],
           ),
         ),
+      ),
+    );
+  }
+
+  void login(email, senha) {
+    FirebaseAuth.instance
+        .signInWithEmailAndPassword(email: email, password: senha)
+        .then((value) {
+      Navigator.pushReplacementNamed(context, 'home', arguments: 'thiago');
+    }).catchError((erro) {
+      if (erro.code == 'user-not-found' ||
+          erro.code == 'wrong-password' ||
+          erro.code == 'invalid-email') {
+        exibirMensagem('ERRO: Email ou senha inválido.');
+      } else {
+        exibirMensagem('ERRO: ${erro.message}.');
+      }
+    });
+  }
+
+  void exibirMensagem(msg) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(msg),
+        duration: Duration(seconds: 2),
       ),
     );
   }

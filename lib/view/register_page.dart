@@ -1,5 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_trainer/view/usuario.dart';
 import 'package:my_trainer/widgets/widget_textField.dart';
 
 class RegisterPage extends StatefulWidget {
@@ -14,7 +15,6 @@ class _RegisterPageState extends State<RegisterPage> {
   var txtEmail = TextEditingController();
   var txtUsuario = TextEditingController();
   var txtSenha = TextEditingController();
-  var txtRedSenha = TextEditingController();
   String permissao = 't';
 
   @override
@@ -42,8 +42,7 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 WidgetTextField('Email', txtEmail),
                 WidgetTextField('Usuário', txtUsuario),
-                campoSenha('Senha', txtSenha),
-                campoSenha('Redigite a senha', txtRedSenha),
+                WidgetTextField('Senha', txtSenha),
                 Row(
                   children: [
                     Radio(
@@ -109,21 +108,16 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        var obj = new Usuario();
-                        obj.usuario = txtUsuario.text;
-                        obj.senha = txtSenha.text;
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          SnackBar(
-                            content: Text(
-                              'Usuário Cadastrado com sucesso',
-                              style: Theme.of(context).textTheme.headline3,
-                            ),
-                            duration: Duration(seconds: 2),
-                          ),
+                        criarConta(
+                          txtUsuario.text,
+                          txtEmail.text,
+                          txtSenha.text,
                         );
-                        if (permissao == 't') {
-                          Navigator.pushNamed(context, 'home', arguments: obj);
-                        }
+                        FirebaseFirestore.instance.collection('usuarios').add({
+                          'usuario': txtUsuario.text,
+                          'email': txtEmail.text,
+                          'senha': txtSenha.text,
+                        });
                       }
                     },
                   ),
@@ -136,47 +130,33 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  campoSenha(rotulo, variavel) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 8),
-      child: Column(
-        children: [
-          Text(
-            rotulo,
-            style: TextStyle(
-              fontSize: 22,
-              color: Colors.white,
-            ),
-          ),
-          TextFormField(
-            style: Theme.of(context).textTheme.headline5,
-            controller: variavel,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Insira a Senha';
-              }
-              return null;
-            },
-            obscureText: true,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderSide: BorderSide(color: Theme.of(context).primaryColor),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(15),
-                ),
-                borderSide: BorderSide(
-                  color: Theme.of(context).primaryColor,
-                  width: 2,
-                ),
-              ),
-              fillColor: Colors.white,
-              filled: true,
-            ),
-          ),
-        ],
+  void criarConta(usuario, email, senha) {
+    FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email, password: senha)
+        .then((value) {
+      exibirMensagem('Usuário criado com sucesso!');
+      if (permissao == 't') {
+        Navigator.pushNamed(context, 'home', arguments: usuario);
+      }
+    }).catchError((erro) {
+      if (erro.code == 'email-already-in-use') {
+        exibirMensagem('Email informado está em uso.');
+      } else if (erro.code == 'invalid-email') {
+        exibirMensagem('Email inválido');
+      } else {
+        exibirMensagem('${erro.message}');
+      }
+    });
+  }
+
+  void exibirMensagem(msg) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(
+          msg,
+          style: Theme.of(context).textTheme.headline3,
+        ),
+        duration: Duration(seconds: 2),
       ),
     );
   }

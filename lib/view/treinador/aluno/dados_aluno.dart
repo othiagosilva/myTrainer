@@ -1,6 +1,4 @@
-import 'package:my_trainer/view/usuario.dart';
-
-class Aluno extends Usuario {
+class Aluno {
   var cod;
   var nome;
   var idade;

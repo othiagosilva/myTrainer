@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_trainer/widgets/widget_logout.dart';
 
 class ConsultarTreino extends StatefulWidget {
   const ConsultarTreino({Key? key}) : super(key: key);
@@ -22,18 +23,7 @@ class _ConsultarTreinoState extends State<ConsultarTreino> {
           color: Theme.of(context).primaryColor,
         ),
         actions: [
-          Container(
-            padding: EdgeInsets.fromLTRB(0, 0, 16, 0),
-            child: IconButton(
-              onPressed: () {
-                Navigator.pushNamed(context, 'login');
-              },
-              icon: Icon(
-                Icons.logout,
-                size: 32,
-              ),
-            ),
-          ),
+          WidgetLogout(),
         ],
       ),
       backgroundColor: Theme.of(context).backgroundColor,

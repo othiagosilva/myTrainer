@@ -32,7 +32,7 @@ Os alunos poderão escrever o feedback dos treinos via app e o treinador pode co
 ### 5. 💰 Financerio
 Uma interface onde é possível inserir, editar e excluir sua renda, fornecendo um controle sobre suas finanças.
 
-# 🚀 Para o Futuro
+# 🚀 Para o Futuro - Version 1.0
 - [ ] Refatoração de código
 - [ ] Implantar a funcionalidade de agendamento.
 - [ ] Implantar a funcionalidade de treino.
@@ -89,7 +89,7 @@ Clients can write feedbacks of the classes or workouts in the app.
 ### 5. 💰 Finnance
 A interface where you can add, edit and exclude your gains. A simple tool to help with your finnances.
 
-# 🚀 Next steps
+# 🚀 Next steps - Release 1.0
 - [ ] Code Refactoring
 - [ ] Implement schedule function.
 - [ ] Implement workout function.

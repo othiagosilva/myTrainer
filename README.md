@@ -32,7 +32,7 @@ Os alunos poderão escrever o feedback dos treinos via app e o treinador pode co
 ### 5. 💰 Financerio
 Uma interface onde é possível inserir, editar e excluir sua renda, fornecendo um controle sobre suas finanças.
 
-# 🚀 Para o Futuro - Version 1.0
+# 🚀 Para o Futuro - Versão 1.0
 - [ ] Refatoração de código
 - [ ] Implantar a funcionalidade de agendamento.
 - [ ] Implantar a funcionalidade de treino.

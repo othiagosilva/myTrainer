@@ -36,8 +36,8 @@ Uma interface onde é possível inserir, editar e excluir sua renda, fornecendo 
 - [ ] Refatoração de código
 - [ ] Implantar a funcionalidade de agendamento.
 - [ ] Implantar a funcionalidade de treino.
-- [ ] Implantar o firebase authentication.
-- [ ] Implantar o firebase storage.
+- [x] 📆 14/11/2021 - Implantar o firebase authentication. 
+- [x] 📆 14/11/2021 - Implantar o firebase storage. 
 - [ ] Criar as telas para o aluno e implantar as funcionalidades necessárias.
 - [ ] Permitir que o aluno tenha os seguintes acessos:
   - Dados -> somente leitura.
@@ -93,8 +93,8 @@ A interface where you can add, edit and exclude your gains. A simple tool to hel
 - [ ] Code Refactoring
 - [ ] Implement schedule function.
 - [ ] Implement workout function.
-- [ ] Implement firebase auth.
-- [ ] Implement firebase storage.
+- [x] 📆 11/14/2021 Implement firebase auth.
+- [x] 📆 11/14/2021 Implement firebase storage.
 - [ ] Create client user interfaces and it's functions.
 - [ ] Permissions for the client user:
   - Data -> ready only.

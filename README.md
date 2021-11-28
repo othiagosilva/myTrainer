@@ -46,19 +46,19 @@ Uma interface onde é possível inserir, editar e excluir sua renda, fornecendo 
   - Feedbacks -> escrever.
 
 # 🔬 Projeto de Pesquisa
-Pode ser encontrado <a href="https://docs.google.com/document/d/1915mZsfG2YaVHcAk_qGksdWsV0G047fH/edit?usp=sharing&ouid=108849066908443544932&rtpof=true&sd=true" target = _blank>aqui</a>.
+Pode ser encontrado <a href="https://docs.google.com/document/d/1915mZsfG2YaVHcAk_qGksdWsV0G047fH/edit?usp=sharing&ouid=108849066908443544932&rtpof=true&sd=true" target = "_blank">aqui</a>.
 
 # 🔨 Requisitos
-Podem ser encontrados <a href="https://docs.google.com/document/d/1FbV-cn-RwkuYXox6_q0WO51pl8v79pJ4A2pT678FHOw/edit?usp=sharing" target = _blank>aqui</a>.
+Podem ser encontrados <a href="https://docs.google.com/document/d/1FbV-cn-RwkuYXox6_q0WO51pl8v79pJ4A2pT678FHOw/edit?usp=sharing" target = "_blank">aqui</a>.
 
 # 📝 Protótipo
-Pode ser encontrado <a href = "https://www.figma.com/file/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2" target = _blank>aqui</a>
+Pode ser encontrado <a href = "https://www.figma.com/file/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2" target = "_blank">aqui</a>
 
 As versões do protótipo para testes de usabilidade podem ser encontrada através dos links: 
 
-<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A2&show-proto-sidebar=1" target=_blank>Versão usuário treinador</a> 
+<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A2&show-proto-sidebar=1" target = "_blank">Versão usuário treinador</a> 
 
-<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=188%3A520&show-proto-sidebar=1" target=_blank> Versão usuário aluno</a> 
+<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=188%3A520&show-proto-sidebar=1" target = "_blank"> Versão usuário aluno</a> 
 
 <a id="English-version"></a>
 # English
@@ -114,16 +114,16 @@ Theese links will guide to some documents required for the project. They're all 
 You can click in the links to see it if you want.
 
 # 🔬 Research
-<a href="https://docs.google.com/document/d/1915mZsfG2YaVHcAk_qGksdWsV0G047fH/edit?usp=sharing&ouid=108849066908443544932&rtpof=true&sd=true" target = _blank>Here</a>.
+<a href="https://docs.google.com/document/d/1915mZsfG2YaVHcAk_qGksdWsV0G047fH/edit?usp=sharing&ouid=108849066908443544932&rtpof=true&sd=true" target = "_blank">Here</a>
 
 # 🔨 Requirements
-<a href="https://docs.google.com/document/d/1FbV-cn-RwkuYXox6_q0WO51pl8v79pJ4A2pT678FHOw/edit?usp=sharing" target = _blank>Here</a>.
+<a href="https://docs.google.com/document/d/1FbV-cn-RwkuYXox6_q0WO51pl8v79pJ4A2pT678FHOw/edit?usp=sharing" target = "_blank">Here</a>
 
 # 📝 Prototype
-<a href = "https://www.figma.com/file/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2" target = _blank>Here</a>
+<a href = "https://www.figma.com/file/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2" target = "_blank">Here</a>
 
 The client and trainer version can be found in:
 
-<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A2&show-proto-sidebar=1" target=_blank>Trainer</a> 
+<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A2&show-proto-sidebar=1" target = "_blank">Trainer</a> 
 
-<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=188%3A520&show-proto-sidebar=1" target=_blank>Client</a> 
+<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=188%3A520&show-proto-sidebar=1" target = "_blank">Client</a> 

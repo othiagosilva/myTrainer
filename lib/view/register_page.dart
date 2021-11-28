@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_textField.dart';
+import 'package:my_trainer/widgets/widget_PasswordField.dart';
+import 'package:my_trainer/widgets/widget_TextField.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -42,7 +43,10 @@ class _RegisterPageState extends State<RegisterPage> {
               children: [
                 WidgetTextField('Email', txtEmail),
                 WidgetTextField('Usuário', txtUsuario),
-                WidgetTextField('Senha', txtSenha),
+                WidgetPasswordField(txtSenha),
+                //
+                // RADIO PARA DEFINIR PERMISSÕES
+                //
                 Row(
                   children: [
                     Radio(
@@ -83,6 +87,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
+
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 8),
                   child: ElevatedButton(
@@ -108,15 +113,13 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                     onPressed: () {
                       if (formKey.currentState!.validate()) {
-                        criarConta(
-                          txtUsuario.text,
-                          txtEmail.text,
-                          txtSenha.text,
-                        );
+                        criarConta(txtUsuario, txtEmail.text, txtSenha.text,
+                            permissao);
                         FirebaseFirestore.instance.collection('usuarios').add({
                           'usuario': txtUsuario.text,
                           'email': txtEmail.text,
                           'senha': txtSenha.text,
+                          'permissao': permissao,
                         });
                       }
                     },
@@ -130,14 +133,12 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  void criarConta(usuario, email, senha) {
+  void criarConta(usuario, email, senha, permissao) {
     FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: senha)
         .then((value) {
       exibirMensagem('Usuário criado com sucesso!');
-      if (permissao == 't') {
-        Navigator.pushNamed(context, 'home', arguments: usuario);
-      }
+      Navigator.pushReplacementNamed(context, 'login');
     }).catchError((erro) {
       if (erro.code == 'email-already-in-use') {
         exibirMensagem('Email informado está em uso.');

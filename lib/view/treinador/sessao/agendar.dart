@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_logout.dart';
+import 'package:my_trainer/widgets/widget_Logout.dart';
 
 class AgendarSessao extends StatefulWidget {
   const AgendarSessao({Key? key}) : super(key: key);

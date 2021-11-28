@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_NavButton.dart';
+import 'package:my_trainer/widgets/widget_NavegationButton.dart';
 
-class WidgetExclusao extends StatefulWidget {
+class WidgetExclude extends StatefulWidget {
   final texto;
-  const WidgetExclusao(this.texto, {Key? key}) : super(key: key);
+  const WidgetExclude(this.texto, {Key? key}) : super(key: key);
 
   @override
-  _WidgetExclusaoState createState() => _WidgetExclusaoState();
+  _WidgetExcludeState createState() => _WidgetExcludeState();
 }
 
-class _WidgetExclusaoState extends State<WidgetExclusao> {
+class _WidgetExcludeState extends State<WidgetExclude> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
@@ -30,26 +30,19 @@ class _WidgetExclusaoState extends State<WidgetExclusao> {
         ),
       ),
       actions: [
-        WidgetNavButton(
+        WidgetNavegationButton(
           'Confirmar',
           Theme.of(context).primaryColor,
         ),
-        MyButton(
+        myButton(
           'Cancelar',
           Theme.of(context).colorScheme.secondary,
         ),
       ],
     );
   }
-}
 
-class MyButton extends StatelessWidget {
-  final rotulo;
-  final cor;
-  const MyButton(this.rotulo, this.cor, {Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
+  myButton(rotulo, cor) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8),
       child: ElevatedButton(

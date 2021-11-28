@@ -1,7 +1,9 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_NavButton.dart';
-import 'package:my_trainer/widgets/widget_textField.dart';
+import 'package:my_trainer/widgets/widget_NavegationButton.dart';
+import 'package:my_trainer/widgets/widget_PasswordField.dart';
+import 'package:my_trainer/widgets/widget_TextField.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -59,49 +61,13 @@ class _LoginPageState extends State<LoginPage> {
                 ],
               ),
               WidgetTextField('Email', txtEmail),
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 8),
-                child: Column(
-                  children: [
-                    Text(
-                      'Senha',
-                      style: TextStyle(
-                        fontSize: 22,
-                        color: Colors.white,
-                      ),
-                    ),
-                    TextFormField(
-                      style: Theme.of(context).textTheme.headline5,
-                      controller: txtSenha,
-                      validator: (value) {
-                        if (value == null || value.isEmpty) {
-                          return 'Insira a Senha';
-                        }
-                        return null;
-                      },
-                      obscureText: true,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderSide:
-                              BorderSide(color: Theme.of(context).primaryColor),
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        focusedBorder: OutlineInputBorder(
-                          borderRadius: BorderRadius.all(
-                            Radius.circular(15),
-                          ),
-                          borderSide: BorderSide(
-                            color: Theme.of(context).primaryColor,
-                            width: 2,
-                          ),
-                        ),
-                        fillColor: Colors.white,
-                        filled: true,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
+              //
+              // SENHA
+              //
+              WidgetPasswordField(txtSenha),
+              //
+              // BOTÃO ENTRAR
+              //
               Container(
                 padding: EdgeInsets.symmetric(vertical: 8),
                 child: ElevatedButton(
@@ -129,17 +95,19 @@ class _LoginPageState extends State<LoginPage> {
                     setState(() {
                       isLoading = true;
                     });
-                    login(txtEmail.text, txtSenha.text);
+                    return login(txtEmail.text, txtSenha.text);
                   },
                 ),
               ),
-              WidgetNavButton(
+
+              WidgetNavegationButton(
                 'Cadastre-se',
                 Theme.of(context).primaryColor,
                 proximaPag: 'register',
               ),
+
               Container(
-                child: WidgetNavButton(
+                child: WidgetNavegationButton(
                   'Sobre',
                   Theme.of(context).primaryColor,
                   proximaPag: 'about',
@@ -156,7 +124,8 @@ class _LoginPageState extends State<LoginPage> {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: senha)
         .then((value) {
-      Navigator.pushReplacementNamed(context, 'home', arguments: 'thiago');
+      Navigator.pushReplacementNamed(context, 'home_treinador',
+          arguments: email);
     }).catchError((erro) {
       if (erro.code == 'user-not-found' ||
           erro.code == 'wrong-password' ||

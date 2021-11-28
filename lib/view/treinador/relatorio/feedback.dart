@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/view/treinador/relatorio/relatorio.dart';
-import 'package:my_trainer/widgets/widget_logout.dart';
+import 'package:my_trainer/widgets/widget_Logout.dart';
 
 class RelatorioFeedback extends StatefulWidget {
   const RelatorioFeedback({Key? key}) : super(key: key);

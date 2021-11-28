@@ -1,6 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/view/treinador/aluno/dados_aluno.dart';
-import 'package:my_trainer/widgets/widget_logout.dart';
+import 'package:my_trainer/widgets/widget_Logout.dart';
 
 class AlterarExcluir extends StatefulWidget {
   const AlterarExcluir({Key? key}) : super(key: key);
@@ -10,6 +11,14 @@ class AlterarExcluir extends StatefulWidget {
 }
 
 class _AlterarExcluirState extends State<AlterarExcluir> {
+  late CollectionReference alunos;
+
+  @override
+  void initState() {
+    super.initState();
+    alunos = FirebaseFirestore.instance.collection('alunos');
+  }
+
   @override
   Widget build(BuildContext context) {
     final Aluno aluno = ModalRoute.of(context)!.settings.arguments as Aluno;
@@ -171,30 +180,34 @@ class _AlterarExcluirState extends State<AlterarExcluir> {
           ),
         ),
         onPressed: () {
-          aluno.nome = (aluno.nome);
-          aluno.idade = (aluno.idade);
-          aluno.peso = (aluno.peso);
-          aluno.altura = (aluno.altura);
-          aluno.cintura = (aluno.cintura);
-          aluno.quadril = (aluno.quadril);
-          aluno.perimetroAbdomen = (aluno.perimetroAbdomen);
-          aluno.dobraSubEscapular = (aluno.dobraSubEscapular);
-          aluno.dobraTricipital = (aluno.dobraTricipital);
-          aluno.dobraPeitoral = (aluno.dobraPeitoral);
-          aluno.dobraAxilarMedio = (aluno.dobraAxilarMedio);
-          aluno.dobraSupraIliaca = (aluno.dobraSupraIliaca);
-          aluno.dobraAbdomen = (aluno.dobraAbdomen);
-          aluno.dobraCoxa = (aluno.dobraCoxa);
-          aluno.perimetroTorax = (aluno.perimetroTorax);
-          aluno.perimetroBracoRel = (aluno.perimetroBracoRel);
-          aluno.perimetroBracoCon = (aluno.perimetroBracoCon);
-          aluno.perimetroAntebraco = (aluno.perimetroAntebraco);
-          aluno.perimetroCintura = (aluno.perimetroCintura);
-          aluno.perimetroQuadril = (aluno.perimetroQuadril);
-          aluno.perimetroCoxas = (aluno.perimetroCoxas);
-          aluno.perimetroPanturrilha = (aluno.perimetroPanturrilha);
-          aluno.limitacoes = (aluno.limitacoes);
-          aluno.genero = (aluno.genero);
+          FirebaseFirestore.instance.collection('alunos').doc(aluno.nome).set({
+            "codAluno": aluno.cod,
+            "nome": aluno.nome,
+            "idade": aluno.idade,
+            "peso": aluno.peso,
+            "altura": aluno.altura,
+            "cintura": aluno.cintura,
+            "quadril": aluno.quadril,
+            "perimetroAbdomen": aluno.perimetroAbdomen,
+            "dobraSubEscapular": aluno.dobraSubEscapular,
+            "dobraTricipi tal": aluno.dobraTricipital,
+            "dobraPeitoral": aluno.dobraPeitoral,
+            "dobraAxilarMedio": aluno.dobraAxilarMedio,
+            "dobraSupraIliaca": aluno.dobraSupraIliaca,
+            "dobraAbdomen": aluno.dobraAbdomen,
+            "dobraCoxa": aluno.dobraCoxa,
+            "perimetroTorax": aluno.perimetroTorax,
+            "perimetroBracoRel": aluno.perimetroBracoRel,
+            "perimetroBracoCon": aluno.perimetroBracoCon,
+            "perimetroAntebraco": aluno.perimetroAntebraco,
+            "perimetroCintura": aluno.perimetroCintura,
+            "perimetroQuadril": aluno.perimetroQuadril,
+            "perimetroCoxas": aluno.perimetroCoxas,
+            "perimetroPanturrilha": aluno.perimetroPanturrilha,
+            "limitacoes": aluno.limitacoes,
+            "genero": aluno.genero
+          });
+          Navigator.pop(context);
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
               content: Text(

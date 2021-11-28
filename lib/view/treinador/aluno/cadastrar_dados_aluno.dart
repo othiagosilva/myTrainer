@@ -1,7 +1,7 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_logout.dart';
-import 'package:my_trainer/widgets/widget_textField.dart';
-import 'package:my_trainer/view/treinador/aluno/dados_aluno.dart';
+import 'package:my_trainer/widgets/widget_Logout.dart';
+import 'package:my_trainer/widgets/widget_TextField.dart';
 
 class CadastrarDados extends StatefulWidget {
   const CadastrarDados({Key? key}) : super(key: key);
@@ -12,7 +12,6 @@ class CadastrarDados extends StatefulWidget {
 
 class _CadastrarDadosState extends State<CadastrarDados> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  var cod = 1;
   TextEditingController nome = TextEditingController();
   TextEditingController idade = TextEditingController();
   TextEditingController peso = TextEditingController();
@@ -37,7 +36,7 @@ class _CadastrarDadosState extends State<CadastrarDados> {
   TextEditingController perimetroPanturrilha = TextEditingController();
   TextEditingController limitacoes = TextEditingController();
   var genero = 'm';
-  Aluno aluno = new Aluno();
+  int codAluno = 1;
 
   @override
   Widget build(BuildContext context) {
@@ -273,32 +272,34 @@ class _CadastrarDadosState extends State<CadastrarDados> {
         ),
         onPressed: () {
           if (formKey.currentState!.validate()) {
-            aluno.cod = cod.toString();
-            aluno.nome = (nome.text);
-            aluno.idade = (idade.text);
-            aluno.peso = (peso.text);
-            aluno.altura = (altura.text);
-            aluno.cintura = (cintura.text);
-            aluno.quadril = (quadril.text);
-            aluno.perimetroAbdomen = (perimetroAbdomen.text);
-            aluno.dobraSubEscapular = (dobraSubEscapular.text);
-            aluno.dobraTricipital = (dobraTricipital.text);
-            aluno.dobraPeitoral = (dobraPeitoral.text);
-            aluno.dobraAxilarMedio = (dobraAxilarMedio.text);
-            aluno.dobraSupraIliaca = (dobraSupraIliaca.text);
-            aluno.dobraAbdomen = (dobraAbdomen.text);
-            aluno.dobraCoxa = (dobraCoxa.text);
-            aluno.perimetroTorax = (perimetroTorax.text);
-            aluno.perimetroBracoRel = (perimetroBracoRel.text);
-            aluno.perimetroBracoCon = (perimetroBracoCon.text);
-            aluno.perimetroAntebraco = (perimetroAntebraco.text);
-            aluno.perimetroCintura = (perimetroCintura.text);
-            aluno.perimetroQuadril = (perimetroQuadril.text);
-            aluno.perimetroCoxas = (perimetroCoxas.text);
-            aluno.perimetroPanturrilha = (perimetroPanturrilha.text);
-            aluno.limitacoes = (limitacoes.text);
-            aluno.genero = (genero);
-            cod++;
+            FirebaseFirestore.instance.collection("alunos").doc(nome.text).set({
+              "codAluno": codAluno.toString(),
+              "nome": nome.text,
+              "idade": (idade.text),
+              "peso": (peso.text),
+              "altura": (altura.text),
+              "cintura": (cintura.text),
+              "quadril": (quadril.text),
+              "perimetroAbdomen": (perimetroAbdomen.text),
+              "dobraSubEscapular": (dobraSubEscapular.text),
+              "dobraTricipital": (dobraTricipital.text),
+              "dobraPeitoral": (dobraPeitoral.text),
+              "dobraAxilarMedio": (dobraAxilarMedio.text),
+              "dobraSupraIliaca": (dobraSupraIliaca.text),
+              "dobraAbdomen": (dobraAbdomen.text),
+              "dobraCoxa": (dobraCoxa.text),
+              "perimetroTorax": (perimetroTorax.text),
+              "perimetroBracoRel": (perimetroBracoRel.text),
+              "perimetroBracoCon": (perimetroBracoCon.text),
+              "perimetroAntebraco": (perimetroAntebraco.text),
+              "perimetroCintura": (perimetroCintura.text),
+              "perimetroQuadril": (perimetroQuadril.text),
+              "perimetroCoxas": (perimetroCoxas.text),
+              "perimetroPanturrilha": (perimetroPanturrilha.text),
+              "limitacoes": (limitacoes.text),
+              "genero": (genero)
+            });
+            codAluno++;
             setState(() {
               nome.text = "";
               idade.text = "";
@@ -335,6 +336,7 @@ class _CadastrarDadosState extends State<CadastrarDados> {
                 duration: Duration(seconds: 2),
               ),
             );
+            Navigator.pop(context);
           }
         },
       ),

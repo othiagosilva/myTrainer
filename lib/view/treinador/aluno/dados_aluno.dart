@@ -14,7 +14,6 @@ class Aluno {
   var dobraSupraIliaca;
   var dobraAbdomen;
   var dobraCoxa;
-  var somaDobra;
   var perimetroTorax;
   var perimetroBracoRel;
   var perimetroBracoCon;
@@ -24,12 +23,61 @@ class Aluno {
   var perimetroCoxas;
   var perimetroPanturrilha;
   var limitacoes;
-  var imc;
-  var razaoCinturaQuadril;
-  var percentualGordura;
-  var massaMagra;
-  var massaGorda;
   var genero;
+  var imc;
+
+  Aluno(
+      cod,
+      nome,
+      idade,
+      peso,
+      altura,
+      cintura,
+      quadril,
+      perimetroAbdomen,
+      dobraSubEscapular,
+      dobraTricipital,
+      dobraPeitoral,
+      dobraAxilarMedio,
+      dobraSupraIliaca,
+      dobraAbdomen,
+      dobraCoxa,
+      perimetroTorax,
+      perimetroBracoRel,
+      perimetroBracoCon,
+      perimetroAntebraco,
+      perimetroCintura,
+      perimetroQuadril,
+      perimetroCoxas,
+      perimetroPanturrilha,
+      limitacoes,
+      genero) {
+    this.cod = cod;
+    this.nome = nome;
+    this.idade = idade;
+    this.peso = peso;
+    this.altura = altura;
+    this.cintura = cintura;
+    this.quadril = quadril;
+    this.perimetroAbdomen = perimetroAbdomen;
+    this.dobraSubEscapular = dobraSubEscapular;
+    this.dobraTricipital = dobraTricipital;
+    this.dobraPeitoral = dobraPeitoral;
+    this.dobraAxilarMedio = dobraAxilarMedio;
+    this.dobraSupraIliaca = dobraSupraIliaca;
+    this.dobraAbdomen = dobraAbdomen;
+    this.dobraCoxa = dobraCoxa;
+    this.perimetroTorax = perimetroTorax;
+    this.perimetroBracoRel = perimetroBracoRel;
+    this.perimetroBracoCon = perimetroBracoCon;
+    this.perimetroAntebraco = perimetroAntebraco;
+    this.perimetroCintura = perimetroCintura;
+    this.perimetroQuadril = perimetroQuadril;
+    this.perimetroCoxas = perimetroCoxas;
+    this.perimetroPanturrilha = perimetroPanturrilha;
+    this.limitacoes = limitacoes;
+    this.genero = genero;
+  }
 
   setAltura(altura) {
     this.altura = altura;

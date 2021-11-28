@@ -64,7 +64,7 @@ Future<void> main() async {
       initialRoute: 'login',
       routes: {
         'login': (context) => LoginPage(),
-        'home': (context) => HomePage(),
+        'home_treinador': (context) => HomePage(),
         'register': (context) => RegisterPage(),
         'about': (context) => AboutPage(),
         'cadastrar_dados': (context) => CadastrarDados(),

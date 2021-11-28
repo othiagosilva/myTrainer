@@ -2,8 +2,8 @@
 ![](http://img.shields.io/static/v1?label=STATUS&message=IN%20PROGRESS&color=GREEN&style=for-the-badge)
 
 # Languages
-The main language is brazilian portuguese. <br>
-Click [here](#English-version) for the english version.
+Brazilian Portuguese (main). <br>
+[English](#English-version).
 
 <h1 align="center"> myTrainer </h1>
 <p align="center"> Para treinadores, personal trainers e atletas</p>
@@ -46,19 +46,19 @@ Uma interface onde é possível inserir, editar e excluir sua renda, fornecendo 
   - Feedbacks -> escrever.
 
 # 🔬 Projeto de Pesquisa
-Pode ser encontrado através do link: https://docs.google.com/document/d/1915mZsfG2YaVHcAk_qGksdWsV0G047fH/edit?usp=sharing&ouid=108849066908443544932&rtpof=true&sd=true.
+Pode ser encontrado <a href="https://docs.google.com/document/d/1915mZsfG2YaVHcAk_qGksdWsV0G047fH/edit?usp=sharing&ouid=108849066908443544932&rtpof=true&sd=true" target = _blank>aqui</a>.
 
 # 🔨 Requisitos
-Podem ser encontrados através do link: https://rounded-land-f94.notion.site/myTrainer-01b9e8bc375e4179847b577f694d19ef.
+Podem ser encontrados <a href="https://docs.google.com/document/d/1FbV-cn-RwkuYXox6_q0WO51pl8v79pJ4A2pT678FHOw/edit?usp=sharing" target = _blank>aqui</a>.
 
 # 📝 Protótipo
-Pode ser encontrado através do link: https://www.figma.com/file/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2
+Pode ser encontrado <a href = "https://www.figma.com/file/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2" target = _blank>aqui</a>
 
 As versões do protótipo para testes de usabilidade podem ser encontrada através dos links: 
 
-Versão usuário treinador: https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A2&show-proto-sidebar=1
+<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A2&show-proto-sidebar=1" target=_blank>Versão usuário treinador</a> 
 
-Versão usuário aluno: https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=188%3A520&show-proto-sidebar=1
+<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=188%3A520&show-proto-sidebar=1" target=_blank> Versão usuário aluno</a> 
 
 <a id="English-version"></a>
 # English
@@ -114,15 +114,16 @@ Theese links will guide to some documents required for the project. They're all 
 You can click in the links to see it if you want.
 
 # 🔬 Research
-Found in: https://docs.google.com/document/d/1915mZsfG2YaVHcAk_qGksdWsV0G047fH/edit?usp=sharing&ouid=108849066908443544932&rtpof=true&sd=true.
+<a href="https://docs.google.com/document/d/1915mZsfG2YaVHcAk_qGksdWsV0G047fH/edit?usp=sharing&ouid=108849066908443544932&rtpof=true&sd=true" target = _blank>Here</a>.
 
 # 🔨 Requirements
-Found in: https://rounded-land-f94.notion.site/myTrainer-01b9e8bc375e4179847b577f694d19ef.
+<a href="https://docs.google.com/document/d/1FbV-cn-RwkuYXox6_q0WO51pl8v79pJ4A2pT678FHOw/edit?usp=sharing" target = _blank>Here</a>.
 
 # 📝 Prototype
-Found in: https://www.figma.com/file/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2
+<a href = "https://www.figma.com/file/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2" target = _blank>Here</a>
 
 The client and trainer version can be found in:
 
-Trainer: https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A2&show-proto-sidebar=1
-Client: https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=188%3A520&show-proto-sidebar=1
+<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A2&show-proto-sidebar=1" target=_blank>Trainer</a> 
+
+<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=188%3A520&show-proto-sidebar=1" target=_blank>Client</a> 

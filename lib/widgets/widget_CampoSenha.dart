@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 
-class WidgetTextField extends StatefulWidget {
-  final String rotulo;
-  final variavel;
+class WidgetCampoSenha extends StatefulWidget {
+  final txtSenha;
 
-  const WidgetTextField(this.rotulo, this.variavel);
+  const WidgetCampoSenha(this.txtSenha);
 
   @override
-  _WidgetTextFieldState createState() => _WidgetTextFieldState();
+  _WidgetCampoSenhaState createState() => _WidgetCampoSenhaState();
 }
 
-class _WidgetTextFieldState extends State<WidgetTextField> {
+class _WidgetCampoSenhaState extends State<WidgetCampoSenha> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -18,7 +17,7 @@ class _WidgetTextFieldState extends State<WidgetTextField> {
       child: Column(
         children: [
           Text(
-            this.widget.rotulo,
+            'Senha',
             style: TextStyle(
               fontSize: 22,
               color: Colors.white,
@@ -26,13 +25,14 @@ class _WidgetTextFieldState extends State<WidgetTextField> {
           ),
           TextFormField(
             style: Theme.of(context).textTheme.headline5,
-            controller: this.widget.variavel,
+            controller: this.widget.txtSenha,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Obrigatório';
+                return 'Insira a Senha';
               }
               return null;
             },
+            obscureText: true,
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderSide: BorderSide(color: Theme.of(context).primaryColor),

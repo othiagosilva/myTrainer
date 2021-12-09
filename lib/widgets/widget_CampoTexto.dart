@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 
-class WidgetPasswordField extends StatefulWidget {
-  final txtSenha;
+class WidgetCampoTexto extends StatefulWidget {
+  final String rotulo;
+  final variavel;
 
-  const WidgetPasswordField(this.txtSenha);
+  const WidgetCampoTexto(this.rotulo, this.variavel);
 
   @override
-  _WidgetPasswordFieldState createState() => _WidgetPasswordFieldState();
+  _WidgetCampoTextoState createState() => _WidgetCampoTextoState();
 }
 
-class _WidgetPasswordFieldState extends State<WidgetPasswordField> {
+class _WidgetCampoTextoState extends State<WidgetCampoTexto> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -17,22 +18,18 @@ class _WidgetPasswordFieldState extends State<WidgetPasswordField> {
       child: Column(
         children: [
           Text(
-            'Senha',
-            style: TextStyle(
-              fontSize: 22,
-              color: Colors.white,
-            ),
+            this.widget.rotulo,
+            style: Theme.of(context).textTheme.headline3,
           ),
           TextFormField(
             style: Theme.of(context).textTheme.headline5,
-            controller: this.widget.txtSenha,
+            controller: this.widget.variavel,
             validator: (value) {
               if (value == null || value.isEmpty) {
-                return 'Insira a Senha';
+                return 'Obrigatório';
               }
               return null;
             },
-            obscureText: true,
             decoration: InputDecoration(
               border: OutlineInputBorder(
                 borderSide: BorderSide(color: Theme.of(context).primaryColor),
@@ -44,7 +41,7 @@ class _WidgetPasswordFieldState extends State<WidgetPasswordField> {
                 ),
                 borderSide: BorderSide(
                   color: Theme.of(context).primaryColor,
-                  width: 2,
+                  width: 1.5,
                 ),
               ),
               fillColor: Colors.white,

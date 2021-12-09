@@ -1,9 +1,9 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/widgets/widget_NavegationButton.dart';
-import 'package:my_trainer/widgets/widget_PasswordField.dart';
-import 'package:my_trainer/widgets/widget_TextField.dart';
+import 'package:my_trainer/widgets/widget_CampoSenha.dart';
+import 'package:my_trainer/widgets/widget_CampoTexto.dart';
+import 'package:my_trainer/widgets/widget_logo.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -28,46 +28,12 @@ class _LoginPageState extends State<LoginPage> {
           padding: EdgeInsets.all(24),
           child: Column(
             children: [
-              Column(
-                children: [
-                  Container(
-                    padding: EdgeInsets.all(10),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: Color.fromRGBO(71, 9, 9, 1),
-                          blurRadius: 0,
-                        ),
-                      ],
-                      border: Border.all(width: 2.0, color: Colors.white),
-                    ),
-                    child: Icon(
-                      Icons.fitness_center,
-                      color: Theme.of(context).primaryColor,
-                      size: 90,
-                    ),
-                  ),
-                  Text(
-                    'myTrainer',
-                    style: TextStyle(
-                      fontFamily: 'OpenSans',
-                      fontWeight: FontWeight.bold,
-                      fontStyle: FontStyle.italic,
-                      fontSize: 32,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-              WidgetTextField('Email', txtEmail),
-              //
-              // SENHA
-              //
-              WidgetPasswordField(txtSenha),
-              //
-              // BOTÃO ENTRAR
-              //
+              WidgetLogo(),
+              WidgetCampoTexto('Email', txtEmail),
+              WidgetCampoSenha(txtSenha),
+              //*
+              //* BOTÃO ENTRAR
+              //! Analisar viabilidade de colocar em um widget
               Container(
                 padding: EdgeInsets.symmetric(vertical: 8),
                 child: ElevatedButton(
@@ -95,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                     setState(() {
                       isLoading = true;
                     });
-                    return login(txtEmail.text, txtSenha.text);
+                    return loginController(txtEmail.text, txtSenha.text);
                   },
                 ),
               ),
@@ -106,12 +72,10 @@ class _LoginPageState extends State<LoginPage> {
                 proximaPag: 'register',
               ),
 
-              Container(
-                child: WidgetNavegationButton(
-                  'Sobre',
-                  Theme.of(context).primaryColor,
-                  proximaPag: 'about',
-                ),
+              WidgetNavegationButton(
+                'Sobre',
+                Theme.of(context).primaryColor,
+                proximaPag: 'about',
               ),
             ],
           ),
@@ -120,17 +84,19 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  void login(email, senha) {
+  //*
+  //* Login Controller with Firebase Authentication.
+  //*
+  void loginController(email, senha) {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: senha)
         .then((value) {
-      Navigator.pushReplacementNamed(context, 'home_treinador',
-          arguments: email);
+      Navigator.pushReplacementNamed(context, 'home', arguments: email);
     }).catchError((erro) {
-      if (erro.code == 'user-not-found' ||
-          erro.code == 'wrong-password' ||
-          erro.code == 'invalid-email') {
-        exibirMensagem('ERRO: Email ou senha inválido.');
+      if (erro.code == 'wrong-password' || erro.code == 'invalid-email') {
+        exibirMensagem('Email ou senha inválido.');
+      } else if (erro.code == 'user-not-found') {
+        exibirMensagem('Usuário não existe');
       } else {
         exibirMensagem('ERRO: ${erro.message}.');
       }

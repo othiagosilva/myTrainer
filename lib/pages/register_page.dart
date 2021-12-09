@@ -1,8 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_PasswordField.dart';
-import 'package:my_trainer/widgets/widget_TextField.dart';
+import 'package:my_trainer/widgets/widget_CampoSenha.dart';
+import 'package:my_trainer/widgets/widget_CampoTexto.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -41,12 +41,12 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                WidgetTextField('Email', txtEmail),
-                WidgetTextField('Usuário', txtUsuario),
-                WidgetPasswordField(txtSenha),
-                //
-                // RADIO PARA DEFINIR PERMISSÕES
-                //
+                WidgetCampoTexto('Email', txtEmail),
+                WidgetCampoTexto('Usuário', txtUsuario),
+                WidgetCampoSenha(txtSenha),
+                //*
+                //* DEFINE PERMISSION
+                //*
                 Row(
                   children: [
                     Radio(
@@ -87,7 +87,9 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-
+                //*
+                //* Register Button to create account
+                //*
                 Container(
                   padding: EdgeInsets.symmetric(vertical: 8),
                   child: ElevatedButton(

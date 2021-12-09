@@ -11,6 +11,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  //*
+  //* Connection to Firebase
+  //*
   late CollectionReference usuarios;
 
   @override
@@ -67,19 +70,17 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: Theme.of(context).backgroundColor,
       body: ListView(
         children: [
-          Container(
-            child: Column(
-              children: [
-                viewHome2Button(16, 24, 'Alunos', 'Cadastrar',
-                    'cadastrar_dados', 'Consultar', 'consultar_aluno'),
-                viewHome2Button(0, 40, 'Agendamento', 'Agendar', 'agendar',
-                    'Consultar', 'consultar_sessao'),
-                viewHome2Button(0, 40, 'Treinos', 'Cadastrar',
-                    'cadastrar_treino', 'Consultar', 'consultar_treino'),
-                viewHome1Button(0, 40, 'Relatórios', 'Feedback', 'feedback'),
-                viewHome1Button(0, 0, 'Renda', 'Consultar', 'consultar_renda'),
-              ],
-            ),
+          Column(
+            children: [
+              viewHome2Button(16, 24, 'Alunos', 'Cadastrar', 'cadastrar_dados',
+                  'Consultar', 'consultar_aluno'),
+              viewHome2Button(0, 40, 'Agendamento', 'Agendar', 'agendar',
+                  'Consultar', 'consultar_sessao'),
+              viewHome2Button(0, 40, 'Treinos', 'Cadastrar', 'cadastrar_treino',
+                  'Consultar', 'consultar_treino'),
+              viewHome1Button(0, 40, 'Relatórios', 'Feedback', 'feedback'),
+              viewHome1Button(0, 0, 'Renda', 'Consultar', 'consultar_renda'),
+            ],
           ),
         ],
       ),

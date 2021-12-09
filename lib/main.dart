@@ -1,21 +1,24 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:my_trainer/view/register_page.dart';
-import 'package:my_trainer/view/treinador/aluno/alterar_excluir_dados.dart';
-import 'package:my_trainer/view/treinador/aluno/cadastrar_dados_aluno.dart';
-import 'package:my_trainer/view/treinador/aluno/consultar_aluno.dart';
-import 'package:my_trainer/view/treinador/aluno/consultar_dados.dart';
-import 'package:my_trainer/view/treinador/home_page.dart';
-import 'package:my_trainer/view/treinador/relatorio/feedback.dart';
-import 'package:my_trainer/view/treinador/renda/consultar_renda.dart';
-import 'package:my_trainer/view/treinador/sessao/agendar.dart';
-import 'package:my_trainer/view/treinador/sessao/consultar_sessao.dart';
-import 'package:my_trainer/view/treinador/treinos/cadastrar_treino.dart';
-import 'package:my_trainer/view/treinador/treinos/consultar_treino.dart';
-import 'view/about_page.dart';
-import 'view/login_page.dart';
+import 'package:my_trainer/pages/login_page.dart';
+import 'package:my_trainer/pages/about_page.dart';
+import 'package:my_trainer/pages/register_page.dart';
+import 'package:my_trainer/pages/home_page.dart';
+import 'package:my_trainer/pages/treinador/aluno/cadastrar_dados_aluno.dart';
+import 'package:my_trainer/pages/treinador/aluno/consultar_aluno.dart';
+import 'package:my_trainer/pages/treinador/aluno/alterar_dados.dart';
+import 'package:my_trainer/pages/treinador/aluno/consultar_dados.dart';
+import 'package:my_trainer/pages/treinador/agendamento/agendar.dart';
+import 'package:my_trainer/pages/treinador/agendamento/consultar_agendamento.dart';
+import 'package:my_trainer/pages/treinador/treinos/cadastrar_treino.dart';
+import 'package:my_trainer/pages/treinador/treinos/consultar_treino.dart';
+import 'package:my_trainer/pages/treinador/feedback/feedback.dart';
+import 'package:my_trainer/pages/treinador/renda/consultar_renda.dart';
 
 Future<void> main() async {
+  //*
+  //* Inicialização do firebase
+  //*
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
@@ -25,6 +28,10 @@ Future<void> main() async {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'myTrainer',
+
+      //*
+      //* Montagem do tema do app
+      //*
       theme: theme.copyWith(
         primaryColor: Color.fromRGBO(198, 26, 26, 1),
         backgroundColor: Color.fromRGBO(17, 17, 17, 1),
@@ -61,21 +68,25 @@ Future<void> main() async {
           ),
         ),
       ),
+
+      //*
+      //* Definição de rotas
+      //*
       initialRoute: 'login',
       routes: {
         'login': (context) => LoginPage(),
-        'home_treinador': (context) => HomePage(),
         'register': (context) => RegisterPage(),
         'about': (context) => AboutPage(),
+        'home': (context) => HomePage(),
         'cadastrar_dados': (context) => CadastrarDados(),
         'consultar_aluno': (context) => ConsultarAluno(),
         'consultar_dados': (context) => ConsultarDados(),
-        'alterar_excluir': (context) => AlterarExcluir(),
-        'agendar': (context) => AgendarSessao(),
-        'consultar_sessao': (context) => ConsultarSessao(),
+        'alterar_dados': (context) => AlterarExcluir(),
+        'agendar': (context) => Agendar(),
+        'consultar_agendamento': (context) => ConsultarAgendamento(),
         'cadastrar_treino': (context) => CadastrarTreino(),
         'consultar_treino': (context) => ConsultarTreino(),
-        'feedback': (context) => RelatorioFeedback(),
+        'feedback': (context) => FeedbackAluno(),
         'consultar_renda': (context) => ConsultarRenda(),
       },
     ),

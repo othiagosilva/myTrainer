@@ -17,7 +17,9 @@ class _LoginPageState extends State<LoginPage> {
   var txtSenha = TextEditingController();
   bool isLoading = false;
   final formKey = GlobalKey<FormState>();
-
+  //*
+  //* View
+  //*
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -31,51 +33,16 @@ class _LoginPageState extends State<LoginPage> {
               WidgetLogo(),
               WidgetCampoTexto('Email', txtEmail),
               WidgetCampoSenha(txtSenha),
-              //*
-              //* BOTÃO ENTRAR
-              //! Analisar viabilidade de colocar em um widget
-              Container(
-                padding: EdgeInsets.symmetric(vertical: 8),
-                child: ElevatedButton(
-                  child: Text(
-                    'Entrar',
-                    style: TextStyle(
-                      fontSize: 24,
-                    ),
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all<Color>(
-                      Theme.of(context).primaryColor,
-                    ),
-                    elevation: MaterialStateProperty.all<double>(0),
-                    fixedSize: MaterialStateProperty.all<Size>(
-                      Size(200, 50),
-                    ),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                    ),
-                  ),
-                  onPressed: () {
-                    setState(() {
-                      isLoading = true;
-                    });
-                    return loginController(txtEmail.text, txtSenha.text);
-                  },
-                ),
-              ),
-
+              botaoEntrar(),
               WidgetNavegationButton(
                 'Cadastre-se',
                 Theme.of(context).primaryColor,
-                proximaPag: 'register',
+                proximaPag: 'cadastro',
               ),
-
               WidgetNavegationButton(
                 'Sobre',
                 Theme.of(context).primaryColor,
-                proximaPag: 'about',
+                proximaPag: 'sobre',
               ),
             ],
           ),
@@ -85,9 +52,9 @@ class _LoginPageState extends State<LoginPage> {
   }
 
   //*
-  //* Login Controller with Firebase Authentication.
+  //* Model
   //*
-  void loginController(email, senha) {
+  void login(email, senha) {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: senha)
         .then((value) {
@@ -103,11 +70,48 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
+  //*
+  //* Functions
+  //*
   void exibirMensagem(msg) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(msg),
         duration: Duration(seconds: 2),
+      ),
+    );
+  }
+
+  botaoEntrar() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 8),
+      child: ElevatedButton(
+        child: Text(
+          'Entrar',
+          style: TextStyle(
+            fontSize: 24,
+          ),
+        ),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(
+            Theme.of(context).primaryColor,
+          ),
+          elevation: MaterialStateProperty.all<double>(0),
+          fixedSize: MaterialStateProperty.all<Size>(
+            Size(200, 50),
+          ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+          ),
+        ),
+        onPressed: () {
+          setState(() {
+            isLoading = true;
+          });
+          return login(txtEmail.text, txtSenha.text);
+        },
       ),
     );
   }

@@ -17,7 +17,9 @@ class _RegisterPageState extends State<RegisterPage> {
   var txtUsuario = TextEditingController();
   var txtSenha = TextEditingController();
   String permissao = 't';
-
+  //*
+  //* View
+  //*
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -44,9 +46,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 WidgetCampoTexto('Email', txtEmail),
                 WidgetCampoTexto('Usuário', txtUsuario),
                 WidgetCampoSenha(txtSenha),
-                //*
-                //* DEFINE PERMISSION
-                //*
                 Row(
                   children: [
                     Radio(
@@ -87,46 +86,7 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ],
                 ),
-                //*
-                //* Register Button to create account
-                //*
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 8),
-                  child: ElevatedButton(
-                    child: Text(
-                      'Cadastrar',
-                      style: TextStyle(
-                        fontSize: 24,
-                      ),
-                    ),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                        Theme.of(context).primaryColor,
-                      ),
-                      elevation: MaterialStateProperty.all<double>(0),
-                      fixedSize: MaterialStateProperty.all<Size>(
-                        Size(200, 50),
-                      ),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ),
-                    ),
-                    onPressed: () {
-                      if (formKey.currentState!.validate()) {
-                        criarConta(txtUsuario, txtEmail.text, txtSenha.text,
-                            permissao);
-                        FirebaseFirestore.instance.collection('usuarios').add({
-                          'usuario': txtUsuario.text,
-                          'email': txtEmail.text,
-                          'senha': txtSenha.text,
-                          'permissao': permissao,
-                        });
-                      }
-                    },
-                  ),
-                ),
+                registrar(),
               ],
             ),
           ),
@@ -135,6 +95,9 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
+  //*
+  //* Model
+  //*
   void criarConta(usuario, email, senha, permissao) {
     FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: senha)
@@ -152,6 +115,18 @@ class _RegisterPageState extends State<RegisterPage> {
     });
   }
 
+  adicionarConta(usuario, email, senha, permissao) {
+    FirebaseFirestore.instance.collection('usuarios').add({
+      'usuario': usuario.text,
+      'email': email,
+      'senha': senha,
+      'permissao': permissao,
+    });
+  }
+
+  //*
+  //* Functions
+  //*
   void exibirMensagem(msg) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -160,6 +135,40 @@ class _RegisterPageState extends State<RegisterPage> {
           style: Theme.of(context).textTheme.headline3,
         ),
         duration: Duration(seconds: 2),
+      ),
+    );
+  }
+
+  registrar() {
+    return Container(
+      padding: EdgeInsets.symmetric(vertical: 8),
+      child: ElevatedButton(
+        child: Text(
+          'Cadastrar',
+          style: TextStyle(
+            fontSize: 24,
+          ),
+        ),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(
+            Theme.of(context).primaryColor,
+          ),
+          elevation: MaterialStateProperty.all<double>(0),
+          fixedSize: MaterialStateProperty.all<Size>(
+            Size(200, 50),
+          ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(30.0),
+            ),
+          ),
+        ),
+        onPressed: () {
+          if (formKey.currentState!.validate()) {
+            criarConta(txtUsuario, txtEmail.text, txtSenha.text, permissao);
+            adicionarConta(txtUsuario, txtEmail.text, txtSenha.text, permissao);
+          }
+        },
       ),
     );
   }

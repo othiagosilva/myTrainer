@@ -24,8 +24,13 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
+    //*
+    //* Get logon email
+    //*
     final emailLogado = ModalRoute.of(context)!.settings.arguments;
-
+    //*
+    //* View
+    //*
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -72,9 +77,11 @@ class _HomePageState extends State<HomePage> {
         children: [
           Column(
             children: [
-              viewHome2Button(16, 24, 'Alunos', 'Cadastrar', 'cadastrar_dados',
-                  'Consultar', 'consultar_aluno'),
-              viewHome2Button(0, 40, 'Agendamento', 'Agendar', 'agendar',
+              viewHome1Button(16, 0, 'Alunos', 'Cadastrar', 'cadastrar_dados'),
+              WidgetNavegationButton(
+                  'Consultar', Theme.of(context).colorScheme.secondary,
+                  proximaPag: 'consultar_aluno'),
+              viewHome2Button(40, 40, 'Agendamento', 'Agendar', 'agendar',
                   'Consultar', 'consultar_sessao'),
               viewHome2Button(0, 40, 'Treinos', 'Cadastrar', 'cadastrar_treino',
                   'Consultar', 'consultar_treino'),
@@ -87,6 +94,41 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  //*
+  //* Model
+  //*
+  getUser(dados, emailLogado) {
+    String email = dados.data()['email'];
+    String usuario = dados.data()['usuario'];
+    String permissao = dados.data()['permissao'];
+    String permissaoUsuario = 'treinador';
+
+    if (email == emailLogado) {
+      if (permissao == 'a') {
+        permissaoUsuario = 'aluno';
+      }
+      return Column(
+        children: [
+          Text(
+            usuario,
+            style: TextStyle(fontSize: 16),
+          ),
+          Text(
+            permissaoUsuario,
+            style: TextStyle(
+              fontSize: 14,
+              fontStyle: FontStyle.italic,
+              color: Theme.of(context).primaryColor,
+            ),
+          )
+        ],
+      );
+    }
+  }
+
+  //*
+  //* Functions
+  //*
   viewHome1Button(margem1, margem2, titulo, tituloBotao1, paginaBotao1) {
     return Container(
       margin: EdgeInsets.fromLTRB(0, margem1, 0, margem2),
@@ -129,34 +171,5 @@ class _HomePageState extends State<HomePage> {
         ],
       ),
     );
-  }
-
-  getUser(dados, emailLogado) {
-    String email = dados.data()['email'];
-    String usuario = dados.data()['usuario'];
-    String permissao = dados.data()['permissao'];
-    String permissaoUsuario = 'treinador';
-
-    if (email == emailLogado) {
-      if (permissao == 'a') {
-        permissaoUsuario = 'aluno';
-      }
-      return Column(
-        children: [
-          Text(
-            usuario,
-            style: TextStyle(fontSize: 16),
-          ),
-          Text(
-            permissaoUsuario,
-            style: TextStyle(
-              fontSize: 14,
-              fontStyle: FontStyle.italic,
-              color: Theme.of(context).primaryColor,
-            ),
-          )
-        ],
-      );
-    }
   }
 }

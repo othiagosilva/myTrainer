@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/pages/login_page.dart';
-import 'package:my_trainer/pages/about_page.dart';
-import 'package:my_trainer/pages/register_page.dart';
+import 'package:my_trainer/pages/sobre_page.dart';
+import 'package:my_trainer/pages/cadatro_page.dart';
 import 'package:my_trainer/pages/home_page.dart';
 import 'package:my_trainer/pages/treinador/aluno/cadastrar_dados_aluno.dart';
 import 'package:my_trainer/pages/treinador/aluno/consultar_aluno.dart';
@@ -17,7 +17,7 @@ import 'package:my_trainer/pages/treinador/renda/consultar_renda.dart';
 
 Future<void> main() async {
   //*
-  //* Inicialização do firebase
+  //* Firebase initializing
   //*
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -30,7 +30,7 @@ Future<void> main() async {
       title: 'myTrainer',
 
       //*
-      //* Montagem do tema do app
+      //* Theme definition
       //*
       theme: theme.copyWith(
         primaryColor: Color.fromRGBO(198, 26, 26, 1),
@@ -70,13 +70,13 @@ Future<void> main() async {
       ),
 
       //*
-      //* Definição de rotas
+      //* Route definition
       //*
       initialRoute: 'login',
       routes: {
         'login': (context) => LoginPage(),
-        'register': (context) => RegisterPage(),
-        'about': (context) => AboutPage(),
+        'cadastro': (context) => RegisterPage(),
+        'sobre': (context) => SobrePage(),
         'home': (context) => HomePage(),
         'cadastrar_dados': (context) => CadastrarDados(),
         'consultar_aluno': (context) => ConsultarAluno(),

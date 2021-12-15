@@ -1,5 +1,12 @@
+//! ANALISAR VIABILIDADE DE CONSTRUIR FUNÇÃO DINÂMICA DE "showDialog",
+//! FUNÇÕES PRÓPRIAS QUE A UTILIZAM:
+//! mensagemConfirmacao,
+//! botaoAlterar,
+//! botaoAdicionarRenda.
+
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:my_trainer/widgets/widget_CampoTexto.dart';
 import 'package:my_trainer/widgets/widget_Logout.dart';
 
 class ConsultarRenda extends StatefulWidget {
@@ -10,11 +17,8 @@ class ConsultarRenda extends StatefulWidget {
 }
 
 class _ConsultarRendaState extends State<ConsultarRenda> {
-  var txtNome = TextEditingController();
-  var txtValor = TextEditingController();
-
   //*
-  //* Firebase connection
+  //* Firebase connection to collection
   //*
   late CollectionReference renda;
 
@@ -25,6 +29,12 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
     renda = FirebaseFirestore.instance.collection('renda');
   }
 
+  var txtNome = TextEditingController();
+  var txtValor = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  //*
+  //* View
+  //*
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -70,7 +80,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
   }
 
   //*
-  //* Get a document by ID
+  //* Model
   //*
   getDocumentById(id) async {
     await renda.doc(id).get().then((doc) {
@@ -80,8 +90,70 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
   }
 
   //*
-  //* Items list
+  //* Functions
   //*
+  mensagemConfirmacao(dados, nomeRenda) {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(
+              Radius.circular(30),
+            ),
+          ),
+          backgroundColor: Theme.of(context).backgroundColor,
+          content: Text(
+            'Deseja excluir ' + nomeRenda + '?',
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+              color: Colors.white,
+            ),
+          ),
+          actions: [
+            Container(
+              padding: EdgeInsets.symmetric(vertical: 8),
+              child: ElevatedButton(
+                child: Text(
+                  'Confirmar',
+                  style: TextStyle(
+                    fontSize: 24,
+                  ),
+                ),
+                style: ButtonStyle(
+                  backgroundColor: MaterialStateProperty.all<Color>(
+                    Theme.of(context).primaryColor,
+                  ),
+                  elevation: MaterialStateProperty.all<double>(0),
+                  fixedSize: MaterialStateProperty.all<Size>(
+                    Size(140, 50),
+                  ),
+                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                    RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30.0),
+                    ),
+                  ),
+                ),
+                onPressed: () {
+                  setState(() {
+                    renda.doc(dados.id).delete();
+                    Navigator.pop(context);
+                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                      content: Text('Renda removida com sucesso'),
+                      duration: Duration(seconds: 2),
+                    ));
+                  });
+                },
+              ),
+            ),
+            botaoCancelar(),
+          ],
+        );
+      },
+    );
+  }
+
   exibirItemColecao(dados) {
     //*
     //* Get item ID selected by the user.
@@ -161,81 +233,6 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
     );
   }
 
-  botaoAdicionarRenda() {
-    return FloatingActionButton(
-      child: Icon(Icons.add),
-      onPressed: () async {
-        await showDialog(
-            context: context,
-            builder: (context) {
-              return AlertDialog(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.all(
-                    Radius.circular(30),
-                  ),
-                ),
-                backgroundColor: Color.fromRGBO(238, 238, 238, 1),
-                title: Text(
-                  'Adicionar Renda',
-                  style: (TextStyle(
-                    fontSize: 22,
-                    color: Theme.of(context).primaryColor,
-                  )),
-                ),
-                content: Column(
-                  children: [
-                    campoTxt('Nome', txtNome),
-                    campoTxt('Valor', txtValor),
-                  ],
-                ),
-                actions: [
-                  botaoConfirmar(),
-                  botaoCancelar(),
-                ],
-              );
-            });
-      },
-    );
-  }
-
-  campoTxt(rotulo, variavel) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 8),
-      child: Column(
-        children: [
-          Text(
-            rotulo,
-            style: TextStyle(
-              fontSize: 28,
-              color: Theme.of(context).primaryColor,
-            ),
-          ),
-          TextFormField(
-            style: Theme.of(context).textTheme.headline5,
-            controller: variavel,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderSide: BorderSide(color: Theme.of(context).primaryColor),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(15),
-                ),
-                borderSide: BorderSide(
-                  color: Theme.of(context).primaryColor,
-                  width: 2,
-                ),
-              ),
-              fillColor: Colors.white,
-              filled: true,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
   botaoAlterar(dados, id) {
     return Container(
       child: IconButton(
@@ -254,55 +251,122 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
                     Radius.circular(30),
                   ),
                 ),
-                backgroundColor: Color.fromRGBO(238, 238, 238, 1),
-                content: Column(
-                  children: [
-                    campoTxt('Nome', txtNome),
-                    campoTxt('Valor', txtValor),
-                  ],
-                ),
-                actions: [
-                  Container(
-                    padding: EdgeInsets.symmetric(vertical: 8),
-                    child: ElevatedButton(
-                      child: Text(
-                        'Confirmar',
-                        style: TextStyle(
-                          fontSize: 24,
-                        ),
-                      ),
-                      style: ButtonStyle(
-                        backgroundColor: MaterialStateProperty.all<Color>(
-                          Theme.of(context).primaryColor,
-                        ),
-                        elevation: MaterialStateProperty.all<double>(0),
-                        fixedSize: MaterialStateProperty.all<Size>(
-                          Size(200, 50),
-                        ),
-                        shape:
-                            MaterialStateProperty.all<RoundedRectangleBorder>(
-                          RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(30.0),
-                          ),
-                        ),
-                      ),
-                      onPressed: () {
-                        renda.doc(dados.id).delete();
-                        Navigator.pop(context);
-                        renda.doc(id.toString()).set({
-                          'nome': txtNome.text,
-                          'valor': txtValor.text,
-                        });
-                      },
-                    ),
+                backgroundColor: Theme.of(context).backgroundColor,
+                content: Container(
+                  width: 400,
+                  height: 266,
+                  child: Column(
+                    children: [
+                      WidgetCampoTexto('Nome', txtNome),
+                      WidgetCampoTexto('Valor', txtValor),
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Container(
+                              padding: EdgeInsets.symmetric(vertical: 8),
+                              child: ElevatedButton(
+                                child: Text(
+                                  'Confirmar',
+                                  style: TextStyle(
+                                    fontSize: 24,
+                                  ),
+                                ),
+                                style: ButtonStyle(
+                                  backgroundColor:
+                                      MaterialStateProperty.all<Color>(
+                                    Theme.of(context).primaryColor,
+                                  ),
+                                  elevation:
+                                      MaterialStateProperty.all<double>(0),
+                                  fixedSize: MaterialStateProperty.all<Size>(
+                                    Size(140, 50),
+                                  ),
+                                  shape: MaterialStateProperty.all<
+                                      RoundedRectangleBorder>(
+                                    RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ),
+                                  ),
+                                ),
+                                onPressed: () {
+                                  renda.doc(dados.id).delete();
+                                  Navigator.pop(context);
+                                  renda.doc(id.toString()).set({
+                                    'nome': txtNome.text,
+                                    'valor': txtValor.text,
+                                  });
+                                },
+                              ),
+                            ),
+                            botaoCancelar(),
+                          ]),
+                    ],
                   ),
-                  botaoCancelar(),
-                ],
+                ),
               );
             },
           );
         },
       ),
+    );
+  }
+
+  botaoExcluir(dados, nomeRenda) {
+    return Container(
+      child: IconButton(
+          icon: Icon(
+            Icons.delete,
+            size: 32,
+          ),
+          color: Theme.of(context).primaryColor,
+          onPressed: () {
+            mensagemConfirmacao(dados, nomeRenda);
+          }),
+    );
+  }
+
+  botaoAdicionarRenda() {
+    return FloatingActionButton(
+      child: Icon(Icons.add),
+      onPressed: () async {
+        await showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.all(
+                    Radius.circular(30),
+                  ),
+                ),
+                backgroundColor: Theme.of(context).backgroundColor,
+                title: Text(
+                  'Adicionar Renda',
+                  style: (TextStyle(
+                    fontSize: 36,
+                  )),
+                ),
+                content: Container(
+                  height: 266,
+                  width: 400,
+                  child: Form(
+                    key: formKey,
+                    child: Column(
+                      children: [
+                        WidgetCampoTexto('Nome', txtNome),
+                        WidgetCampoTexto('Valor', txtValor),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              botaoConfirmar(),
+                              botaoCancelar(),
+                            ]),
+                      ],
+                    ),
+                  ),
+                ),
+              );
+            });
+      },
     );
   }
 
@@ -322,7 +386,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
           ),
           elevation: MaterialStateProperty.all<double>(0),
           fixedSize: MaterialStateProperty.all<Size>(
-            Size(200, 50),
+            Size(140, 50),
           ),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
@@ -368,7 +432,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
           ),
           elevation: MaterialStateProperty.all<double>(0),
           fixedSize: MaterialStateProperty.all<Size>(
-            Size(200, 50),
+            Size(140, 50),
           ),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
@@ -380,82 +444,6 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
           Navigator.pop(context);
         },
       ),
-    );
-  }
-
-  botaoExcluir(dados, nomeRenda) {
-    return Container(
-      child: IconButton(
-          icon: Icon(
-            Icons.delete,
-            size: 32,
-          ),
-          color: Theme.of(context).primaryColor,
-          onPressed: () {
-            mensagemConfirmacao(dados, nomeRenda);
-          }),
-    );
-  }
-
-  mensagemConfirmacao(dados, nomeRenda) {
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(30),
-            ),
-          ),
-          backgroundColor: Color.fromRGBO(238, 238, 238, 1),
-          content: Text(
-            'Deseja excluir ' + nomeRenda + '?',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 24,
-              color: Colors.black,
-            ),
-          ),
-          actions: [
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 8),
-              child: ElevatedButton(
-                child: Text(
-                  'Confirmar',
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    Theme.of(context).primaryColor,
-                  ),
-                  elevation: MaterialStateProperty.all<double>(0),
-                  fixedSize: MaterialStateProperty.all<Size>(
-                    Size(200, 50),
-                  ),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
-                    ),
-                  ),
-                ),
-                onPressed: () {
-                  setState(() {
-                    renda.doc(dados.id).delete();
-                    Navigator.pop(context);
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text('Renda removida com sucesso'),
-                      duration: Duration(seconds: 2),
-                    ));
-                  });
-                },
-              ),
-            ),
-            botaoCancelar(),
-          ],
-        );
-      },
     );
   }
 }

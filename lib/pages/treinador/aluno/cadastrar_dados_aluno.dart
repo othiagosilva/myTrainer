@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_Logout.dart';
+import 'package:my_trainer/widgets/widget_logout.dart';
 import 'package:my_trainer/widgets/widget_CampoTexto.dart';
 
 class CadastrarDados extends StatefulWidget {
@@ -69,13 +69,13 @@ class _CadastrarDadosState extends State<CadastrarDados> {
                     children: [
                       WidgetCampoTexto('Nome', nome),
                       linha3Campos(
-                        120,
+                        100.0,
                         'Idade',
                         idade,
-                        120,
+                        100.0,
                         'Peso',
                         peso,
-                        120,
+                        100.0,
                         'Altura',
                         altura,
                       ),
@@ -83,55 +83,47 @@ class _CadastrarDadosState extends State<CadastrarDados> {
                       // CONSTRUÇÃO DOS RADIOS.
                       //
                       Container(
-                        margin: EdgeInsets.all(16),
                         child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                           children: [
-                            Container(
-                              child: Row(
-                                children: [
-                                  Radio(
-                                    value: "m",
-                                    groupValue: genero,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        genero = value.toString();
-                                      });
-                                    },
-                                    fillColor: MaterialStateProperty.all<Color>(
-                                      Theme.of(context).primaryColor,
-                                    ),
+                            Row(
+                              children: [
+                                Radio(
+                                  value: "m",
+                                  groupValue: genero,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      genero = value.toString();
+                                    });
+                                  },
+                                  fillColor: MaterialStateProperty.all<Color>(
+                                    Theme.of(context).primaryColor,
                                   ),
-                                  Text(
-                                    'Masculino',
-                                    style:
-                                        Theme.of(context).textTheme.headline6,
-                                  ),
-                                ],
-                              ),
+                                ),
+                                Text(
+                                  'Masculino',
+                                  style: Theme.of(context).textTheme.headline6,
+                                ),
+                              ],
                             ),
-                            Container(
-                              child: Row(
-                                children: [
-                                  Radio(
-                                    value: "f",
-                                    groupValue: genero,
-                                    onChanged: (value) {
-                                      setState(() {
-                                        genero = value.toString();
-                                      });
-                                    },
-                                    fillColor: MaterialStateProperty.all<Color>(
-                                      Theme.of(context).primaryColor,
-                                    ),
+                            Row(
+                              children: [
+                                Radio(
+                                  value: "f",
+                                  groupValue: genero,
+                                  onChanged: (value) {
+                                    setState(() {
+                                      genero = value.toString();
+                                    });
+                                  },
+                                  fillColor: MaterialStateProperty.all<Color>(
+                                    Theme.of(context).primaryColor,
                                   ),
-                                  Text(
-                                    'Feminino',
-                                    style:
-                                        Theme.of(context).textTheme.headline6,
-                                  ),
-                                ],
-                              ),
+                                ),
+                                Text(
+                                  'Feminino',
+                                  style: Theme.of(context).textTheme.headline6,
+                                ),
+                              ],
                             ),
                           ],
                         ),
@@ -140,80 +132,81 @@ class _CadastrarDadosState extends State<CadastrarDados> {
                   ),
                 ),
 
-                linha2Campos(120, 'Cintura', cintura, 120, 'Quadril', quadril),
+                linha2Campos(
+                    100.0, 'Cintura', cintura, 100.0, 'Quadril', quadril),
                 //
                 // DOBRAS CUTÂNEAS
                 //
                 Container(
-                  margin: EdgeInsets.all(40),
+                  margin: EdgeInsets.all(40.0),
                   child: Text('DOBRAS CUTÂNEAS',
                       style: Theme.of(context).textTheme.headline2),
                 ),
                 linha3Campos(
-                    135,
-                    'SubEscapular',
+                    100.0,
+                    'Subescap',
                     dobraSubEscapular,
-                    135,
+                    100.0,
                     'Tricipital',
                     dobraTricipital,
-                    135,
+                    100.0,
                     'Peitoral',
                     dobraPeitoral),
                 linha3Campos(
-                    135,
-                    'Axilar Médio',
+                    100.0,
+                    'Ax Médio',
                     dobraAxilarMedio,
-                    135,
-                    'Supra Ilíaca',
+                    100.0,
+                    'Sup Ilíaca',
                     dobraSupraIliaca,
-                    135,
+                    100.0,
                     'Abdômen',
                     dobraAbdomen),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    campo(135, 'Coxa', dobraCoxa),
+                    campo(100.0, 'Coxa', dobraCoxa),
                   ],
                 ),
                 //
                 // PERIMETRIA
                 //
                 Container(
-                  margin: EdgeInsets.all(40),
+                  margin: EdgeInsets.all(40.0),
                   child: Text('PERIMETRIA',
                       style: Theme.of(context).textTheme.headline2),
                 ),
-                linha3Campos(120, 'Tórax', perimetroTorax, 120, 'Braço Rel',
-                    perimetroBracoRel, 120, 'Braço Con', perimetroBracoCon),
+                linha3Campos(100.0, 'Tórax', perimetroTorax, 100.0, 'Braço R',
+                    perimetroBracoRel, 100.0, 'Braço C', perimetroBracoCon),
                 linha3Campos(
-                    120,
-                    'Antrebraços',
+                    100.0,
+                    'Antbraço',
                     perimetroAntebraco,
-                    120,
+                    100.0,
                     'Abdômen',
                     perimetroAbdomen,
-                    120,
+                    100.0,
                     'Cintura',
                     perimetroCintura),
-                linha3Campos(120, 'Quadril', perimetroQuadril, 120, 'Coxas',
-                    perimetroCoxas, 120, 'Panturrilhas', perimetroPanturrilha),
+                linha3Campos(100.0, 'Quadril', perimetroQuadril, 100.0, 'Coxas',
+                    perimetroCoxas, 100.0, 'Pant.', perimetroPanturrilha),
                 Container(
-                  margin: EdgeInsets.all(40),
+                  margin: EdgeInsets.all(16.0),
                   child: WidgetCampoTexto('Limitações', limitacoes),
                 ),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 //   children: [
                 //     Container(
-                //       width: 120,
+                //       width: 100,
                 //       child: WidgetCampoTexto('IMC', imc),
                 //     ),
                 //     Container(
-                //       width: 120,
+                //       width: 100,
                 //       child: WidgetCampoTexto('Razão CQ', razaoCinturaQuadril),
                 //     ),
                 //     Container(
-                //       width: 120,
+                //       width: 100,
                 //       child: WidgetCampoTexto('% Gordura', percentualGordura),
                 //     ),
                 //   ],
@@ -248,7 +241,7 @@ class _CadastrarDadosState extends State<CadastrarDados> {
 
   botaoCadastrar() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: EdgeInsets.symmetric(vertical: 8.0),
       child: ElevatedButton(
         child: Text(
           'Cadastrar',
@@ -262,7 +255,7 @@ class _CadastrarDadosState extends State<CadastrarDados> {
           ),
           elevation: MaterialStateProperty.all<double>(0),
           fixedSize: MaterialStateProperty.all<Size>(
-            Size(200, 50),
+            Size(150.0, 50.0),
           ),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
@@ -345,7 +338,7 @@ class _CadastrarDadosState extends State<CadastrarDados> {
 
   botaoCancelar() {
     return Container(
-      padding: EdgeInsets.symmetric(vertical: 8),
+      padding: EdgeInsets.symmetric(vertical: 8.0),
       child: ElevatedButton(
         child: Text(
           'Cancelar',
@@ -359,7 +352,7 @@ class _CadastrarDadosState extends State<CadastrarDados> {
           ),
           elevation: MaterialStateProperty.all<double>(0),
           fixedSize: MaterialStateProperty.all<Size>(
-            Size(200, 50),
+            Size(150.0, 50.0),
           ),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
@@ -383,13 +376,16 @@ class _CadastrarDadosState extends State<CadastrarDados> {
 
   linha3Campos(tamanho, rotulo, variavel, tamanho1, rotulo1, variavel1,
       tamanho2, rotulo2, variavel2) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        campo(tamanho, rotulo, variavel),
-        campo(tamanho1, rotulo1, variavel1),
-        campo(tamanho2, rotulo2, variavel2),
-      ],
+    return Container(
+      margin: EdgeInsets.fromLTRB(0, 8, 0, 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          campo(tamanho, rotulo, variavel),
+          campo(tamanho1, rotulo1, variavel1),
+          campo(tamanho2, rotulo2, variavel2),
+        ],
+      ),
     );
   }
 

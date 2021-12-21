@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_Logout.dart';
+import 'package:my_trainer/widgets/widget_logout.dart';
 
 class ConsultarTreino extends StatefulWidget {
   const ConsultarTreino({Key? key}) : super(key: key);

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_Logout.dart';
+import 'package:my_trainer/widgets/widget_logout.dart';
 
 class ConsultarAgendamento extends StatefulWidget {
   const ConsultarAgendamento({Key? key}) : super(key: key);

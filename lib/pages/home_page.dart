@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/widgets/widget_NavegationButton.dart';
-import 'package:my_trainer/widgets/widget_Logout.dart';
+import 'package:my_trainer/widgets/widget_logout.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -77,16 +77,18 @@ class _HomePageState extends State<HomePage> {
         children: [
           Column(
             children: [
-              viewHome1Button(16, 0, 'Alunos', 'Cadastrar', 'cadastrar_dados'),
+              viewHome1Button(
+                  16.0, 0.0, 'Alunos', 'Cadastrar', 'cadastrar_dados'),
               WidgetNavegationButton(
                   'Consultar', Theme.of(context).colorScheme.secondary,
                   proximaPag: 'consultar_aluno'),
-              viewHome2Button(40, 40, 'Agendamento', 'Agendar', 'agendar',
+              viewHome2Button(40.0, 40.0, 'Agendamento', 'Agendar', 'agendar',
                   'Consultar', 'consultar_sessao'),
-              viewHome2Button(0, 40, 'Treinos', 'Cadastrar', 'cadastrar_treino',
-                  'Consultar', 'consultar_treino'),
-              viewHome1Button(0, 40, 'Relatórios', 'Feedback', 'feedback'),
-              viewHome1Button(0, 0, 'Renda', 'Consultar', 'consultar_renda'),
+              viewHome2Button(0.0, 40.0, 'Treinos', 'Cadastrar',
+                  'cadastrar_treino', 'Consultar', 'consultar_treino'),
+              viewHome1Button(0.0, 40.0, 'Relatórios', 'Feedback', 'feedback'),
+              viewHome1Button(
+                  0.0, 0.0, 'Renda', 'Consultar', 'consultar_renda'),
             ],
           ),
         ],

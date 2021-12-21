@@ -24,27 +24,38 @@ class _LoginPageState extends State<LoginPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).backgroundColor,
-      body: Form(
-        key: formKey,
-        child: Container(
-          padding: EdgeInsets.all(24),
-          child: Column(
-            children: [
-              WidgetLogo(),
-              WidgetCampoTexto('Email', txtEmail),
-              WidgetCampoSenha(txtSenha),
-              botaoEntrar(),
-              WidgetNavegationButton(
-                'Cadastre-se',
-                Theme.of(context).primaryColor,
-                proximaPag: 'cadastro',
+      body: Container(
+        child: SingleChildScrollView(
+          child: Form(
+            key: formKey,
+            child: Container(
+              padding: EdgeInsets.fromLTRB(24, 96, 24, 24),
+              child: Column(
+                children: [
+                  Container(
+                    margin: EdgeInsets.fromLTRB(0, 0, 0, 32),
+                    child: WidgetLogo(),
+                  ),
+                  Container(
+                      margin: EdgeInsets.fromLTRB(0, 0, 0, 32),
+                      child: Column(children: [
+                        WidgetCampoTexto('Email', txtEmail),
+                        WidgetCampoSenha(txtSenha),
+                      ])),
+                  botaoEntrar(),
+                  WidgetNavegationButton(
+                    'Cadastre-se',
+                    Theme.of(context).primaryColor,
+                    proximaPag: 'cadastro',
+                  ),
+                  WidgetNavegationButton(
+                    'Sobre',
+                    Theme.of(context).primaryColor,
+                    proximaPag: 'sobre',
+                  ),
+                ],
               ),
-              WidgetNavegationButton(
-                'Sobre',
-                Theme.of(context).primaryColor,
-                proximaPag: 'sobre',
-              ),
-            ],
+            ),
           ),
         ),
       ),

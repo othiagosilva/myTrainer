@@ -13,15 +13,15 @@ class WidgetCampoTexto extends StatefulWidget {
 class _WidgetCampoTextoState extends State<WidgetCampoTexto> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 8),
-      child: Column(
-        children: [
-          Text(
-            this.widget.rotulo,
-            style: Theme.of(context).textTheme.headline3,
-          ),
-          TextFormField(
+    return Column(
+      children: [
+        Text(
+          this.widget.rotulo,
+          style: Theme.of(context).textTheme.headline3,
+        ),
+        Container(
+          height: 50,
+          child: TextFormField(
             style: Theme.of(context).textTheme.headline5,
             controller: this.widget.variavel,
             validator: (value) {
@@ -46,10 +46,12 @@ class _WidgetCampoTextoState extends State<WidgetCampoTexto> {
               ),
               fillColor: Colors.white,
               filled: true,
+              contentPadding:
+                  EdgeInsets.symmetric(vertical: 0.5, horizontal: 10.0),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

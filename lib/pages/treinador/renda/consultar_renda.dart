@@ -7,7 +7,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/widgets/widget_CampoTexto.dart';
-import 'package:my_trainer/widgets/widget_Logout.dart';
+import 'package:my_trainer/widgets/widget_logout.dart';
 
 class ConsultarRenda extends StatefulWidget {
   const ConsultarRenda({Key? key}) : super(key: key);
@@ -171,65 +171,62 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
     //*
     String nome = dados.data()['nome'];
     String valor = dados.data()['valor'];
-    return Container(
-      padding: EdgeInsets.all(16),
-      child: Column(
-        children: [
-          Row(
-            children: [
-              Container(
-                width: 235,
-                child: Text(
-                  'Nome',
-                  style: Theme.of(context).textTheme.headline3,
+    return Column(
+      children: [
+        Row(
+          children: [
+            Container(
+              width: 200,
+              child: Text(
+                'Nome',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+            ),
+            Container(
+              width: 80,
+              child: Text(
+                'Valor',
+                style: Theme.of(context).textTheme.headline3,
+              ),
+            ),
+          ],
+        ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Container(
+              padding: EdgeInsets.all(8),
+              width: 190,
+              child: Text(
+                nome,
+                style: TextStyle(
+                  fontSize: 24,
                 ),
               ),
-              Container(
-                width: 80,
-                child: Text(
-                  'Valor',
-                  style: Theme.of(context).textTheme.headline3,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.all(8),
+              width: 80,
+              child: Text(
+                valor,
+                style: TextStyle(
+                  fontSize: 24,
                 ),
               ),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: EdgeInsets.all(8),
-                width: 200,
-                child: Text(
-                  nome,
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.circular(16),
               ),
-              Container(
-                padding: EdgeInsets.all(8),
-                width: 100,
-                child: Text(
-                  valor,
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-              botaoAlterar(dados, id),
-              botaoExcluir(dados, nome),
-            ],
-          )
-        ],
-      ),
+            ),
+            botaoAlterar(dados, id),
+            botaoExcluir(dados, nome),
+          ],
+        )
+      ],
     );
   }
 

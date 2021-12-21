@@ -9,7 +9,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:703957734706:android:8856e94ee86c939a00b32b",
         "android_client_info": {
-          "package_name": "Android.MyTrainer1"
+          "package_name": "com.example.my_trainer"
         }
       },
       "oauth_client": [

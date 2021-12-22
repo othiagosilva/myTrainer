@@ -10,49 +10,56 @@ class WidgetCampoSenha extends StatefulWidget {
 }
 
 class _WidgetCampoSenhaState extends State<WidgetCampoSenha> {
+  bool _verSenha = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8),
       child: Column(
         children: [
-          Text(
-            'Senha',
-            style: TextStyle(
-              fontSize: 22,
-              color: Colors.white,
-            ),
-          ),
           Container(
             height: 50,
             child: TextFormField(
-              style: Theme.of(context).textTheme.headline5,
+              keyboardType: TextInputType.text,
               controller: this.widget.txtSenha,
+              obscureText: !_verSenha,
+              style: Theme.of(context).textTheme.headline5,
               validator: (value) {
                 if (value == null || value.isEmpty) {
                   return 'Insira a Senha';
                 }
                 return null;
               },
-              obscureText: true,
               decoration: InputDecoration(
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 0.5, horizontal: 10.0),
+                labelText: "Senha",
+                labelStyle: TextStyle(color: Theme.of(context).primaryColor),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Theme.of(context).primaryColor),
-                  borderRadius: BorderRadius.circular(15),
+                  borderRadius: BorderRadius.circular(10),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.all(
-                    Radius.circular(15),
+                    Radius.circular(10),
                   ),
                   borderSide: BorderSide(
                     color: Theme.of(context).primaryColor,
-                    width: 2,
                   ),
                 ),
                 fillColor: Colors.white,
                 filled: true,
-                contentPadding:
-                    EdgeInsets.symmetric(vertical: 0.5, horizontal: 10.0),
+                suffixIcon: IconButton(
+                    icon: Icon(
+                      _verSenha ? Icons.visibility : Icons.visibility_off,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _verSenha = !_verSenha;
+                      });
+                    }),
               ),
             ),
           ),

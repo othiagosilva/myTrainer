@@ -15,10 +15,6 @@ class _WidgetCampoTextoState extends State<WidgetCampoTexto> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Text(
-          this.widget.rotulo,
-          style: Theme.of(context).textTheme.headline3,
-        ),
         Container(
           height: 50,
           child: TextFormField(
@@ -31,13 +27,15 @@ class _WidgetCampoTextoState extends State<WidgetCampoTexto> {
               return null;
             },
             decoration: InputDecoration(
+              labelText: this.widget.rotulo,
+              labelStyle: TextStyle(color: Theme.of(context).primaryColor),
               border: OutlineInputBorder(
                 borderSide: BorderSide(color: Theme.of(context).primaryColor),
-                borderRadius: BorderRadius.circular(15),
+                borderRadius: BorderRadius.circular(10),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.all(
-                  Radius.circular(15),
+                  Radius.circular(10),
                 ),
                 borderSide: BorderSide(
                   color: Theme.of(context).primaryColor,

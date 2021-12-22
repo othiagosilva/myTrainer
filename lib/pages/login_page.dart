@@ -36,12 +36,22 @@ class _LoginPageState extends State<LoginPage> {
                     margin: EdgeInsets.fromLTRB(0, 0, 0, 32),
                     child: WidgetLogo(),
                   ),
+                  Text(
+                    "LOGIN",
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
                   Container(
-                      margin: EdgeInsets.fromLTRB(0, 0, 0, 32),
-                      child: Column(children: [
+                    margin: EdgeInsets.fromLTRB(0, 8, 0, 32),
+                    child: Column(
+                      children: [
                         WidgetCampoTexto('Email', txtEmail),
                         WidgetCampoSenha(txtSenha),
-                      ])),
+                      ],
+                    ),
+                  ),
                   botaoEntrar(),
                   WidgetNavegationButton(
                     'Cadastre-se',

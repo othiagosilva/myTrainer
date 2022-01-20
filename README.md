@@ -9,7 +9,7 @@ Brazilian Portuguese (main). <br>
 <p align="center"> Para treinadores, personal trainers e atletas</p>
 
 ### PS
-Antes de escrever sobre a solução que o produto oferece, vale ressaltar que essa é a 1ª versão do meu TCC e ainda estou desenvolvendo ele, logo há funcionalidades que não estão terminadas.
+Antes de ler sobre a solução que o produto oferece, você deve saber que esse aplicativo é meu TCC e atualmente se encontra em desenvolvimento e todos os códigos aqui presentes só podem ser utilizados para fins de estudos.
 
 # 🎯 Funcionalidades
 
@@ -66,7 +66,7 @@ As versões do protótipo para testes de usabilidade podem ser encontrada atrav�
 <p align="center"> For trainers, coachs and athletes </p>
 
 ### PS
-Before I write about the solution this app provides you should know that it currently is the 1st version of my conclusion work for college and I'm still developing it, some functionalities still doesn't work or aren't completed.
+Before reading about the app you should now that it is my university final paper. It's still in development and all code here are to be used for study only.
 
 # 🎯 Functions
 

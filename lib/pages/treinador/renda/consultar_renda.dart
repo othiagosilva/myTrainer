@@ -212,7 +212,8 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
         Row(
           children: [
             Container(
-              width: 200,
+              width: 192,
+              height: 200,
               child: Text(
                 'Nome',
                 style: Theme.of(context).textTheme.headline3,
@@ -232,11 +233,14 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
           children: [
             Container(
               padding: EdgeInsets.all(8),
-              width: 190,
-              child: Text(
-                nome,
-                style: TextStyle(
-                  fontSize: 24,
+              margin: EdgeInsets.fromLTRB(0, 0, 64, 0),
+              child: FittedBox(
+                child: Text(
+                  nome,
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Color.fromRGBO(0, 0, 0, 1),
+                  ),
                 ),
               ),
               decoration: BoxDecoration(
@@ -246,11 +250,13 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
             ),
             Container(
               padding: EdgeInsets.all(8),
-              width: 80,
-              child: Text(
-                valor,
-                style: TextStyle(
-                  fontSize: 24,
+              child: FittedBox(
+                child: Text(
+                  valor,
+                  style: TextStyle(
+                    fontSize: 24,
+                    color: Color.fromRGBO(0, 0, 0, 1),
+                  ),
                 ),
               ),
               decoration: BoxDecoration(

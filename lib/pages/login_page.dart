@@ -16,7 +16,7 @@ class _LoginPageState extends State<LoginPage> {
   var txtEmail = TextEditingController();
   var txtSenha = TextEditingController();
   bool isLoading = false;
-  final formKey = GlobalKey<FormState>();
+  // final formKey = GlobalKey<FormState>();
   //*
   //* View
   //*
@@ -27,7 +27,7 @@ class _LoginPageState extends State<LoginPage> {
       body: Container(
         child: SingleChildScrollView(
           child: Form(
-            key: formKey,
+            // key: formKey,
             child: Container(
               padding: EdgeInsets.fromLTRB(24, 96, 24, 24),
               child: Column(
@@ -79,7 +79,7 @@ class _LoginPageState extends State<LoginPage> {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: senha)
         .then((value) {
-      Navigator.pushReplacementNamed(context, 'home', arguments: email);
+      Navigator.pushReplacementNamed(context, 'home');
     }).catchError((erro) {
       if (erro.code == 'wrong-password' || erro.code == 'invalid-email') {
         exibirMensagem('Email ou senha inválido.');

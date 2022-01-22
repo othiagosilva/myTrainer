@@ -12,11 +12,11 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  final formKey = GlobalKey<FormState>();
+  // final formKey = GlobalKey<FormState>();
   var txtEmail = TextEditingController();
   var txtUsuario = TextEditingController();
   var txtSenha = TextEditingController();
-  String permissao = 't';
+  String permissao = '';
   //*
   //* View
   //*
@@ -37,7 +37,7 @@ class _RegisterPageState extends State<RegisterPage> {
       backgroundColor: Theme.of(context).backgroundColor,
       body: SingleChildScrollView(
         child: Form(
-          key: formKey,
+          // key: formKey,
           child: Container(
             padding: EdgeInsets.all(30),
             child: Column(
@@ -164,10 +164,10 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ),
         onPressed: () {
-          if (formKey.currentState!.validate()) {
-            criarConta(txtUsuario, txtEmail.text, txtSenha.text, permissao);
-            adicionarConta(txtUsuario, txtEmail.text, txtSenha.text, permissao);
-          }
+          // if (formKey.currentState!.validate()) {
+          criarConta(txtUsuario, txtEmail.text, txtSenha.text, permissao);
+          adicionarConta(txtUsuario, txtEmail.text, txtSenha.text, permissao);
+          // }s
         },
       ),
     );

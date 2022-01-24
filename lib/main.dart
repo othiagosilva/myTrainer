@@ -2,7 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/pages/login_page.dart';
 import 'package:my_trainer/pages/sobre_page.dart';
-import 'package:my_trainer/pages/cadatro_page.dart';
+import 'package:my_trainer/pages/cadastro_page.dart';
 import 'package:my_trainer/pages/home_page.dart';
 import 'package:my_trainer/pages/treinador/aluno/cadastrar_dados_aluno.dart';
 import 'package:my_trainer/pages/treinador/aluno/consultar_aluno.dart';

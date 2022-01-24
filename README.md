@@ -34,15 +34,11 @@ Uma interface onde é possível inserir, editar e excluir sua renda, fornecendo 
 
 # 🚀 Para o Futuro - Versão 1.0
 - [x] Refatoração de código
-- [ ] Implantar a funcionalidade de agendamento.
-- [ ] Implantar a funcionalidade de treino.
 - [x] Implantar o firebase authentication. 
 - [x] Implantar o firebase storage. 
-- [ ] Criar as telas para o aluno e implantar as funcionalidades necessárias.
-- [ ] Permitir que o aluno tenha os seguintes acessos:
-  - Dados -> somente leitura.
-  - Treinos -> permitir a visualização.
-  - Agendamentos -> criar, remanejar, cancelar e consultar.
+- [ ] Implantar CRUD de Renda
+- [ ] Implantar funcionalidade de Feedback
+- [ ] Permitir que o aluno tenha o seguinte acesso:
   - Feedbacks -> escrever.
 
 # Instalação
@@ -64,13 +60,12 @@ flutter pub add firebase_auth
 Links Externos
 Instalação dependência de ícone: https://pub.dev/packages/flutter_launcher_icons
 
-3- Congifuração Firebase
+3- Congifuração Firebase <br><br>
 	3.1. Criar um novo projeto
 	-Acesse o <a href="https://firebase.google.com/" target="_blank">site do firebase</a>
 	-Logue com sua conta Google e clique em "Ir para o Console"
 	-Clique em "Criar um projeto" e insira o nome myTrainer
-	-Selecione Default Account for Firebase para o Google Analytics
-	
+	-Selecione Default Account for Firebase para o Google Analytics <br><br>
 	3.2. Configurar o Firebase para Android
 	-Clique no ícone do Android
 		-Nome do pacote do Android: com.example.my_trainer
@@ -125,15 +120,11 @@ A interface where you can add, edit and exclude your gains. A simple tool to hel
 
 # 🚀 Next steps - Release 1.0
 - [x] Code Refactoring
-- [ ] Implement schedule function.
-- [ ] Implement workout function.
 - [x] Implement firebase auth.
 - [x] Implement firebase storage.
-- [ ] Create client user interfaces and it's functions.
+- [ ] Implement finnance CRUD
+- [ ] Implement Feedbacks
 - [ ] Permissions for the client user:
-  - Data -> ready only.
-  - Workouts -> ready only.
-  - Schedule -> create, read, edit and delete.
   - Feedbacks -> write.
 
 # Installation
@@ -155,13 +146,12 @@ flutter pub add firebase_auth
 Links Externals
 Icon package installation tutorial: https://pub.dev/packages/flutter_launcher_icons
 
-3- Firebase config
+3- Firebase config <br><br>
 	3.1. Create a new project
 	-Acess  <a href="https://firebase.google.com/" target="_blank">firebase site</a>
 	-Login with your Google account and click "Go to console"
 	-Click "Create new project" and name it myTrainer
-	-Select Default Account for Firebase (if asked)
-	
+	-Select Default Account for Firebase (if asked) <br><br>
 	3.2. Configuring Firebase for Android
 	-Press the android icon
 		-Package name: com.example.my_trainer

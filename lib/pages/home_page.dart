@@ -77,16 +77,36 @@ class _HomePageState extends State<HomePage> {
         children: [
           Column(
             children: [
+              //*
+              //* Alunos
+              //*
               viewHome1Button(
-                  16.0, 0.0, 'Alunos', 'Cadastrar', 'cadastrar_dados'),
+                  16.0, 0.0, 'Alunos', 'Consultar', 'consultar_aluno'),
+              WidgetNavegationButton(
+                  'Cadastrar', Theme.of(context).colorScheme.secondary,
+                  proximaPag: 'cadastrar_aluno'),
+              //*
+              //* Agendamento
+              //*
+              viewHome1Button(0.0, 40.0, 'Agendamento', 'Agendar', 'agendar'),
               WidgetNavegationButton(
                   'Consultar', Theme.of(context).colorScheme.secondary,
-                  proximaPag: 'consultar_aluno'),
-              viewHome2Button(40.0, 40.0, 'Agendamento', 'Agendar', 'agendar',
-                  'Consultar', 'consultar_sessao'),
-              viewHome2Button(0.0, 40.0, 'Treinos', 'Cadastrar',
-                  'cadastrar_treino', 'Consultar', 'consultar_treino'),
+                  proximaPag: 'consultar_agendamento'),
+              //*
+              //* Treinos
+              //*
+              viewHome1Button(
+                  0.0, 40.0, 'Treinos', 'Consultar', 'consultar_treino'),
+              WidgetNavegationButton(
+                  'Cadastrar', Theme.of(context).colorScheme.secondary,
+                  proximaPag: 'cadastrar_treino'),
+              //*
+              //* Relatórios
+              //*
               viewHome1Button(0.0, 40.0, 'Relatórios', 'Feedback', 'feedback'),
+              //*
+              //* Renda
+              //*
               viewHome1Button(
                   0.0, 0.0, 'Renda', 'Consultar', 'consultar_renda'),
             ],
@@ -144,31 +164,6 @@ class _HomePageState extends State<HomePage> {
             tituloBotao1,
             Theme.of(context).colorScheme.secondary,
             proximaPag: paginaBotao1,
-          ),
-        ],
-      ),
-    );
-  }
-
-  viewHome2Button(margem1, margem2, titulo, tituloBotao1, paginaBotao1,
-      tituloBotao2, paginaBotao2) {
-    return Container(
-      margin: EdgeInsets.fromLTRB(0, margem1, 0, margem2),
-      child: Column(
-        children: [
-          Text(
-            titulo,
-            style: Theme.of(context).textTheme.headline4,
-          ),
-          WidgetNavegationButton(
-            tituloBotao1,
-            Theme.of(context).colorScheme.secondary,
-            proximaPag: paginaBotao1,
-          ),
-          WidgetNavegationButton(
-            tituloBotao2,
-            Theme.of(context).colorScheme.secondary,
-            proximaPag: paginaBotao2,
           ),
         ],
       ),

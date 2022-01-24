@@ -33,17 +33,51 @@ Os alunos poderão escrever o feedback dos treinos via app e o treinador pode co
 Uma interface onde é possível inserir, editar e excluir sua renda, fornecendo um controle sobre suas finanças.
 
 # 🚀 Para o Futuro - Versão 1.0
-- [ ] Refatoração de código
+- [x] Refatoração de código
 - [ ] Implantar a funcionalidade de agendamento.
 - [ ] Implantar a funcionalidade de treino.
-- [x] 📆 14/11/2021 - Implantar o firebase authentication. 
-- [x] 📆 14/11/2021 - Implantar o firebase storage. 
+- [x] Implantar o firebase authentication. 
+- [x] Implantar o firebase storage. 
 - [ ] Criar as telas para o aluno e implantar as funcionalidades necessárias.
 - [ ] Permitir que o aluno tenha os seguintes acessos:
   - Dados -> somente leitura.
   - Treinos -> permitir a visualização.
   - Agendamentos -> criar, remanejar, cancelar e consultar.
   - Feedbacks -> escrever.
+
+# Instalação
+1- Clone o repositório na sua máquina
+```
+git clone https://github.com/othiagosilva/myTrainer.git
+```
+2- Adicione as depêndecias ao projeto clonado
+Firebase
+```
+flutter pub add cloud_firestore
+```
+```
+flutter pub add firebase_core
+```
+```
+flutter pub add firebase_auth
+```
+Links Externos
+Instalação dependência de ícone: https://pub.dev/packages/flutter_launcher_icons
+
+3- Congifuração Firebase
+	3.1. Criar um novo projeto
+	-Acesse o <a href="https://firebase.google.com/" target="_blank">site do firebase</a>
+	-Logue com sua conta Google e clique em "Ir para o Console"
+	-Clique em "Criar um projeto" e insira o nome myTrainer
+	-Selecione Default Account for Firebase para o Google Analytics
+	
+	3.2. Configurar o Firebase para Android
+	-Clique no ícone do Android
+		-Nome do pacote do Android: com.example.my_trainer
+		-Apelido: myTrainer
+	-Siga o passo a passo até o fim
+	
+Pronto! O repositório está totalmente funcional na sua máquina. Bons estudos!
 
 # 🔬 Projeto de Pesquisa
 Pode ser encontrado <a href="https://docs.google.com/document/d/1915mZsfG2YaVHcAk_qGksdWsV0G047fH/edit?usp=sharing&ouid=108849066908443544932&rtpof=true&sd=true" target = "_blank">aqui</a>.
@@ -90,11 +124,11 @@ Clients can write feedbacks of the classes or workouts in the app.
 A interface where you can add, edit and exclude your gains. A simple tool to help with your finnances.
 
 # 🚀 Next steps - Release 1.0
-- [ ] Code Refactoring
+- [x] Code Refactoring
 - [ ] Implement schedule function.
 - [ ] Implement workout function.
-- [x] 📆 11/14/2021 Implement firebase auth.
-- [x] 📆 11/14/2021 Implement firebase storage.
+- [x] Implement firebase auth.
+- [x] Implement firebase storage.
 - [ ] Create client user interfaces and it's functions.
 - [ ] Permissions for the client user:
   - Data -> ready only.
@@ -102,8 +136,42 @@ A interface where you can add, edit and exclude your gains. A simple tool to hel
   - Schedule -> create, read, edit and delete.
   - Feedbacks -> write.
 
+# Installation
+1- Repository clone
+```
+git clone https://github.com/othiagosilva/myTrainer.git
+```
+2- Add dependences
+Firebase
+```
+flutter pub add cloud_firestore
+```
+```
+flutter pub add firebase_core
+```
+```
+flutter pub add firebase_auth
+```
+Links Externals
+Icon package installation tutorial: https://pub.dev/packages/flutter_launcher_icons
+
+3- Firebase config
+	3.1. Create a new project
+	-Acess  <a href="https://firebase.google.com/" target="_blank">firebase site</a>
+	-Login with your Google account and click "Go to console"
+	-Click "Create new project" and name it myTrainer
+	-Select Default Account for Firebase (if asked)
+	
+	3.2. Configuring Firebase for Android
+	-Press the android icon
+		-Package name: com.example.my_trainer
+		-Nickname: myTrainer
+	-Follow the instructions
+	
+Ready to go! You must have a functional copy in your computer.
+
 # 🔗 Links 
-Theese links will guide to some documents required for the project. They're all in brazilian portuguese and I don't pretend to translate it so in quick words:
+Theese links will guide to some documents required for the project. They're all in brazilian portuguese and I don't intend to translate it so in quick words:
 
 * 1st have the "why" I started this app, the problem it solve, researchs that support mine and the final app delivered in 12/2021.
 * 2nd is the functions I decided to code, and UML diagrams (class & bussiness use case).

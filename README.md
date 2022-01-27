@@ -33,10 +33,9 @@ Os alunos poderão escrever o feedback dos treinos via app e o treinador pode co
 Uma interface onde é possível inserir, editar e excluir sua renda, fornecendo um controle sobre suas finanças.
 
 # 🚀 Para o Futuro - Versão 1.0
-- [x] Refatoração de código
 - [x] Implantar o firebase authentication. 
 - [x] Implantar o firebase storage. 
-- [ ] Implantar CRUD de Renda
+- [x] Implantar CRUD de Renda
 - [ ] Implantar funcionalidade de Feedback
 - [ ] Permitir que o aluno tenha o seguinte acesso:
   - Feedbacks -> escrever.
@@ -61,16 +60,22 @@ Links Externos
 Instalação dependência de ícone: https://pub.dev/packages/flutter_launcher_icons
 
 3- Congifuração Firebase <br><br>
-	3.1. Criar um novo projeto
-	-Acesse o <a href="https://firebase.google.com/" target="_blank">site do firebase</a>
-	-Logue com sua conta Google e clique em "Ir para o Console"
-	-Clique em "Criar um projeto" e insira o nome myTrainer
+	3.1. Criar um novo projeto <br>
+	-Acesse o <a href="https://firebase.google.com/" target="_blank">site do firebase</a> <br>
+	-Logue com sua conta Google e clique em "Ir para o Console"<br>
+	-Clique em "Criar um projeto" e insira o nome myTrainer<br>
 	-Selecione Default Account for Firebase para o Google Analytics <br><br>
-	3.2. Configurar o Firebase para Android
-	-Clique no ícone do Android
+	3.2. Configurar o Firebase para Android<br>
+	-Clique no ícone do Android <br>
+	```
 		-Nome do pacote do Android: com.example.my_trainer
+	```
+	<br>
+	```
 		-Apelido: myTrainer
-	-Siga o passo a passo até o fim
+	```
+	<br>
+	-Siga o passo a passo até o fim <br>
 	
 Pronto! O repositório está totalmente funcional na sua máquina. Bons estudos!
 
@@ -119,10 +124,9 @@ Clients can write feedbacks of the classes or workouts in the app.
 A interface where you can add, edit and exclude your gains. A simple tool to help with your finnances.
 
 # 🚀 Next steps - Release 1.0
-- [x] Code Refactoring
 - [x] Implement firebase auth.
 - [x] Implement firebase storage.
-- [ ] Implement finnance CRUD
+- [x] Implement finnance CRUD
 - [ ] Implement Feedbacks
 - [ ] Permissions for the client user:
   - Feedbacks -> write.
@@ -147,16 +151,22 @@ Links Externals
 Icon package installation tutorial: https://pub.dev/packages/flutter_launcher_icons
 
 3- Firebase config <br><br>
-	3.1. Create a new project
-	-Acess  <a href="https://firebase.google.com/" target="_blank">firebase site</a>
-	-Login with your Google account and click "Go to console"
-	-Click "Create new project" and name it myTrainer
-	-Select Default Account for Firebase (if asked) <br><br>
-	3.2. Configuring Firebase for Android
-	-Press the android icon
-		-Package name: com.example.my_trainer
-		-Nickname: myTrainer
-	-Follow the instructions
+	3.1. Create a new project <br>
+	- Acess  <a href="https://firebase.google.com/" target="_blank">firebase site</a><br>
+	- Login with your Google account and click "Go to console" <br>
+	- Click "Create new project" and name it myTrainer <br>
+	- Select Default Account for Firebase (if asked) <br><br>
+	3.2. Configuring Firebase for Android <br>
+	- Press the android icon <br>
+	```
+	  Package name: com.example.my_trainer
+	```
+	<br>
+	```
+	  Nickname: myTrainer
+	```
+	  <br>
+	- Follow the instructions <br>
 	
 Ready to go! You must have a functional copy in your computer.
 

@@ -1,19 +1,19 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/pages/login_page.dart';
-import 'package:my_trainer/pages/sobre_page.dart';
 import 'package:my_trainer/pages/cadastro_page.dart';
+import 'package:my_trainer/pages/sobre_page.dart';
 import 'package:my_trainer/pages/home_page.dart';
-import 'package:my_trainer/pages/treinador/aluno/cadastrar_dados_aluno.dart';
-import 'package:my_trainer/pages/treinador/aluno/consultar_aluno.dart';
-import 'package:my_trainer/pages/treinador/aluno/alterar_dados.dart';
-import 'package:my_trainer/pages/treinador/aluno/consultar_dados.dart';
-import 'package:my_trainer/pages/treinador/agendamento/agendar.dart';
-import 'package:my_trainer/pages/treinador/agendamento/consultar_agendamento.dart';
-import 'package:my_trainer/pages/treinador/treinos/cadastrar_treino.dart';
-import 'package:my_trainer/pages/treinador/treinos/consultar_treino.dart';
-import 'package:my_trainer/pages/treinador/feedback/feedback.dart';
-import 'package:my_trainer/pages/treinador/renda/consultar_renda.dart';
+import 'package:my_trainer/pages/aluno/cadastrar_dados_aluno.dart';
+import 'package:my_trainer/pages/aluno/consultar_aluno.dart';
+import 'package:my_trainer/pages/aluno/alterar_dados.dart';
+import 'package:my_trainer/pages/aluno/consultar_dados.dart';
+import 'package:my_trainer/pages/agendamento/agendar.dart';
+import 'package:my_trainer/pages/agendamento/consultar_agendamento.dart';
+import 'package:my_trainer/pages/treinos/cadastrar_treino.dart';
+import 'package:my_trainer/pages/treinos/consultar_treino.dart';
+import 'package:my_trainer/pages/feedback/feedback.dart';
+import 'package:my_trainer/pages/renda/consultar_renda.dart';
 
 Future<void> main() async {
   //*

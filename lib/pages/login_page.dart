@@ -1,9 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_NavegationButton.dart';
-import 'package:my_trainer/widgets/widget_CampoSenha.dart';
-import 'package:my_trainer/widgets/widget_CampoTexto.dart';
-import 'package:my_trainer/widgets/widget_logo.dart';
+import 'package:my_trainer/components/NavegationButton.dart';
+import 'package:my_trainer/components/CampoSenha.dart';
+import 'package:my_trainer/components/CampoTexto.dart';
+import 'package:my_trainer/components/Logo.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);
@@ -41,6 +41,7 @@ class _LoginPageState extends State<LoginPage> {
                     style: TextStyle(
                       fontSize: 32,
                       fontWeight: FontWeight.bold,
+                      color: Colors.white,
                     ),
                   ),
                   Container(
@@ -79,7 +80,7 @@ class _LoginPageState extends State<LoginPage> {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: senha)
         .then((value) {
-      Navigator.pushReplacementNamed(context, 'home');
+      Navigator.pushReplacementNamed(context, 'home', arguments: email);
     }).catchError((erro) {
       if (erro.code == 'wrong-password' || erro.code == 'invalid-email') {
         exibirMensagem('Email ou senha inválido.');

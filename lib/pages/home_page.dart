@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_NavegationButton.dart';
-import 'package:my_trainer/widgets/widget_logout.dart';
+import 'package:my_trainer/components/NavegationButton.dart';
+import 'package:my_trainer/components/Logout.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -24,9 +25,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    //*
-    //* Get logon email
-    //*
     final emailLogado = ModalRoute.of(context)!.settings.arguments;
     //*
     //* View
@@ -80,35 +78,47 @@ class _HomePageState extends State<HomePage> {
               //*
               //* Alunos
               //*
-              viewHome1Button(
-                  16.0, 0.0, 'Alunos', 'Consultar', 'consultar_aluno'),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
+              ),
+              viewHome1Button('Alunos', 'Consultar', 'consultar_aluno'),
               WidgetNavegationButton(
                   'Cadastrar', Theme.of(context).colorScheme.secondary,
                   proximaPag: 'cadastrar_aluno'),
               //*
               //* Agendamento
               //*
-              viewHome1Button(0.0, 40.0, 'Agendamento', 'Agendar', 'agendar'),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
+              ),
+              viewHome1Button('Agendamento', 'Agendar', 'agendar'),
               WidgetNavegationButton(
                   'Consultar', Theme.of(context).colorScheme.secondary,
                   proximaPag: 'consultar_agendamento'),
               //*
               //* Treinos
               //*
-              viewHome1Button(
-                  0.0, 40.0, 'Treinos', 'Consultar', 'consultar_treino'),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
+              ),
+              viewHome1Button('Treinos', 'Consultar', 'consultar_treino'),
               WidgetNavegationButton(
                   'Cadastrar', Theme.of(context).colorScheme.secondary,
                   proximaPag: 'cadastrar_treino'),
               //*
               //* Relatórios
               //*
-              viewHome1Button(0.0, 40.0, 'Relatórios', 'Feedback', 'feedback'),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
+              ),
+              viewHome1Button('Relatórios', 'Feedback', 'feedback'),
               //*
               //* Renda
               //*
-              viewHome1Button(
-                  0.0, 0.0, 'Renda', 'Consultar', 'consultar_renda'),
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
+              ),
+              viewHome1Button('Renda', 'Consultar', 'consultar_renda'),
             ],
           ),
         ],
@@ -116,16 +126,14 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  //*
-  //* Model
-  //*
   getUser(dados, emailLogado) {
     String email = dados.data()['email'];
     String usuario = dados.data()['usuario'];
     String permissao = dados.data()['permissao'];
     String permissaoUsuario = 'treinador';
+    var sessao = FirebaseAuth.instance.currentUser;
 
-    if (email == emailLogado) {
+    if (email == sessao?.email) {
       if (permissao == 'a') {
         permissaoUsuario = 'aluno';
       }
@@ -145,15 +153,16 @@ class _HomePageState extends State<HomePage> {
           )
         ],
       );
+    } else {
+      return Text(
+        'Usuário não encontrado',
+        style: TextStyle(fontSize: 16),
+      );
     }
   }
 
-  //*
-  //* Functions
-  //*
-  viewHome1Button(margem1, margem2, titulo, tituloBotao1, paginaBotao1) {
+  viewHome1Button(titulo, tituloBotao1, paginaBotao1) {
     return Container(
-      margin: EdgeInsets.fromLTRB(0, margem1, 0, margem2),
       child: Column(
         children: [
           Text(

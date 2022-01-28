@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_logo.dart';
+import 'package:my_trainer/components/logo.dart';
 
 class SobrePage extends StatelessWidget {
   const SobrePage({Key? key}) : super(key: key);

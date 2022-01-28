@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/pages/treinador/feedback/relatorio.dart';
+import 'package:my_trainer/pages/feedback/relatorio.dart';
 import 'package:my_trainer/widgets/widget_logout.dart';
 
 class FeedbackAluno extends StatefulWidget {

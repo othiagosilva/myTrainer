@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_Exclude.dart';
+import 'package:my_trainer/components/exclude.dart';
 
 class WidgetBotaoExclusao extends StatelessWidget {
   final texto;

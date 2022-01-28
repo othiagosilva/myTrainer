@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_NavegationButton.dart';
+import 'package:my_trainer/components/navegation_button.dart';
 
 class WidgetExclude extends StatefulWidget {
   final texto;

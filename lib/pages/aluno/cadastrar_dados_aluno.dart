@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/widgets/widget_logout.dart';
-import 'package:my_trainer/widgets/widget_CampoTexto.dart';
+import 'package:my_trainer/components/campo_texto.dart';
 
 class CadastrarDados extends StatefulWidget {
   const CadastrarDados({Key? key}) : super(key: key);

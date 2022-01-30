@@ -1,8 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:my_trainer/components/campo_senha.dart';
 import 'package:my_trainer/components/campo_texto.dart';
+=======
+import 'package:my_trainer/components/CampoSenha.dart';
+import 'package:my_trainer/components/CampoTexto.dart';
+>>>>>>> 928ee45331ae12bb58c29f6d140589537de81f7e
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);

@@ -1,9 +1,16 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:my_trainer/components/navegation_button.dart';
 import 'package:my_trainer/components/campo_senha.dart';
 import 'package:my_trainer/components/campo_texto.dart';
 import 'package:my_trainer/components/logo.dart';
+=======
+import 'package:my_trainer/components/NavegationButton.dart';
+import 'package:my_trainer/components/CampoSenha.dart';
+import 'package:my_trainer/components/CampoTexto.dart';
+import 'package:my_trainer/components/Logo.dart';
+>>>>>>> 928ee45331ae12bb58c29f6d140589537de81f7e
 
 class LoginPage extends StatefulWidget {
   const LoginPage({Key? key}) : super(key: key);

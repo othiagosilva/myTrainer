@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/widgets/widget_logout.dart';
+import 'package:my_trainer/components/logout.dart';
 
 import 'dados_aluno.dart';
 

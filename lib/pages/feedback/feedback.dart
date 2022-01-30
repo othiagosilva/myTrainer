@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/pages/feedback/relatorio.dart';
-import 'package:my_trainer/widgets/widget_logout.dart';
+import 'package:my_trainer/components/logout.dart';
 
 class FeedbackAluno extends StatefulWidget {
   const FeedbackAluno({Key? key}) : super(key: key);

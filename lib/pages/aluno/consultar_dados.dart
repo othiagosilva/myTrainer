@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/components/logout.dart';
-
-import 'dados_aluno.dart';
+import 'package:my_trainer/model/aluno.dart';
 
 class ConsultarDados extends StatefulWidget {
   const ConsultarDados({Key? key}) : super(key: key);

@@ -1,8 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/components/logout.dart';
-
-import 'dados_aluno.dart';
+import 'package:my_trainer/model/aluno.dart';
 
 class ConsultarAluno extends StatefulWidget {
   const ConsultarAluno({Key? key}) : super(key: key);
@@ -91,29 +90,29 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
     String genero = dados.data()['genero'];
 
     Aluno aluno = new Aluno(
-        cod,
+        int.parse(cod),
         nome,
-        idade,
-        peso,
-        altura,
-        cintura,
-        quadril,
-        perimetroAbdomen,
-        dobraSubEscapular,
-        dobraTricipital,
-        dobraPeitoral,
-        dobraAxilarMedio,
-        dobraSupraIliaca,
-        dobraAbdomen,
-        dobraCoxa,
-        perimetroTorax,
-        perimetroBracoRel,
-        perimetroBracoCon,
-        perimetroAntebraco,
-        perimetroCintura,
-        perimetroQuadril,
-        perimetroCoxas,
-        perimetroPanturrilha,
+        int.parse(idade),
+        double.parse(peso),
+        double.parse(altura),
+        double.parse(cintura),
+        double.parse(quadril),
+        double.parse(perimetroAbdomen),
+        double.parse(dobraSubEscapular),
+        double.parse(dobraTricipital),
+        double.parse(dobraPeitoral),
+        double.parse(dobraAxilarMedio),
+        double.parse(dobraSupraIliaca),
+        double.parse(dobraAbdomen),
+        double.parse(dobraCoxa),
+        double.parse(perimetroTorax),
+        double.parse(perimetroBracoRel),
+        double.parse(perimetroBracoCon),
+        double.parse(perimetroAntebraco),
+        double.parse(perimetroCintura),
+        double.parse(perimetroQuadril),
+        double.parse(perimetroCoxas),
+        double.parse(perimetroPanturrilha),
         limitacoes,
         genero);
 

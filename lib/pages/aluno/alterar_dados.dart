@@ -1,6 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:my_trainer/pages/aluno/dados_aluno.dart';
+import 'package:my_trainer/model/aluno.dart';
 import 'package:my_trainer/components/logout.dart';
 
 class AlterarExcluir extends StatefulWidget {

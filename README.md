@@ -92,7 +92,7 @@ As versões do protótipo para testes de usabilidade podem ser encontrada atrav�
 
 <a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A2&show-proto-sidebar=1" target = "_blank">Versão usuário treinador</a> 
 
-<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=188%3A520&show-proto-sidebar=1" target = "_blank"> Versão usuário aluno</a> 
+<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=188%3A520&scaling=scale-down&page-id=0%3A1&starting-point-node-id=188%3A520&show-proto-sidebar=1" target = "_blank"> Versão usuário aluno</a> 
 
 <a id="English-version"></a>
 # English
@@ -194,4 +194,4 @@ The client and trainer version can be found in:
 
 <a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=3%3A2&show-proto-sidebar=1" target = "_blank">Trainer</a> 
 
-<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=3%3A2&scaling=scale-down&page-id=0%3A1&starting-point-node-id=188%3A520&show-proto-sidebar=1" target = "_blank">Client</a> 
+<a href="https://www.figma.com/proto/NwJ7I1jIrlLVtXGwbJpw9v/myTrainer?node-id=188%3A520&scaling=scale-down&page-id=0%3A1&starting-point-node-id=188%3A520&show-proto-sidebar=1" target = "_blank">Client</a> 

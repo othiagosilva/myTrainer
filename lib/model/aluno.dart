@@ -1,84 +1,56 @@
 class Aluno {
-  static int _cod = 0;
   String _nome = '';
-  int _idade = 0;
-  double _peso = 0.0;
-  double _altura = 0.0;
-  double? _cintura;
-  double? _quadril;
-  double? _perimetroAbdomen;
-  double? _dobraSubEscapular;
-  double? _dobraTricipital;
-  double? _dobraPeitoral;
-  double? _dobraAxilarMedio;
-  double? _dobraSupraIliaca;
-  double? _dobraAbdomen;
-  double? _dobraCoxa;
-  double? _perimetroTorax;
-  double? _perimetroBracoRel;
-  double? _perimetroBracoCon;
-  double? _perimetroAntebraco;
-  double? _perimetroCintura;
-  double? _perimetroQuadril;
-  double? _perimetroCoxas;
-  double? _perimetroPanturrilha;
+  String _idade = '';
+  String _peso = '';
+  String _altura = '';
+  String? _cintura;
+  String? _quadril;
+  String? _perimetroAbdomen;
+  String? _dobraSubEscapular;
+  String? _dobraTricipital;
+  String? _dobraPeitoral;
+  String? _dobraAxilarMedio;
+  String? _dobraSupraIliaca;
+  String? _dobraAbdomen;
+  String? _dobraCoxa;
+  String? _perimetroTorax;
+  String? _perimetroBracoRel;
+  String? _perimetroBracoCon;
+  String? _perimetroAntebraco;
+  String? _perimetroCintura;
+  String? _perimetroQuadril;
+  String? _perimetroCoxas;
+  String? _perimetroPanturrilha;
   String? _limitacoes;
   String _genero = '';
-  double? _imc;
+  String _imc = '';
 
   Aluno(
-    int cod,
     String nome,
-    int idade,
-    double peso,
-    double altura,
-    double cintura,
-    double quadril,
-    double perimetroAbdomen,
-    double dobraSubEscapular,
-    double dobraTricipital,
-    double dobraPeitoral,
-    double dobraAxilarMedio,
-    double dobraSupraIliaca,
-    double dobraAbdomen,
-    double dobraCoxa,
-    double perimetroTorax,
-    double perimetroBracoRel,
-    double perimetroBracoCon,
-    double perimetroAntebraco,
-    double perimetroCintura,
-    double perimetroQuadril,
-    double perimetroCoxas,
-    double perimetroPanturrilha,
+    String idade,
+    String peso,
+    String altura,
+    String cintura,
+    String quadril,
+    String perimetroAbdomen,
+    String dobraSubEscapular,
+    String dobraTricipital,
+    String dobraPeitoral,
+    String dobraAxilarMedio,
+    String dobraSupraIliaca,
+    String dobraAbdomen,
+    String dobraCoxa,
+    String perimetroTorax,
+    String perimetroBracoRel,
+    String perimetroBracoCon,
+    String perimetroAntebraco,
+    String perimetroCintura,
+    String perimetroQuadril,
+    String perimetroCoxas,
+    String perimetroPanturrilha,
     String limitacoes,
     String genero,
-  ) {
-    Aluno._cod++;
-    this.nome(nome);
-    this.idade(idade);
-    this.peso(peso);
-    this.altura(altura);
-    this.cintura(cintura);
-    this.quadril(quadril);
-    this.perimetroAbdomen(perimetroAbdomen);
-    this.dobraSubEscapular(dobraSubEscapular);
-    this.dobraTricipital(dobraTricipital);
-    this.dobraPeitoral(dobraPeitoral);
-    this.dobraAxilarMedio(dobraAxilarMedio);
-    this.dobraSupraIliaca(dobraSupraIliaca);
-    this.dobraAbdomen(dobraAbdomen);
-    this.dobraCoxa(dobraCoxa);
-    this.perimetroTorax(perimetroTorax);
-    this.perimetroBracoRel(perimetroBracoRel);
-    this.perimetroBracoCon(perimetroBracoCon);
-    this.perimetroAntebraco(perimetroAntebraco);
-    this.perimetroCintura(perimetroCintura);
-    this.perimetroQuadril(perimetroQuadril);
-    this.perimetroCoxas(perimetroCoxas);
-    this.perimetroPanturrilha(perimetroPanturrilha);
-    this.limitacoes(limitacoes);
-    this.genero(genero);
-  }
+  );
 
   get nome => this._nome;
   set nome(nome) => this._nome = nome;

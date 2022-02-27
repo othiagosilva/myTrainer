@@ -36,7 +36,7 @@ class _ConsultarDadosState extends State<ConsultarDados> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                linha2Campos(300, 'Nome', aluno.nome, 100, 'Código', aluno.cod),
+                linha2Campos(300, 'Nome', aluno.nome, 100, 'Código', ''),
                 linha3Campos(
                   120,
                   'Idade',

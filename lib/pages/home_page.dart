@@ -12,9 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  //*
-  //* Connection to Firebase
-  //*
   late CollectionReference usuarios;
 
   @override
@@ -26,9 +23,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final emailLogado = ModalRoute.of(context)!.settings.arguments;
-    //*
-    //* View
-    //*
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,

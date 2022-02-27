@@ -16,9 +16,6 @@ import 'package:my_trainer/pages/feedback/feedback.dart';
 import 'package:my_trainer/pages/renda/consultar_renda.dart';
 
 Future<void> main() async {
-  //*
-  //* Firebase initializing
-  //*
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
@@ -28,10 +25,6 @@ Future<void> main() async {
     MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'myTrainer',
-
-      //*
-      //* Theme definition
-      //*
       theme: theme.copyWith(
         primaryColor: Color.fromRGBO(198, 26, 26, 1),
         backgroundColor: Color.fromRGBO(17, 17, 17, 1),
@@ -68,10 +61,6 @@ Future<void> main() async {
           ),
         ),
       ),
-
-      //*
-      //* Route definition
-      //*
       initialRoute: 'login',
       routes: {
         'login': (context) => LoginPage(),

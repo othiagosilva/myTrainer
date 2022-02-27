@@ -3,11 +3,7 @@ abstract class Usuario {
   String _email = '';
   String _senha = '';
 
-  Usuario(String nomeDeUsuario, String email, String senha) {
-    this.nomeDeUsuario(nomeDeUsuario);
-    this.email(email);
-    this.senha(senha);
-  }
+  Usuario(String nomeDeUsuario, String email, String senha);
 
   get nomeDeUsuario => this._nomeDeUsuario;
   set nomeDeUsuario(nomeDeUsuario) => this._nomeDeUsuario = nomeDeUsuario;

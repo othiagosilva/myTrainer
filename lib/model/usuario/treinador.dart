@@ -5,9 +5,7 @@ class Treinador extends Usuario {
   String _permissao = 't';
 
   Treinador(nomeDeUsuario, email, senha, cref)
-      : super(nomeDeUsuario, email, senha) {
-    this.cref(cref);
-  }
+      : super(nomeDeUsuario, email, senha);
 
   get cref => this._cref;
   set cref(cref) => this._cref = cref;

@@ -15,11 +15,6 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   var txtEmail = TextEditingController();
   var txtSenha = TextEditingController();
-  bool isLoading = false;
-  // final formKey = GlobalKey<FormState>();
-  //*
-  //* View
-  //*
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -73,14 +68,11 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  //*
-  //* Model
-  //*
   void login(email, senha) {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: senha)
         .then((value) {
-      Navigator.pushReplacementNamed(context, 'home', arguments: email);
+      Navigator.pushReplacementNamed(context, 'home');
     }).catchError((erro) {
       if (erro.code == 'wrong-password' || erro.code == 'invalid-email') {
         exibirMensagem('Email ou senha inválido.');
@@ -92,9 +84,6 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  //*
-  //* Functions
-  //*
   void exibirMensagem(msg) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
@@ -129,9 +118,6 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         onPressed: () {
-          setState(() {
-            isLoading = true;
-          });
           return login(txtEmail.text, txtSenha.text);
         },
       ),

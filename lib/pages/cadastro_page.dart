@@ -16,10 +16,8 @@ class _RegisterPageState extends State<RegisterPage> {
   var txtEmail = TextEditingController();
   var txtUsuario = TextEditingController();
   var txtSenha = TextEditingController();
-  String permissao = '';
-  //*
-  //* View
-  //*
+  String permissao = 't';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,46 +44,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 WidgetCampoTexto('Email', txtEmail),
                 WidgetCampoTexto('Usuário', txtUsuario),
                 WidgetCampoSenha(txtSenha),
-                Row(
-                  children: [
-                    Radio(
-                      value: "t",
-                      groupValue: permissao,
-                      onChanged: (value) {
-                        setState(() {
-                          permissao = value.toString();
-                        });
-                      },
-                      fillColor: MaterialStateProperty.all<Color>(
-                        Theme.of(context).primaryColor,
-                      ),
-                    ),
-                    Text(
-                      'Treinador',
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                  ],
-                ),
-                Row(
-                  children: [
-                    Radio(
-                      value: "a",
-                      groupValue: permissao,
-                      onChanged: (value) {
-                        setState(() {
-                          permissao = value.toString();
-                        });
-                      },
-                      fillColor: MaterialStateProperty.all<Color>(
-                        Theme.of(context).primaryColor,
-                      ),
-                    ),
-                    Text(
-                      'Aluno',
-                      style: Theme.of(context).textTheme.headline6,
-                    ),
-                  ],
-                ),
+                permissaoRadio(),
                 registrar(),
               ],
             ),
@@ -95,9 +54,45 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  //*
-  //* Model
-  //*
+  permissaoRadio() {
+    return Row(
+      children: [
+        Radio(
+          value: "t",
+          groupValue: permissao,
+          onChanged: (value) {
+            setState(() {
+              permissao = value.toString();
+            });
+          },
+          fillColor: MaterialStateProperty.all<Color>(
+            Theme.of(context).primaryColor,
+          ),
+        ),
+        Text(
+          'Treinador',
+          style: Theme.of(context).textTheme.headline6,
+        ),
+        Radio(
+          value: "a",
+          groupValue: permissao,
+          onChanged: (value) {
+            setState(() {
+              permissao = value.toString();
+            });
+          },
+          fillColor: MaterialStateProperty.all<Color>(
+            Theme.of(context).primaryColor,
+          ),
+        ),
+        Text(
+          'Aluno',
+          style: Theme.of(context).textTheme.headline6,
+        ),
+      ],
+    );
+  }
+
   void criarConta(usuario, email, senha, permissao) {
     FirebaseAuth.instance
         .createUserWithEmailAndPassword(email: email, password: senha)
@@ -124,9 +119,6 @@ class _RegisterPageState extends State<RegisterPage> {
     });
   }
 
-  //*
-  //* Functions
-  //*
   void exibirMensagem(msg) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

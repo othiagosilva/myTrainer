@@ -32,7 +32,7 @@ Future<void> main() async {
             theme.colorScheme.copyWith(secondary: Color.fromRGBO(71, 9, 9, 1)),
         textTheme: TextTheme(
           headline1: TextStyle(
-            fontSize: 32,
+            fontSize: 24,
             color: Colors.white,
             fontFamily: 'OpenSans',
             fontWeight: FontWeight.bold,

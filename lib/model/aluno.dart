@@ -3,35 +3,53 @@ class Aluno {
   String _idade = '';
   String _peso = '';
   String _altura = '';
-  String? _cintura;
-  String? _quadril;
-  String? _perimetroAbdomen;
-  String? _dobraSubEscapular;
-  String? _dobraTricipital;
-  String? _dobraPeitoral;
-  String? _dobraAxilarMedio;
-  String? _dobraSupraIliaca;
-  String? _dobraAbdomen;
-  String? _dobraCoxa;
-  String? _perimetroTorax;
-  String? _perimetroBracoRel;
-  String? _perimetroBracoCon;
-  String? _perimetroAntebraco;
-  String? _perimetroCintura;
-  String? _perimetroQuadril;
-  String? _perimetroCoxas;
-  String? _perimetroPanturrilha;
-  String? _limitacoes;
   String _genero = '';
+  String _cintura = '';
+  String _quadril = '';
+  String _perimetroAbdomen = '';
+  String _dobraSubEscapular = '';
+  String _dobraTricipital = '';
+  String _dobraPeitoral = '';
+  String _dobraAxilarMedio = '';
+  String _dobraSupraIliaca = '';
+  String _dobraAbdomen = '';
+  String _dobraCoxa = '';
+  String _perimetroTorax = '';
+  String _perimetroBracoRel = '';
+  String _perimetroBracoCon = '';
+  String _perimetroAntebraco = '';
+  String _perimetroCintura = '';
+  String _perimetroQuadril = '';
+  String _perimetroCoxas = '';
+  String _perimetroPanturrilha = '';
+  String _limitacoes = '';
   String _imc = '';
 
   Aluno(
-    String nome,
-    String idade,
-    String peso,
-    String altura,
-    String genero,
-  );
+      String nome,
+      String idade,
+      String peso,
+      String altura,
+      String genero,
+      String cintura,
+      String quadril,
+      String dobraSubEscapular,
+      String dobraTricipital,
+      String dobraPeitoral,
+      String dobraAxilarMedio,
+      String dobraSupraIliaca,
+      String dobraAbdomen,
+      String dobraCoxa,
+      String perimetroAbdomen,
+      String perimetroTorax,
+      String perimetroBracoRel,
+      String perimetroBracoCon,
+      String perimetroAntebraco,
+      String perimetroCintura,
+      String perimetroQuadril,
+      String perimetroCoxas,
+      String perimetroPanturrilha,
+      String limitacoes);
 
   get nome => this._nome;
   set nome(nome) => this._nome = nome;

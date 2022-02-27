@@ -71,7 +71,6 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
     String genero = dados.data()['genero'];
     String cintura = dados.data()['cintura'];
     String quadril = dados.data()['quadril'];
-    String perimetroAbdomen = dados.data()['perimetroAbdomen'];
     String dobraSubEscapular = dados.data()['dobraSubEscapular'];
     String dobraTricipital = dados.data()['dobraTricipital'];
     String dobraPeitoral = dados.data()['dobraPeitoral'];
@@ -79,6 +78,7 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
     String dobraSupraIliaca = dados.data()['dobraSupraIliaca'];
     String dobraAbdomen = dados.data()['dobraAbdomen'];
     String dobraCoxa = dados.data()['dobraCoxa'];
+    String perimetroAbdomen = dados.data()['perimetroAbdomen'];
     String perimetroTorax = dados.data()['perimetroTorax'];
     String perimetroBracoRel = dados.data()['perimetroBracoRel'];
     String perimetroBracoCon = dados.data()['perimetroBracoCon'];
@@ -89,7 +89,31 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
     String perimetroPanturrilha = dados.data()['perimetroPanturrilha'];
     String limitacoes = dados.data()['limitacoes'];
 
-    Aluno aluno = new Aluno(nome, idade, peso, altura, genero);
+    Aluno aluno = new Aluno(
+        nome,
+        idade,
+        peso,
+        altura,
+        genero,
+        cintura,
+        quadril,
+        dobraSubEscapular,
+        dobraTricipital,
+        dobraPeitoral,
+        dobraAxilarMedio,
+        dobraSupraIliaca,
+        dobraAbdomen,
+        dobraCoxa,
+        perimetroAbdomen,
+        perimetroTorax,
+        perimetroBracoRel,
+        perimetroBracoCon,
+        perimetroAntebraco,
+        perimetroCintura,
+        perimetroQuadril,
+        perimetroCoxas,
+        perimetroPanturrilha,
+        limitacoes);
 
     return Container(
       padding: EdgeInsets.all(16),
@@ -153,9 +177,7 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
     );
   }
 
-  botaoIcone(icone, rota, dados) {
-    Aluno aluno = new Aluno(
-        dados.nome, dados.idade, dados.peso, dados.altura, dados.genero);
+  botaoIcone(icone, rota, aluno) {
     return Container(
       child: IconButton(
         icon: Icon(

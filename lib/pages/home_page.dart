@@ -113,49 +113,66 @@ class _HomePageState extends State<HomePage> {
                 );
               default:
                 final dados = snapshot.requireData;
-                return ListView.builder(
-                    itemCount: dados.size,
-                    itemBuilder: (context, index) {
-                      return getUser(dados.docs[index]);
-                    });
+                User? user = FirebaseAuth.instance.currentUser;
+
+                for (int index = 0; index < dados.size; index++) {
+                  updateFirebaseUsername(dados.docs[index], user);
+                }
+
+                for (int index = 0; index < dados.size; index++) {
+                  if (checaUsuario(dados.docs[index], user)) {
+                    return getUser(user?.displayName, dados.docs[index]);
+                  }
+                }
+                return Text('como chegou aqui?');
             }
           }),
     );
   }
 
-  getUser(dados) {
+  updateFirebaseUsername(dados, user) {
     String email = dados.data()['email'];
     String usuario = dados.data()['usuario'];
+
+    if (email == user?.email) {
+      user?.updateDisplayName(usuario);
+    }
+  }
+
+  bool checaUsuario(dados, user) {
+    String usuario = dados.data()['usuario'];
+
+    if (usuario == user?.displayName) {
+      return true;
+    }
+
+    return false;
+  }
+
+  getUser(usuario, dados) {
     String permissao = dados.data()['permissao'];
     String permissaoUsuario = 'treinador';
-    var sessao = FirebaseAuth.instance.currentUser;
 
-    if (email == sessao?.email) {
-      if (permissao == 'a') {
-        permissaoUsuario = 'aluno';
-      }
-      return Column(
-        children: [
-          Text(
-            usuario,
-            style: TextStyle(fontSize: 16),
-          ),
-          Text(
-            permissaoUsuario,
-            style: TextStyle(
-              fontSize: 14,
-              fontStyle: FontStyle.italic,
-              color: Theme.of(context).primaryColor,
-            ),
-          )
-        ],
-      );
-    } else {
-      return Text(
-        'Usuário não encontrado',
-        style: TextStyle(fontSize: 16),
-      );
+    if (permissao == 'a') {
+      permissaoUsuario = 'aluno';
     }
+
+    return Column(
+      children: [
+        Text(
+          usuario.toString(),
+          style: TextStyle(fontSize: 16),
+        ),
+        Text(
+          permissaoUsuario,
+          style: TextStyle(
+            fontSize: 14,
+            fontStyle: FontStyle.italic,
+            color: Theme.of(context).primaryColor,
+          ),
+        )
+      ],
+    );
   }
 
   viewHome1Button(titulo, tituloBotao1, paginaBotao1) {

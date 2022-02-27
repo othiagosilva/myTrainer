@@ -68,9 +68,6 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  //*
-  //* Model
-  //*
   void login(email, senha) {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: senha)
@@ -87,9 +84,6 @@ class _LoginPageState extends State<LoginPage> {
     });
   }
 
-  //*
-  //* Functions
-  //*
   void exibirMensagem(msg) {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(

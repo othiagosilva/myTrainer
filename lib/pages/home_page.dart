@@ -22,34 +22,10 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final emailLogado = ModalRoute.of(context)!.settings.arguments;
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        leading: Container(
-          padding: EdgeInsets.fromLTRB(0, 14, 0, 0),
-          child: StreamBuilder<QuerySnapshot>(
-              stream: usuarios.snapshots(),
-              builder: (context, snapshot) {
-                switch (snapshot.connectionState) {
-                  case ConnectionState.none:
-                    return const Center(
-                      child: Text('Não foi possível conectar ao Firestore'),
-                    );
-                  case ConnectionState.waiting:
-                    return const Center(
-                      child: CircularProgressIndicator(),
-                    );
-                  default:
-                    final dados = snapshot.requireData;
-                    return ListView.builder(
-                        itemCount: dados.size,
-                        itemBuilder: (context, index) {
-                          return getUser(dados.docs[index], emailLogado);
-                        });
-                }
-              }),
-        ),
+        leading: username(),
         leadingWidth: 128,
         title: Text(
           'HOME',
@@ -120,7 +96,34 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  getUser(dados, emailLogado) {
+  username() {
+    return Container(
+      padding: EdgeInsets.fromLTRB(0, 14, 0, 0),
+      child: StreamBuilder<QuerySnapshot>(
+          stream: usuarios.snapshots(),
+          builder: (context, snapshot) {
+            switch (snapshot.connectionState) {
+              case ConnectionState.none:
+                return const Center(
+                  child: Text('Não foi possível conectar ao Firestore'),
+                );
+              case ConnectionState.waiting:
+                return const Center(
+                  child: CircularProgressIndicator(),
+                );
+              default:
+                final dados = snapshot.requireData;
+                return ListView.builder(
+                    itemCount: dados.size,
+                    itemBuilder: (context, index) {
+                      return getUser(dados.docs[index]);
+                    });
+            }
+          }),
+    );
+  }
+
+  getUser(dados) {
     String email = dados.data()['email'];
     String usuario = dados.data()['usuario'];
     String permissao = dados.data()['permissao'];

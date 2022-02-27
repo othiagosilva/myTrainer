@@ -45,7 +45,7 @@ class _HomePageState extends State<HomePage> {
               viewHome1Button('Alunos', 'Consultar', 'consultar_aluno'),
               WidgetNavegationButton(
                   'Cadastrar', Theme.of(context).colorScheme.secondary,
-                  proximaPag: 'cadastrar_aluno'),
+                  proximaPag: 'cadastrar_dados'),
               //*
               //* Agendamento
               //*

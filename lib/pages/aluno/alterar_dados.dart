@@ -25,7 +25,7 @@ class _AlterarExcluirState extends State<AlterarExcluir> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'ALTERAR/EXCLUIR',
+          'ALTERAR',
           style: Theme.of(context).textTheme.headline1,
         ),
         backgroundColor: Theme.of(context).backgroundColor,
@@ -41,98 +41,98 @@ class _AlterarExcluirState extends State<AlterarExcluir> {
       body: ListView(
         children: [
           Container(
-            padding: EdgeInsets.all(32.5),
+            padding: EdgeInsets.all(10.0),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 txt('Nome', aluno.nome),
                 linha3Campos(
-                  120,
+                  100.0,
                   'Idade',
                   aluno.idade,
-                  120,
+                  100.0,
                   'Peso',
                   aluno.peso,
-                  120,
+                  100.0,
                   'Altura',
                   aluno.altura,
                 ),
-                linha2Campos(120, 'Cintura', aluno.cintura, 120, 'Quadril',
+                linha2Campos(100.0, 'Cintura', aluno.cintura, 100.0, 'Quadril',
                     aluno.quadril),
                 //
                 // DOBRAS CUTÂNEAS
                 //
                 Container(
-                  margin: EdgeInsets.all(40),
+                  margin: EdgeInsets.all(40.0),
                   child: Text('DOBRAS CUTÂNEAS',
                       style: Theme.of(context).textTheme.headline2),
                 ),
                 linha3Campos(
-                  135,
+                  135.0,
                   'SubEscapular',
                   aluno.dobraSubEscapular,
-                  135,
+                  135.0,
                   'Tricipital',
                   aluno.dobraTricipital,
-                  135,
+                  135.0,
                   'Peitoral',
                   aluno.dobraPeitoral,
                 ),
                 linha3Campos(
-                  135,
+                  135.0,
                   'Axilar Médio',
                   aluno.dobraAxilarMedio,
-                  135,
+                  135.0,
                   'Supra Ilíaca',
                   aluno.dobraSupraIliaca,
-                  135,
+                  135.0,
                   'Abdômen',
                   aluno.dobraAbdomen,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    campo(135, 'Coxa', aluno.dobraCoxa),
+                    campo(135.0, 'Coxa', aluno.dobraCoxa),
                   ],
                 ),
                 //
                 // PERIMETRIA
                 //
                 Container(
-                  margin: EdgeInsets.all(40),
+                  margin: EdgeInsets.all(40.0),
                   child: Text('PERIMETRIA',
                       style: Theme.of(context).textTheme.headline2),
                 ),
                 linha3Campos(
-                  120,
+                  120.0,
                   'Tórax',
                   aluno.perimetroTorax,
-                  120,
+                  120.0,
                   'Braço Rel',
                   aluno.perimetroBracoRel,
-                  120,
+                  120.0,
                   'Braço Con',
                   aluno.perimetroBracoCon,
                 ),
                 linha3Campos(
-                  120,
+                  120.0,
                   'Antrebraços',
                   aluno.perimetroAntebraco,
-                  120,
+                  120.0,
                   'Abdômen',
                   aluno.perimetroAbdomen,
-                  120,
+                  120.0,
                   'Cintura',
                   aluno.perimetroCintura,
                 ),
                 linha3Campos(
-                  120,
+                  120.0,
                   'Quadril',
                   aluno.perimetroQuadril,
-                  120,
+                  120.0,
                   'Coxas',
                   aluno.perimetroCoxas,
-                  120,
+                  120.0,
                   'Panturrilhas',
                   aluno.perimetroPanturrilha,
                 ),

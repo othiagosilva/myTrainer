@@ -39,38 +39,38 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: StreamBuilder<QuerySnapshot>(
-          stream: alunos.snapshots(),
-          builder: (context, snapshot) {
-            switch (snapshot.connectionState) {
-              case ConnectionState.none:
-                return const Center(
-                  child: Text('Não foi possível conectar ao Firestore'),
-                );
-              case ConnectionState.waiting:
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              default:
-                final dados = snapshot.requireData;
-                return ListView.builder(
-                    itemCount: dados.size,
-                    itemBuilder: (context, index) {
-                      return exibirItemColecao(dados.docs[index]);
-                    });
-            }
-          }),
+        stream: alunos.snapshots(),
+        builder: (context, snapshot) {
+          switch (snapshot.connectionState) {
+            case ConnectionState.none:
+              return const Center(
+                child: Text('Não foi possível conectar ao Firestore'),
+              );
+            case ConnectionState.waiting:
+              return const Center(
+                child: CircularProgressIndicator(),
+              );
+            default:
+              final dados = snapshot.requireData;
+              return ListView.builder(
+                  itemCount: dados.size,
+                  itemBuilder: (context, index) {
+                    return exibirItemColecao(dados.docs[index]);
+                  });
+          }
+        },
+      ),
     );
   }
 
   exibirItemColecao(dados) {
-    String cod = dados.data()['codAluno'];
     String nome = dados.data()['nome'];
     String idade = dados.data()['idade'];
     String peso = dados.data()['peso'];
     String altura = dados.data()['altura'];
+    String genero = dados.data()['genero'];
     String cintura = dados.data()['cintura'];
     String quadril = dados.data()['quadril'];
-    String perimetroAbdomen = dados.data()['perimetroAbdomen'];
     String dobraSubEscapular = dados.data()['dobraSubEscapular'];
     String dobraTricipital = dados.data()['dobraTricipital'];
     String dobraPeitoral = dados.data()['dobraPeitoral'];
@@ -78,6 +78,7 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
     String dobraSupraIliaca = dados.data()['dobraSupraIliaca'];
     String dobraAbdomen = dados.data()['dobraAbdomen'];
     String dobraCoxa = dados.data()['dobraCoxa'];
+    String perimetroAbdomen = dados.data()['perimetroAbdomen'];
     String perimetroTorax = dados.data()['perimetroTorax'];
     String perimetroBracoRel = dados.data()['perimetroBracoRel'];
     String perimetroBracoCon = dados.data()['perimetroBracoCon'];
@@ -87,16 +88,15 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
     String perimetroCoxas = dados.data()['perimetroCoxas'];
     String perimetroPanturrilha = dados.data()['perimetroPanturrilha'];
     String limitacoes = dados.data()['limitacoes'];
-    String genero = dados.data()['genero'];
 
     Aluno aluno = new Aluno(
         nome,
         idade,
         peso,
         altura,
+        genero,
         cintura,
         quadril,
-        perimetroAbdomen,
         dobraSubEscapular,
         dobraTricipital,
         dobraPeitoral,
@@ -104,6 +104,7 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
         dobraSupraIliaca,
         dobraAbdomen,
         dobraCoxa,
+        perimetroAbdomen,
         perimetroTorax,
         perimetroBracoRel,
         perimetroBracoCon,
@@ -112,70 +113,34 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
         perimetroQuadril,
         perimetroCoxas,
         perimetroPanturrilha,
-        limitacoes,
-        genero);
+        limitacoes);
 
     return Container(
       padding: EdgeInsets.all(16),
-      child: Column(
+      child: Row(
         children: [
-          //
-          // CABEÇALHO
-          //
-          Row(
+          Column(
             children: [
               Container(
-                width: 235,
-                child: Text(
-                  'Nome',
-                  style: Theme.of(context).textTheme.headline3,
+                padding: EdgeInsets.all(5),
+                width: 200,
+                child: Text(nome, style: Theme.of(context).textTheme.headline5),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
                 ),
-              ),
-              Text(
-                'Cód',
-                style: Theme.of(context).textTheme.headline3,
               ),
             ],
           ),
-          //
-          // DADOS
-          //
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Container(
-                padding: EdgeInsets.all(8),
-                width: 210,
-                child: Text(
-                  nome,
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-              Container(
-                padding: EdgeInsets.all(8),
-                width: 50,
-                child: Text(
-                  cod,
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(16),
-                ),
-              ),
-              botaoIcone(Icons.edit, 'alterar_excluir', aluno),
-              botaoIcone(Icons.search, 'consultar_dados', aluno),
-              botaoExcluir(dados, nome),
-            ],
-          )
+          Column(
+            children: [botaoIcone(Icons.edit, 'alterar_dados', aluno)],
+          ),
+          Column(
+            children: [botaoIcone(Icons.search, 'consultar_dados', aluno)],
+          ),
+          Column(
+            children: [botaoExcluir(dados, nome)],
+          ),
         ],
       ),
     );
@@ -186,7 +151,7 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
       padding: EdgeInsets.symmetric(vertical: 8),
       child: ElevatedButton(
         child: Text(
-          'Cancelar',
+          'Não',
           style: TextStyle(
             fontSize: 24,
           ),
@@ -197,7 +162,7 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
           ),
           elevation: MaterialStateProperty.all<double>(0),
           fixedSize: MaterialStateProperty.all<Size>(
-            Size(200, 50),
+            Size(100, 50),
           ),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(
@@ -212,32 +177,7 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
     );
   }
 
-  botaoIcone(icone, rota, dados) {
-    Aluno aluno = new Aluno(
-        dados.nome,
-        dados.idade,
-        dados.peso,
-        dados.altura,
-        dados.cintura,
-        dados.quadril,
-        dados.perimetroAbdomen,
-        dados.dobraSubEscapular,
-        dados.dobraTricipital,
-        dados.dobraPeitoral,
-        dados.dobraAxilarMedio,
-        dados.dobraSupraIliaca,
-        dados.dobraAbdomen,
-        dados.dobraCoxa,
-        dados.perimetroTorax,
-        dados.perimetroBracoRel,
-        dados.perimetroBracoCon,
-        dados.perimetroAntebraco,
-        dados.perimetroCintura,
-        dados.perimetroQuadril,
-        dados.perimetroCoxas,
-        dados.perimetroPanturrilha,
-        dados.limitacoes,
-        dados.genero);
+  botaoIcone(icone, rota, aluno) {
     return Container(
       child: IconButton(
         icon: Icon(
@@ -285,47 +225,52 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
             'Deseja excluir ' + nome + '?',
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 24,
+              fontSize: 32,
               color: Colors.black,
             ),
           ),
           actions: [
-            Container(
-              padding: EdgeInsets.symmetric(vertical: 8),
-              child: ElevatedButton(
-                child: Text(
-                  'Confirmar',
-                  style: TextStyle(
-                    fontSize: 24,
-                  ),
-                ),
-                style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all<Color>(
-                    Theme.of(context).primaryColor,
-                  ),
-                  elevation: MaterialStateProperty.all<double>(0),
-                  fixedSize: MaterialStateProperty.all<Size>(
-                    Size(200, 50),
-                  ),
-                  shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                    RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30.0),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Container(
+                  padding: EdgeInsets.symmetric(vertical: 8),
+                  child: ElevatedButton(
+                    child: Text(
+                      'Sim',
+                      style: TextStyle(
+                        fontSize: 24,
+                      ),
                     ),
+                    style: ButtonStyle(
+                      backgroundColor: MaterialStateProperty.all<Color>(
+                        Theme.of(context).primaryColor,
+                      ),
+                      elevation: MaterialStateProperty.all<double>(0),
+                      fixedSize: MaterialStateProperty.all<Size>(
+                        Size(100, 50),
+                      ),
+                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+                        RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30.0),
+                        ),
+                      ),
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        alunos.doc(aluno.id).delete();
+                        Navigator.pop(context);
+                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                          content: Text('Aluno removido com sucesso'),
+                          duration: Duration(seconds: 2),
+                        ));
+                      });
+                    },
                   ),
                 ),
-                onPressed: () {
-                  setState(() {
-                    alunos.doc(aluno.id).delete();
-                    Navigator.pop(context);
-                    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                      content: Text('Aluno removido com sucesso'),
-                      duration: Duration(seconds: 2),
-                    ));
-                  });
-                },
-              ),
+                botaoCancelar(),
+              ],
             ),
-            botaoCancelar(),
           ],
         );
       },

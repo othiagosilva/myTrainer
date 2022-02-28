@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:my_trainer/pages/login_page.dart';
 import 'package:my_trainer/pages/cadastro_page.dart';
 import 'package:my_trainer/pages/sobre_page.dart';
-import 'package:my_trainer/pages/home_page.dart';
+import 'package:my_trainer/pages/home/home_page.dart';
 import 'package:my_trainer/pages/aluno/cadastrar_dados_aluno.dart';
 import 'package:my_trainer/pages/aluno/consultar_aluno.dart';
 import 'package:my_trainer/pages/aluno/alterar_dados.dart';
@@ -32,7 +32,7 @@ Future<void> main() async {
             theme.colorScheme.copyWith(secondary: Color.fromRGBO(71, 9, 9, 1)),
         textTheme: TextTheme(
           headline1: TextStyle(
-            fontSize: 32,
+            fontSize: 24,
             color: Colors.white,
             fontFamily: 'OpenSans',
             fontWeight: FontWeight.bold,

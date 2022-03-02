@@ -15,6 +15,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   var txtEmail = TextEditingController();
   var txtSenha = TextEditingController();
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -118,6 +120,9 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         onPressed: () {
+          setState(() {
+            isLoading = true;
+          });
           return login(txtEmail.text, txtSenha.text);
         },
       ),

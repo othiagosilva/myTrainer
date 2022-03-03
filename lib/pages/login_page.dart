@@ -15,6 +15,8 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   var txtEmail = TextEditingController();
   var txtSenha = TextEditingController();
+  bool isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -72,9 +74,11 @@ class _LoginPageState extends State<LoginPage> {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: senha)
         .then((value) {
+      FirebaseAuth.instance.authStateChanges();
       Navigator.pushReplacementNamed(context, 'home');
     }).catchError((erro) {
-      if (erro.code == 'wrong-password' || erro.code == 'invalid-email') {
+      isLoading = false;
+      if (erro.code == 'wrong-password' || erro.xcode == 'invalid-email') {
         exibirMensagem('Email ou senha inválido.');
       } else if (erro.code == 'user-not-found') {
         exibirMensagem('Usuário não existe');
@@ -118,6 +122,9 @@ class _LoginPageState extends State<LoginPage> {
           ),
         ),
         onPressed: () {
+          setState(() {
+            isLoading = true;
+          });
           return login(txtEmail.text, txtSenha.text);
         },
       ),

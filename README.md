@@ -45,27 +45,14 @@ Uma interface onde é possível inserir, editar e excluir sua renda, fornecendo 
 ```
 git clone https://github.com/othiagosilva/myTrainer.git
 ```
-2- Adicione as depêndecias ao projeto clonado
-Firebase
-```
-flutter pub add cloud_firestore
-```
-```
-flutter pub add firebase_core
-```
-```
-flutter pub add firebase_auth
-```
-Links Externos
-Instalação dependência de ícone: https://pub.dev/packages/flutter_launcher_icons
 
-3- Congifuração Firebase <br><br>
-	3.1. Criar um novo projeto <br>
+2- Congifuração Firebase <br><br>
+	2.1. Criar um novo projeto <br>
 	-Acesse o <a href="https://firebase.google.com/" target="_blank">site do firebase</a> <br>
 	-Logue com sua conta Google e clique em "Ir para o Console"<br>
 	-Clique em "Criar um projeto" e insira o nome myTrainer<br>
 	-Selecione Default Account for Firebase para o Google Analytics <br><br>
-	3.2. Configurar o Firebase para Android<br>
+	2.2. Configurar o Firebase para Android<br>
 	-Clique no ícone do Android <br>
 	```
 		-Nome do pacote do Android: com.example.my_trainer
@@ -136,27 +123,14 @@ A interface where you can add, edit and exclude your gains. A simple tool to hel
 ```
 git clone https://github.com/othiagosilva/myTrainer.git
 ```
-2- Add dependences
-Firebase
-```
-flutter pub add cloud_firestore
-```
-```
-flutter pub add firebase_core
-```
-```
-flutter pub add firebase_auth
-```
-Links Externals
-Icon package installation tutorial: https://pub.dev/packages/flutter_launcher_icons
 
-3- Firebase config <br><br>
-	3.1. Create a new project <br>
+2- Firebase config <br><br>
+	2.1. Create a new project <br>
 	- Acess  <a href="https://firebase.google.com/" target="_blank">firebase site</a><br>
 	- Login with your Google account and click "Go to console" <br>
 	- Click "Create new project" and name it myTrainer <br>
 	- Select Default Account for Firebase (if asked) <br><br>
-	3.2. Configuring Firebase for Android <br>
+	2.2. Configuring Firebase for Android <br>
 	- Press the android icon <br>
 	```
 	  Package name: com.example.my_trainer

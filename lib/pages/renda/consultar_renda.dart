@@ -17,9 +17,6 @@ class ConsultarRenda extends StatefulWidget {
 }
 
 class _ConsultarRendaState extends State<ConsultarRenda> {
-  //*
-  //* Firebase connection to collection
-  //*
   late CollectionReference renda;
 
   @override
@@ -33,9 +30,6 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
   var txtValor = TextEditingController();
   final formKey = GlobalKey<FormState>();
 
-  //*
-  //* View
-  //*
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,21 +74,12 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
     );
   }
 
-  //*
-  //* Model
-  //*
-
-  // Get id of selected item
   getDocumentById(id) async {
     await renda.doc(id).get().then((doc) {
       txtNome.text = doc.get('nome');
       txtValor.text = doc.get('valor');
     });
   }
-
-  //*
-  //* Functions
-  //*
 
   botaoAdicionarRenda() {
     return FloatingActionButton(
@@ -117,7 +102,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
                   )),
                 ),
                 content: Container(
-                  height: 200,
+                  height: 220,
                   child: Form(
                     key: formKey,
                     child: Column(
@@ -161,7 +146,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
         ),
         elevation: MaterialStateProperty.all<double>(0),
         fixedSize: MaterialStateProperty.all<Size>(
-          Size(123, 40),
+          Size(123, 30),
         ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
@@ -191,9 +176,6 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
   }
 
   exibirItemColecao(dados) {
-    //*
-    //* Get item ID selected by the user.
-    //*
     var id = ModalRoute.of(context)?.settings.arguments;
 
     if (id != null) {
@@ -202,73 +184,39 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
       }
     }
 
-    //*
-    //* Get data
-    //*
     String nome = dados.data()['nome'];
     String valor = dados.data()['valor'];
-    return Column(
-      children: [
-        Row(
-          children: [
-            Container(
-              width: 192,
-              height: 200,
-              child: Text(
-                'Nome',
-                style: Theme.of(context).textTheme.headline3,
-              ),
-            ),
-            Container(
-              width: 80,
-              child: Text(
-                'Valor',
-                style: Theme.of(context).textTheme.headline3,
-              ),
-            ),
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Container(
-              padding: EdgeInsets.all(8),
-              margin: EdgeInsets.fromLTRB(0, 0, 64, 0),
-              child: FittedBox(
-                child: Text(
-                  nome,
-                  style: TextStyle(
-                    fontSize: 24,
-                    color: Color.fromRGBO(0, 0, 0, 1),
-                  ),
+    return Container(
+      padding: EdgeInsets.all(16),
+      child: Column(
+        children: [
+          Row(
+            children: [
+              Container(
+                margin: EdgeInsets.fromLTRB(0, 0, 16, 0),
+                padding: EdgeInsets.all(5),
+                width: 180,
+                child: Text(nome, style: Theme.of(context).textTheme.headline5),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
                 ),
               ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-              ),
-            ),
-            Container(
-              padding: EdgeInsets.all(8),
-              child: FittedBox(
-                child: Text(
-                  valor,
-                  style: TextStyle(
-                    fontSize: 24,
-                    color: Color.fromRGBO(0, 0, 0, 1),
-                  ),
+              Container(
+                padding: EdgeInsets.all(5),
+                child: Text("R\$ $valor",
+                    style: Theme.of(context).textTheme.headline5),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(16),
                 ),
               ),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(16),
-              ),
-            ),
-            botaoAlterar(dados, id),
-            botaoExcluir(dados, nome),
-          ],
-        )
-      ],
+              botaoAlterar(dados, id),
+              botaoExcluir(dados, nome),
+            ],
+          )
+        ],
+      ),
     );
   }
 
@@ -291,7 +239,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
               ),
               backgroundColor: Theme.of(context).backgroundColor,
               content: Container(
-                height: 200,
+                height: 220,
                 child: Column(
                   children: [
                     Container(
@@ -333,7 +281,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
         ),
         elevation: MaterialStateProperty.all<double>(0),
         fixedSize: MaterialStateProperty.all<Size>(
-          Size(123, 40),
+          Size(123, 30),
         ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
@@ -419,7 +367,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
         ),
         elevation: MaterialStateProperty.all<double>(0),
         fixedSize: MaterialStateProperty.all<Size>(
-          Size(123, 40),
+          Size(123, 30),
         ),
         shape: MaterialStateProperty.all<RoundedRectangleBorder>(
           RoundedRectangleBorder(
@@ -456,7 +404,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
           ),
           elevation: MaterialStateProperty.all<double>(0),
           fixedSize: MaterialStateProperty.all<Size>(
-            Size(123, 40),
+            Size(115, 30),
           ),
           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
             RoundedRectangleBorder(

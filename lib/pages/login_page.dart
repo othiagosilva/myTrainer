@@ -74,9 +74,11 @@ class _LoginPageState extends State<LoginPage> {
     FirebaseAuth.instance
         .signInWithEmailAndPassword(email: email, password: senha)
         .then((value) {
+      FirebaseAuth.instance.authStateChanges();
       Navigator.pushReplacementNamed(context, 'home');
     }).catchError((erro) {
-      if (erro.code == 'wrong-password' || erro.code == 'invalid-email') {
+      isLoading = false;
+      if (erro.code == 'wrong-password' || erro.xcode == 'invalid-email') {
         exibirMensagem('Email ou senha inválido.');
       } else if (erro.code == 'user-not-found') {
         exibirMensagem('Usuário não existe');

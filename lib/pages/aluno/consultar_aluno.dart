@@ -122,6 +122,7 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
           Column(
             children: [
               Container(
+                margin: EdgeInsets.fromLTRB(0, 0, 16, 0),
                 padding: EdgeInsets.all(5),
                 width: 200,
                 child: Text(nome, style: Theme.of(context).textTheme.headline5),

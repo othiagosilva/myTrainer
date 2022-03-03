@@ -47,6 +47,10 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         WidgetCampoTexto('Email', txtEmail),
                         WidgetCampoSenha(txtSenha),
+                        Align(
+                          alignment: Alignment.bottomRight,
+                          child: esqueciSenha(),
+                        )
                       ],
                     ),
                   ),
@@ -126,6 +130,135 @@ class _LoginPageState extends State<LoginPage> {
             isLoading = true;
           });
           return login(txtEmail.text, txtSenha.text);
+        },
+      ),
+    );
+  }
+
+  esqueciSenha() {
+    return InkWell(
+      child: Text(
+        'Esqueci minha senha',
+        style: TextStyle(
+          fontSize: 16,
+          color: Color.fromRGBO(198, 26, 26, 1),
+          decoration: TextDecoration.underline,
+        ),
+      ),
+      onTap: () => redefinirSenha(),
+    );
+  }
+
+  redefinirSenha() {
+    var txtEmail = TextEditingController();
+    final formKey = GlobalKey<FormState>();
+
+    return showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(30),
+              ),
+            ),
+            backgroundColor: Theme.of(context).backgroundColor,
+            title: Text(
+              'Redefinir senha',
+              style: (TextStyle(
+                fontSize: 30,
+              )),
+            ),
+            content: Container(
+              height: 150,
+              child: Form(
+                key: formKey,
+                child: Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.fromLTRB(0, 0, 0, 16),
+                      child: Column(
+                        children: [
+                          WidgetCampoTexto('Email', txtEmail),
+                        ],
+                      ),
+                    ),
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          botaoEnviar(txtEmail.text),
+                          botaoCancelar(),
+                        ]),
+                  ],
+                ),
+              ),
+            ),
+          );
+        });
+  }
+
+  botaoEnviar(email) {
+    return Container(
+      padding: EdgeInsets.all(8),
+      child: ElevatedButton(
+        child: Text(
+          'Enviar',
+          style: TextStyle(
+            fontSize: 20,
+          ),
+        ),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(
+            Theme.of(context).primaryColor,
+          ),
+          elevation: MaterialStateProperty.all<double>(0),
+          fixedSize: MaterialStateProperty.all<Size>(
+            Size(120, 30),
+          ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+          ),
+        ),
+        onPressed: () {
+          FirebaseAuth.instance
+              .sendPasswordResetEmail(email: email)
+              .catchError((erro) {
+            print('ERRO: ${erro.message}.');
+          });
+          Navigator.pop(context);
+        },
+      ),
+    );
+  }
+
+  botaoCancelar() {
+    return Container(
+      padding: EdgeInsets.all(8),
+      child: ElevatedButton(
+        child: Text(
+          'Cancelar',
+          style: TextStyle(
+            fontSize: 20,
+          ),
+        ),
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all<Color>(
+            Theme.of(context).colorScheme.secondary,
+          ),
+          elevation: MaterialStateProperty.all<double>(0),
+          fixedSize: MaterialStateProperty.all<Size>(
+            Size(120, 30),
+          ),
+          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(10.0),
+            ),
+          ),
+        ),
+        onPressed: () {
+          Navigator.pop(context);
         },
       ),
     );

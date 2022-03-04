@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/components/logout.dart';
 import 'package:my_trainer/model/home.dart';
-import 'package:my_trainer/model/usuario/nomeDeUsuario.dart';
+import 'package:my_trainer/model/user/userName.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -16,7 +16,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        leading: NomeDeUsuario(),
+        leading: GetUsername(),
         leadingWidth: 128,
         title: Text(
           'HOME',

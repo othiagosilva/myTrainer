@@ -20,10 +20,10 @@ Todas as telas foram pensadas para serem simples e intuitivas. E da mesma forma 
 ### 1. 💾 Dados do aluno
 Serão armazenados e mostrados de forma simples e intuitiva para você. Chega de planilhas lotadas e desorganizadas.
 
-### 2. 🏋🏻‍♀️ Treinos (_não desenvolvido ainda_)
+### 2. 🏋🏻‍♀️ Treinos
 Podem ser criados, editados e excluídos.
 
-### 3. 📆 Agendameto (_não desenvolvido ainda_)
+### 3. 📆 Agendameto
 Os agendamentos de aula poderão ser realizados via app, assim como o cancelamento e remanejamento.
 
 ### 4. ✍️ Feedbacks
@@ -33,12 +33,25 @@ Os alunos poderão escrever o feedback dos treinos via app e o treinador pode co
 Uma interface onde é possível inserir, editar e excluir sua renda, fornecendo um controle sobre suas finanças.
 
 # 🚀 Para o Futuro - Versão 1.0
-- [x] Implantar o firebase authentication. 
-- [x] Implantar o firebase storage. 
-- [x] Implantar CRUD de Renda
-- [ ] Implantar funcionalidade de Feedback
-- [ ] Permitir que o aluno tenha o seguinte acesso:
-  - Feedbacks -> escrever.
+- [ ] CRUD Agendamento
+- [ ] CRUD Treino
+- [ ] Responsividade da UI
+- [ ] CRUD Feedback
+- [ ] Dados (aluno)
+- [ ] Treino (aluno)
+- [ ] Agendamento (aluno)
+- [ ] Feedback (aluno)
+
+# ✔️ Concluido - Versão 1.0
+- [x] Implantar Firebase Authentication
+- [x] Implantar Firebase Cloud Firestore
+- [x] CRUD de Aluno
+- [x] CRUD de Renda
+- [x] Tela de Cadastro
+- [x] Tela Sobre
+- [x] Funcionalidade esqueci minha senha
+- [x] Retornar nome de usuário e permissão (aluno/treinador) 
+- [x] Adequar tela inicial de acordo com a permissão
 
 # Instalação
 1- Clone o repositório na sua máquina
@@ -98,10 +111,10 @@ All interfaces was created with the intention of beeing simple and easy to under
 ### 1. 💾 Clients data storage
 The data of your clients will be storaged in firebase. The user can create, edit and delete it whenever he wants. No more datasheets with a lot of information to search for.
 
-### 2. 🏋🏻‍♀️ Workouts (_not developed yet_)
+### 2. 🏋🏻‍♀️ Workouts
 Can be created, edited and excluded. Also storaged in firebase.
 
-### 3. 📆 Schedule (_not developed yet_)
+### 3. 📆 Schedule
 It will be possible to schedule a class inside the app being possible to edit the date and cancel it.
 
 ### 4. ✍️ Feedbacks 
@@ -111,12 +124,25 @@ Clients can write feedbacks of the classes or workouts in the app.
 A interface where you can add, edit and exclude your gains. A simple tool to help with your finnances.
 
 # 🚀 Next steps - Release 1.0
-- [x] Implement firebase auth.
-- [x] Implement firebase storage.
-- [x] Implement finnance CRUD
-- [ ] Implement Feedbacks
-- [ ] Permissions for the client user:
-  - Feedbacks -> write.
+- [ ] Schedule CRUD
+- [ ] Workout CRUD
+- [ ] UI Responsivity
+- [ ] Feedback CRUD
+- [ ] Data (athlete)
+- [ ] Workout (athlete)
+- [ ] Schedule (athlete)
+- [ ] Feedback (athlete)
+
+# ✔️ Completed - Release 1.0
+- [x] Add Firebase Authentication
+- [x] Add Firebase Cloud Firestore
+- [x] Athlete CRUD 
+- [x] Finnance CRUD
+- [x] Register functionality
+- [x] About Interface
+- [x] Reset Password functionality
+- [x] Username + Permission identification in home (athlete/trainer) 
+- [x] Home matching permission
 
 # Installation
 1- Repository clone

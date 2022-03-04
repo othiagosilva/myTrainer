@@ -1,5 +1,8 @@
 ![](https://user-images.githubusercontent.com/66854577/141378066-27ddf4f7-76e7-4375-ae00-64c7666ce4a7.png) <br>
-![](http://img.shields.io/static/v1?label=STATUS&message=IN%20PROGRESS&color=GREEN&style=for-the-badge)
+![](https://img.shields.io/badge/CODE%20BY-OTHIAGOSILVA-brightgreen?style=for-the-badge&logo=appveyor)
+![](https://img.shields.io/badge/STATUS-IN%20PROGRESS-brightgreen?style=for-the-badge&logo=appveyor)
+![](https://img.shields.io/badge/LICENSE-MIT-brightgreen?style=for-the-badge&logo=appveyor)
+
 
 # Languages
 Brazilian Portuguese (main). <br>

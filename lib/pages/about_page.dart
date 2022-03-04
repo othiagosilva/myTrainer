@@ -6,9 +6,6 @@ class SobrePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //*
-    //* View
-    //*
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
@@ -30,8 +27,8 @@ class SobrePage extends StatelessWidget {
             child: WidgetLogo(),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(0, 0, 0, 24),
-            padding: EdgeInsets.fromLTRB(40, 0, 0, 0),
+            margin: EdgeInsets.fromLTRB(0, 0, 0, 16),
+            padding: EdgeInsets.all(32),
             child: Text(
               'O myTrainer é um aplicativo com foco em auxiliar o profissional de educação física no gerenciamento de seus alunos, treinos, agendamentos e finanças.',
               style: Theme.of(context).textTheme.headline3,

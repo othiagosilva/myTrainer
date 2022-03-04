@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/pages/login_page.dart';
-import 'package:my_trainer/pages/cadastro_page.dart';
-import 'package:my_trainer/pages/sobre_page.dart';
+import 'package:my_trainer/pages/register_page.dart';
+import 'package:my_trainer/pages/about_page.dart';
 import 'package:my_trainer/pages/home/home_page.dart';
 import 'package:my_trainer/pages/aluno/cadastrar_dados_aluno.dart';
 import 'package:my_trainer/pages/aluno/consultar_aluno.dart';

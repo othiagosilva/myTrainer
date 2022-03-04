@@ -2,33 +2,33 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
-class NomeDeUsuario extends StatefulWidget {
-  const NomeDeUsuario({Key? key}) : super(key: key);
+class GetUsername extends StatefulWidget {
+  const GetUsername({Key? key}) : super(key: key);
 
   @override
-  _NomeDeUsuarioState createState() => _NomeDeUsuarioState();
+  _GetUsernameState createState() => _GetUsernameState();
 }
 
-class _NomeDeUsuarioState extends State<NomeDeUsuario> {
-  late CollectionReference usuarios;
+class _GetUsernameState extends State<GetUsername> {
+  late CollectionReference user;
 
   @override
   void initState() {
     super.initState();
-    usuarios = FirebaseFirestore.instance.collection('usuarios');
+    user = FirebaseFirestore.instance.collection('usuarios');
   }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       padding: EdgeInsets.fromLTRB(0, 14, 0, 0),
-      child: nomeDeUsuario(),
+      child: getUsername(),
     );
   }
 
-  nomeDeUsuario() {
+  getUsername() {
     return StreamBuilder<QuerySnapshot>(
-        stream: usuarios.snapshots(),
+        stream: user.snapshots(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -40,16 +40,16 @@ class _NomeDeUsuarioState extends State<NomeDeUsuario> {
                 child: CircularProgressIndicator(),
               );
             default:
-              final dados = snapshot.requireData;
+              final data = snapshot.requireData;
               User? user = FirebaseAuth.instance.currentUser;
 
-              for (int index = 0; index < dados.size; index++) {
-                updateFirebaseUsername(dados.docs[index], user);
+              for (int index = 0; index < data.size; index++) {
+                updateFirebaseUsername(data.docs[index], user);
               }
 
-              for (int index = 0; index < dados.size; index++) {
-                if (checaUsuario(dados.docs[index], user)) {
-                  return getUser(user?.displayName, dados.docs[index]);
+              for (int index = 0; index < data.size; index++) {
+                if (checkUser(data.docs[index], user)) {
+                  return getUser(user?.displayName, data.docs[index]);
                 }
               }
               return Text('como chegou aqui?');
@@ -57,41 +57,41 @@ class _NomeDeUsuarioState extends State<NomeDeUsuario> {
         });
   }
 
-  updateFirebaseUsername(dados, user) {
-    String email = dados.data()['email'];
-    String usuario = dados.data()['usuario'];
+  updateFirebaseUsername(data, user) {
+    String _email = data.data()['email'];
+    String _user = data.data()['usuario'];
 
-    if (email == user?.email) {
-      user?.updateDisplayName(usuario);
+    if (_email == user?.email) {
+      user?.updateDisplayName(_user);
     }
   }
 
-  bool checaUsuario(dados, user) {
-    String usuario = dados.data()['usuario'];
+  bool checkUser(data, user) {
+    String _user = data.data()['usuario'];
 
-    if (usuario == user?.displayName) {
+    if (_user == user?.displayName) {
       return true;
     }
 
     return false;
   }
 
-  getUser(usuario, dados) {
-    String permissao = dados.data()['permissao'];
-    String permissaoUsuario = 'treinador';
+  getUser(user, data) {
+    String _permission = data.data()['permissao'];
+    String _userPermission = 'treinador';
 
-    if (permissao == 'a') {
-      permissaoUsuario = 'aluno';
+    if (_permission == 'a') {
+      _userPermission = 'aluno';
     }
 
     return Column(
       children: [
         Text(
-          usuario.toString(),
+          user.toString(),
           style: TextStyle(fontSize: 16),
         ),
         Text(
-          permissaoUsuario,
+          _userPermission,
           style: TextStyle(
             fontSize: 14,
             fontStyle: FontStyle.italic,

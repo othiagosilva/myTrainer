@@ -1,8 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/components/campo_senha.dart';
 import 'package:my_trainer/components/campo_texto.dart';
+import 'package:my_trainer/model/account/create_account.dart';
+import 'package:my_trainer/model/account/register_account.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -12,14 +12,17 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
-  // final formKey = GlobalKey<FormState>();
-  var txtEmail = TextEditingController();
-  var txtUsuario = TextEditingController();
-  var txtSenha = TextEditingController();
-  String permissao = 't';
+  var _txtEmail = TextEditingController();
+  var _txtUser = TextEditingController();
+  var _txtPassword = TextEditingController();
+  String _permission = 't';
 
   @override
   Widget build(BuildContext context) {
+    return registerPageBody();
+  }
+
+  registerPageBody() {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Theme.of(context).backgroundColor,
@@ -35,17 +38,16 @@ class _RegisterPageState extends State<RegisterPage> {
       backgroundColor: Theme.of(context).backgroundColor,
       body: SingleChildScrollView(
         child: Form(
-          // key: formKey,
           child: Container(
             padding: EdgeInsets.all(30),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                WidgetCampoTexto('Email', txtEmail),
-                WidgetCampoTexto('Usuário', txtUsuario),
-                WidgetCampoSenha(txtSenha),
-                permissaoRadio(),
-                registrar(),
+                WidgetCampoTexto('Email', _txtEmail),
+                WidgetCampoTexto('Usuário', _txtUser),
+                WidgetCampoSenha(_txtPassword),
+                permission(),
+                register(),
               ],
             ),
           ),
@@ -54,15 +56,15 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  permissaoRadio() {
+  permission() {
     return Row(
       children: [
         Radio(
           value: "t",
-          groupValue: permissao,
+          groupValue: _permission,
           onChanged: (value) {
             setState(() {
-              permissao = value.toString();
+              _permission = value.toString();
             });
           },
           fillColor: MaterialStateProperty.all<Color>(
@@ -75,10 +77,10 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
         Radio(
           value: "a",
-          groupValue: permissao,
+          groupValue: _permission,
           onChanged: (value) {
             setState(() {
-              permissao = value.toString();
+              _permission = value.toString();
             });
           },
           fillColor: MaterialStateProperty.all<Color>(
@@ -93,45 +95,7 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  void criarConta(usuario, email, senha, permissao) {
-    FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: email, password: senha)
-        .then((value) {
-      exibirMensagem('Usuário criado com sucesso!');
-      Navigator.pushReplacementNamed(context, 'login');
-    }).catchError((erro) {
-      if (erro.code == 'email-already-in-use') {
-        exibirMensagem('Email informado está em uso.');
-      } else if (erro.code == 'invalid-email') {
-        exibirMensagem('Email inválido');
-      } else {
-        exibirMensagem('${erro.message}');
-      }
-    });
-  }
-
-  adicionarConta(usuario, email, senha, permissao) {
-    FirebaseFirestore.instance.collection('usuarios').add({
-      'usuario': usuario.text,
-      'email': email,
-      'senha': senha,
-      'permissao': permissao,
-    });
-  }
-
-  void exibirMensagem(msg) {
-    ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
-        content: Text(
-          msg,
-          style: Theme.of(context).textTheme.headline3,
-        ),
-        duration: Duration(seconds: 2),
-      ),
-    );
-  }
-
-  registrar() {
+  register() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8),
       child: ElevatedButton(
@@ -157,8 +121,10 @@ class _RegisterPageState extends State<RegisterPage> {
         ),
         onPressed: () {
           // if (formKey.currentState!.validate()) {
-          criarConta(txtUsuario, txtEmail.text, txtSenha.text, permissao);
-          adicionarConta(txtUsuario, txtEmail.text, txtSenha.text, permissao);
+          createAccount(_txtUser, _txtEmail.text, _txtPassword.text,
+              _permission, context);
+          registerAccount(
+              _txtUser, _txtEmail.text, _txtPassword.text, _permission);
           // }s
         },
       ),

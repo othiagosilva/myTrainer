@@ -12,12 +12,12 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
-  late CollectionReference usuarios;
+  late CollectionReference users;
 
   @override
   void initState() {
     super.initState();
-    usuarios = FirebaseFirestore.instance.collection('usuarios');
+    users = FirebaseFirestore.instance.collection('usuarios');
   }
 
   @override
@@ -29,7 +29,7 @@ class _HomeState extends State<Home> {
     FirebaseAuth.instance.currentUser?.uid;
 
     return StreamBuilder<QuerySnapshot>(
-        stream: usuarios.snapshots(),
+        stream: users.snapshots(),
         builder: (context, snapshot) {
           switch (snapshot.connectionState) {
             case ConnectionState.none:
@@ -41,11 +41,11 @@ class _HomeState extends State<Home> {
                 child: CircularProgressIndicator(),
               );
             default:
-              final dados = snapshot.requireData;
+              final data = snapshot.requireData;
               User? user = FirebaseAuth.instance.currentUser;
 
-              for (int index = 0; index < dados.size; index++) {
-                if (permissaoTreinador(dados.docs[index], user)) {
+              for (int index = 0; index < data.size; index++) {
+                if (permission(data.docs[index], user)) {
                   return HomeTreinador();
                 }
               }
@@ -54,12 +54,12 @@ class _HomeState extends State<Home> {
         });
   }
 
-  bool permissaoTreinador(dados, user) {
-    String usuario = dados.data()['usuario'];
-    String permissao = dados.data()['permissao'];
+  bool permission(data, user) {
+    String _user = data.data()['usuario'];
+    String _permission = data.data()['permissao'];
 
-    if (user.displayName == usuario) {
-      if (permissao == 't') {
+    if (user.displayName == _user) {
+      if (_permission == 't') {
         return true;
       }
     }

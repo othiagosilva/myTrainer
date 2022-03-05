@@ -6,7 +6,8 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'package:my_trainer/components/campo_texto.dart';
+import 'package:my_trainer/components/my_buttons.dart';
+import 'package:my_trainer/components/text_field.dart';
 import 'package:my_trainer/components/logout.dart';
 
 class ConsultarRenda extends StatefulWidget {
@@ -26,9 +27,9 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
     renda = FirebaseFirestore.instance.collection('renda');
   }
 
-  var txtNome = TextEditingController();
-  var txtValor = TextEditingController();
-  final formKey = GlobalKey<FormState>();
+  var _txtName = TextEditingController();
+  var _txtValue = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -76,8 +77,8 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
 
   getDocumentById(id) async {
     await renda.doc(id).get().then((doc) {
-      txtNome.text = doc.get('nome');
-      txtValor.text = doc.get('valor');
+      _txtName.text = doc.get('nome');
+      _txtValue.text = doc.get('valor');
     });
   }
 
@@ -104,15 +105,15 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
                 content: Container(
                   height: 220,
                   child: Form(
-                    key: formKey,
+                    key: _formKey,
                     child: Column(
                       children: [
                         Container(
                           margin: EdgeInsets.fromLTRB(0, 0, 0, 16),
                           child: Column(
                             children: [
-                              WidgetCampoTexto('Nome', txtNome),
-                              WidgetCampoTexto('Valor', txtValor),
+                              WidgetTextField('Nome', _txtName),
+                              WidgetTextField('Valor', _txtValue),
                             ],
                           ),
                         ),
@@ -120,7 +121,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               botaoConfirmarAdicao(),
-                              botaoCancelar(),
+                              cancelButton(context),
                             ]),
                       ],
                     ),
@@ -155,10 +156,10 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
         ),
       ),
       onPressed: () {
-        if (txtNome.text.isNotEmpty && txtValor.text.isNotEmpty) {
+        if (_txtName.text.isNotEmpty && _txtValue.text.isNotEmpty) {
           FirebaseFirestore.instance.collection('renda').add({
-            'nome': txtNome.text,
-            'valor': txtValor.text,
+            'nome': _txtName.text,
+            'valor': _txtValue.text,
           });
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
@@ -168,8 +169,8 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
           );
           Navigator.pop(context);
           FocusScope.of(context).unfocus();
-          txtNome.text = '';
-          txtValor.text = '';
+          _txtName.text = '';
+          _txtValue.text = '';
         }
       },
     );
@@ -179,7 +180,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
     var id = ModalRoute.of(context)?.settings.arguments;
 
     if (id != null) {
-      if (txtNome.text.isEmpty && txtValor.text.isEmpty) {
+      if (_txtName.text.isEmpty && _txtValue.text.isEmpty) {
         getDocumentById(id);
       }
     }
@@ -246,8 +247,8 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
                       margin: EdgeInsets.fromLTRB(0, 0, 0, 16),
                       child: Column(
                         children: [
-                          WidgetCampoTexto('Nome', txtNome),
-                          WidgetCampoTexto('Valor', txtValor),
+                          WidgetTextField('Nome', _txtName),
+                          WidgetTextField('Valor', _txtValue),
                         ],
                       ),
                     ),
@@ -255,7 +256,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           botaoConfirmarAlteracao(dados, id),
-                          botaoCancelar(),
+                          cancelButton(context),
                         ]),
                   ],
                 ),
@@ -293,8 +294,8 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
         renda.doc(dados.id).delete();
         Navigator.pop(context);
         renda.doc(id.toString()).set({
-          'nome': txtNome.text,
-          'valor': txtValor.text,
+          'nome': _txtName.text,
+          'valor': _txtValue.text,
         });
       },
     );
@@ -342,7 +343,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     botaoConfirmarExclusao(dados),
-                    botaoCancelar(),
+                    cancelButton(context),
                   ],
                 )
               ],
@@ -385,37 +386,6 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
           ));
         });
       },
-    );
-  }
-
-  botaoCancelar() {
-    return Container(
-      padding: EdgeInsets.all(8),
-      child: ElevatedButton(
-        child: Text(
-          'Cancelar',
-          style: TextStyle(
-            fontSize: 20,
-          ),
-        ),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-            Theme.of(context).colorScheme.secondary,
-          ),
-          elevation: MaterialStateProperty.all<double>(0),
-          fixedSize: MaterialStateProperty.all<Size>(
-            Size(115, 30),
-          ),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(10.0),
-            ),
-          ),
-        ),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
     );
   }
 }

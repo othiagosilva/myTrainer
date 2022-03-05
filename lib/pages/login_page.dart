@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/components/navegation_button.dart';
-import 'package:my_trainer/components/campo_senha.dart';
-import 'package:my_trainer/components/campo_texto.dart';
+import 'package:my_trainer/components/password_field.dart';
+import 'package:my_trainer/components/text_field.dart';
 import 'package:my_trainer/components/logo.dart';
 import 'package:my_trainer/model/login.dart';
 
@@ -50,8 +50,8 @@ class _LoginPageState extends State<LoginPage> {
                     margin: EdgeInsets.fromLTRB(0, 8, 0, 32),
                     child: Column(
                       children: [
-                        WidgetCampoTexto('Email', _txtEmail),
-                        WidgetCampoSenha(_txtPassword),
+                        WidgetTextField('Email', _txtEmail),
+                        WidgetPasswordField(_txtPassword),
                         Align(
                           alignment: Alignment.bottomRight,
                           child: forgetPassword(context),

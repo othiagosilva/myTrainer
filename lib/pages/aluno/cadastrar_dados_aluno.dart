@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/components/logout.dart';
-import 'package:my_trainer/components/campo_texto.dart';
+import 'package:my_trainer/components/text_field.dart';
 
 class CadastrarDados extends StatefulWidget {
   const CadastrarDados({Key? key}) : super(key: key);
@@ -67,7 +67,7 @@ class _CadastrarDadosState extends State<CadastrarDados> {
                   key: formKey,
                   child: Column(
                     children: [
-                      WidgetCampoTexto('Nome', nome),
+                      WidgetTextField('Nome', nome),
                       linha3Campos(
                         100.0,
                         'Idade',
@@ -192,22 +192,22 @@ class _CadastrarDadosState extends State<CadastrarDados> {
                     perimetroCoxas, 100.0, 'Pant.', perimetroPanturrilha),
                 Container(
                   margin: EdgeInsets.all(16.0),
-                  child: WidgetCampoTexto('Limitações', limitacoes),
+                  child: WidgetTextField('Limitações', limitacoes),
                 ),
                 // Row(
                 //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 //   children: [
                 //     Container(
                 //       width: 100,
-                //       child: WidgetCampoTexto('IMC', imc),
+                //       child: WidgetTextField('IMC', imc),
                 //     ),
                 //     Container(
                 //       width: 100,
-                //       child: WidgetCampoTexto('Razão CQ', razaoCinturaQuadril),
+                //       child: WidgetTextField('Razão CQ', razaoCinturaQuadril),
                 //     ),
                 //     Container(
                 //       width: 100,
-                //       child: WidgetCampoTexto('% Gordura', percentualGordura),
+                //       child: WidgetTextField('% Gordura', percentualGordura),
                 //     ),
                 //   ],
                 // ),
@@ -216,11 +216,11 @@ class _CadastrarDadosState extends State<CadastrarDados> {
                 //   children: [
                 //     Container(
                 //       width: 140,
-                //       child: WidgetCampoTexto('Massa Magra', massaMagra),
+                //       child: WidgetTextField('Massa Magra', massaMagra),
                 //     ),
                 //     Container(
                 //       width: 140,
-                //       child: WidgetCampoTexto('Massa Gorda', massaGorda),
+                //       child: WidgetTextField('Massa Gorda', massaGorda),
                 //     ),
                 //   ],
                 // ),
@@ -370,7 +370,7 @@ class _CadastrarDadosState extends State<CadastrarDados> {
   campo(tamanho, rotulo, variavel) {
     return Container(
       width: tamanho,
-      child: WidgetCampoTexto(rotulo, variavel),
+      child: WidgetTextField(rotulo, variavel),
     );
   }
 

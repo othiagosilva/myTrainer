@@ -47,7 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 WidgetCampoTexto('Usuário', _txtUser),
                 WidgetCampoSenha(_txtPassword),
                 permission(),
-                register(),
+                registerButton(),
               ],
             ),
           ),
@@ -95,7 +95,7 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
-  register() {
+  registerButton() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8),
       child: ElevatedButton(

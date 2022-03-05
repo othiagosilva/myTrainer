@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/components/logout.dart';
 import 'package:my_trainer/model/home.dart';
-import 'package:my_trainer/model/user/userName.dart';
+import 'package:my_trainer/model/account/get_username.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);

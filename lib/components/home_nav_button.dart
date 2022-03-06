@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:my_trainer/components/navegation_button.dart';
 
 class HomeNavButton extends StatefulWidget {
-  final titulo;
-  final tituloBotao;
-  final paginaBotao;
+  final _title;
+  final _buttonTitle;
+  final _buttonPage;
 
-  const HomeNavButton(this.titulo, this.tituloBotao, this.paginaBotao,
+  const HomeNavButton(this._title, this._buttonTitle, this._buttonPage,
       {Key? key})
       : super(key: key);
 
@@ -21,13 +21,13 @@ class _HomeNavButtonState extends State<HomeNavButton> {
       child: Column(
         children: [
           Text(
-            this.widget.titulo,
+            this.widget._title,
             style: Theme.of(context).textTheme.headline4,
           ),
           WidgetNavegationButton(
-            this.widget.tituloBotao,
+            this.widget._buttonTitle,
             Theme.of(context).colorScheme.secondary,
-            proximaPag: this.widget.paginaBotao,
+            proximaPag: this.widget._buttonPage,
           ),
         ],
       ),

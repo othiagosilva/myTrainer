@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:my_trainer/components/my_buttons.dart';
 import 'package:my_trainer/components/navegation_button.dart';
 
 class WidgetExclude extends StatefulWidget {
-  final texto;
-  const WidgetExclude(this.texto, {Key? key}) : super(key: key);
+  final _text;
+  const WidgetExclude(this._text, {Key? key}) : super(key: key);
 
   @override
   _WidgetExcludeState createState() => _WidgetExcludeState();
@@ -21,7 +22,7 @@ class _WidgetExcludeState extends State<WidgetExclude> {
       backgroundColor: Color.fromRGBO(238, 238, 238, 1),
       content: SingleChildScrollView(
         child: Text(
-          this.widget.texto,
+          this.widget._text,
           style: TextStyle(
             fontWeight: FontWeight.bold,
             fontSize: 24,
@@ -34,42 +35,8 @@ class _WidgetExcludeState extends State<WidgetExclude> {
           'Confirmar',
           Theme.of(context).primaryColor,
         ),
-        myButton(
-          'Cancelar',
-          Theme.of(context).colorScheme.secondary,
-        ),
+        cancelButton(context),
       ],
-    );
-  }
-
-  myButton(rotulo, cor) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 8),
-      child: ElevatedButton(
-        child: Text(
-          rotulo,
-          style: TextStyle(
-            fontSize: 24,
-          ),
-        ),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-            cor,
-          ),
-          elevation: MaterialStateProperty.all<double>(0),
-          fixedSize: MaterialStateProperty.all<Size>(
-            Size(200, 50),
-          ),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-          ),
-        ),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
     );
   }
 }

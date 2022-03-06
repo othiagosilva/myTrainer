@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_trainer/components/campo_senha.dart';
-import 'package:my_trainer/components/campo_texto.dart';
+import 'package:my_trainer/components/password_field.dart';
+import 'package:my_trainer/components/text_field.dart';
 import 'package:my_trainer/model/account/create_account.dart';
 import 'package:my_trainer/model/account/register_account.dart';
 
@@ -43,9 +43,9 @@ class _RegisterPageState extends State<RegisterPage> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                WidgetCampoTexto('Email', _txtEmail),
-                WidgetCampoTexto('Usuário', _txtUser),
-                WidgetCampoSenha(_txtPassword),
+                WidgetTextField('Email', _txtEmail),
+                WidgetTextField('Usuário', _txtUser),
+                WidgetPasswordField(_txtPassword),
                 permission(),
                 registerButton(),
               ],
@@ -120,12 +120,10 @@ class _RegisterPageState extends State<RegisterPage> {
           ),
         ),
         onPressed: () {
-          // if (formKey.currentState!.validate()) {
           createAccount(_txtUser, _txtEmail.text, _txtPassword.text,
               _permission, context);
           registerAccount(
               _txtUser, _txtEmail.text, _txtPassword.text, _permission);
-          // }s
         },
       ),
     );

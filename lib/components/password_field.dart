@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 
-class WidgetCampoTexto extends StatefulWidget {
-  final String rotulo;
-  final variavel;
+class WidgetPasswordField extends StatefulWidget {
+  final _txtPassword;
 
-  const WidgetCampoTexto(this.rotulo, this.variavel);
+  const WidgetPasswordField(this._txtPassword);
 
   @override
-  _WidgetCampoTextoState createState() => _WidgetCampoTextoState();
+  _WidgetPasswordFieldState createState() => _WidgetPasswordFieldState();
 }
 
-class _WidgetCampoTextoState extends State<WidgetCampoTexto> {
+class _WidgetPasswordFieldState extends State<WidgetPasswordField> {
+  bool _revealPassword = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -20,16 +21,20 @@ class _WidgetCampoTextoState extends State<WidgetCampoTexto> {
           Container(
             height: 50,
             child: TextFormField(
+              keyboardType: TextInputType.text,
+              controller: this.widget._txtPassword,
+              obscureText: !_revealPassword,
               style: Theme.of(context).textTheme.headline5,
-              controller: this.widget.variavel,
               validator: (value) {
                 if (value == null || value.isEmpty) {
-                  return 'Obrigatório';
+                  return 'Insira a Senha';
                 }
                 return null;
               },
               decoration: InputDecoration(
-                labelText: this.widget.rotulo,
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 0.5, horizontal: 10.0),
+                labelText: "Senha",
                 labelStyle: TextStyle(color: Theme.of(context).primaryColor),
                 border: OutlineInputBorder(
                   borderSide: BorderSide(color: Theme.of(context).primaryColor),
@@ -41,13 +46,20 @@ class _WidgetCampoTextoState extends State<WidgetCampoTexto> {
                   ),
                   borderSide: BorderSide(
                     color: Theme.of(context).primaryColor,
-                    width: 1.5,
                   ),
                 ),
                 fillColor: Colors.white,
                 filled: true,
-                contentPadding:
-                    EdgeInsets.symmetric(vertical: 0.5, horizontal: 10.0),
+                suffixIcon: IconButton(
+                    icon: Icon(
+                      _revealPassword ? Icons.visibility : Icons.visibility_off,
+                      color: Theme.of(context).primaryColor,
+                    ),
+                    onPressed: () {
+                      setState(() {
+                        _revealPassword = !_revealPassword;
+                      });
+                    }),
               ),
             ),
           ),

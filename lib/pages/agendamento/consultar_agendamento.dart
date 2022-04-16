@@ -85,8 +85,8 @@ class _ConsultarAgendamentoState extends State<ConsultarAgendamento> {
       }
     }
 
-    String name = data.data()['nome'];
-    String value = data.data()['valor'];
+    String date = data.data()['data'];
+    String codAluno = data.data()['codAluno'];
 
     return Container(
       padding: EdgeInsets.all(16),
@@ -95,20 +95,17 @@ class _ConsultarAgendamentoState extends State<ConsultarAgendamento> {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 100, 0),
                 child:
-                    Text('Nome', style: Theme.of(context).textTheme.headline3),
+                    Text('Data', style: Theme.of(context).textTheme.headline3),
               ),
               Container(
+                width: 125,
                 margin: EdgeInsets.fromLTRB(0, 0, 16, 0),
                 padding: EdgeInsets.all(5),
-                width: 150,
-                child: SingleChildScrollView(
-                    scrollDirection: Axis.horizontal,
-                    child: Text(name,
-                        style: Theme.of(context).textTheme.headline5)),
+                child: Text(date, style: Theme.of(context).textTheme.headline5),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
@@ -119,18 +116,15 @@ class _ConsultarAgendamentoState extends State<ConsultarAgendamento> {
           Column(
             children: [
               Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
                 child:
-                    Text('Valor', style: Theme.of(context).textTheme.headline3),
+                    Text('Aluno', style: Theme.of(context).textTheme.headline3),
               ),
               Container(
-                width: 80,
                 padding: EdgeInsets.all(5),
-                child: SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
-                  child:
-                      Text(value, style: Theme.of(context).textTheme.headline5),
-                ),
+                width: 70,
+                child: Text(codAluno,
+                    style: Theme.of(context).textTheme.headline5,
+                    textAlign: TextAlign.center),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(16),
@@ -142,7 +136,7 @@ class _ConsultarAgendamentoState extends State<ConsultarAgendamento> {
             alterButton(data, id),
           ]),
           Column(children: [
-            removeButton(data, name),
+            removeButton(data),
           ]),
         ],
       ),
@@ -164,7 +158,7 @@ class _ConsultarAgendamentoState extends State<ConsultarAgendamento> {
 
   alterPopUpContent(data, id) {
     return Container(
-      height: 220,
+      height: 150,
       child: Column(
         children: [
           Container(
@@ -202,7 +196,7 @@ class _ConsultarAgendamentoState extends State<ConsultarAgendamento> {
     );
   }
 
-  removeButton(dados, nomeRenda) {
+  removeButton(dados) {
     return IconButton(
       icon: Icon(
         Icons.delete,
@@ -210,26 +204,26 @@ class _ConsultarAgendamentoState extends State<ConsultarAgendamento> {
       ),
       color: Theme.of(context).primaryColor,
       onPressed: () {
-        removeConfirmationPopUp(dados, nomeRenda);
+        removeConfirmationPopUp(dados);
       },
     );
   }
 
-  removeConfirmationPopUp(data, incomeName) {
-    return myShowDialog(
-        removeConfirmationPopUpContent(data, incomeName), context);
+  removeConfirmationPopUp(data) {
+    return myShowDialog(removeConfirmationPopUpContent(data), context);
   }
 
-  removeConfirmationPopUpContent(data, incomeName) {
+  removeConfirmationPopUpContent(data) {
     return Container(
-      height: 180,
+      height: 160,
       child: Column(
         children: [
           Container(
             margin: EdgeInsets.fromLTRB(0, 0, 0, 32),
             child: Text(
-              'Deseja excluir ' + incomeName + '?',
+              'Deseja excluir agendamento?',
               style: Theme.of(context).textTheme.headline3,
+              textAlign: TextAlign.center,
             ),
           ),
           Row(

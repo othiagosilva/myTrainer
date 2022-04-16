@@ -19,7 +19,7 @@ final myTrainerTheme = theme.copyWith(
       fontWeight: FontWeight.bold,
     ),
     headline3: TextStyle(
-      fontSize: 16,
+      fontSize: 24,
       color: Colors.white,
     ),
     headline4: TextStyle(

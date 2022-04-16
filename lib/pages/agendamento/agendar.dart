@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/components/logout.dart';
 import 'package:my_trainer/components/my_calendar.dart';
+import 'package:my_trainer/components/navegation_button.dart';
 
 class Agendar extends StatefulWidget {
   const Agendar({Key? key}) : super(key: key);
@@ -29,7 +30,18 @@ class _AgendarState extends State<Agendar> {
       ),
       backgroundColor: Theme.of(context).backgroundColor,
       body: SingleChildScrollView(
-        child: MyCalendar(),
+        child: Column(
+          children: [
+            Container(
+              margin: EdgeInsets.fromLTRB(0, 0, 0, 24),
+              padding: EdgeInsets.all(8),
+              child: MyCalendar(),
+            ),
+            WidgetNavegationButton(
+                'Editar Horários', Theme.of(context).primaryColor,
+                proximaPag: 'horarios_disponiveis'),
+          ],
+        ),
       ),
     );
   }

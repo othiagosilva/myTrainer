@@ -11,7 +11,7 @@ class WidgetLogout extends StatelessWidget {
       child: IconButton(
         onPressed: () {
           FirebaseAuth.instance.signOut();
-          Navigator.pushNamed(context, 'login');
+          Navigator.pushNamedAndRemoveUntil(context, "login", (r) => false);
         },
         icon: Icon(
           Icons.logout,

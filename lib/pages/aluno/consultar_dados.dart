@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/components/logout.dart';
+import 'package:my_trainer/components/text_field_view.dart';
 import 'package:my_trainer/model/aluno.dart';
 
 class ConsultarDados extends StatefulWidget {
@@ -89,7 +90,7 @@ class _ConsultarDadosState extends State<ConsultarDados> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    campo(135, 'Coxa', aluno.dobraCoxa),
+                    WidgetTextFieldView('Coxa', aluno.dobraCoxa),
                   ],
                 ),
                 //
@@ -135,7 +136,7 @@ class _ConsultarDadosState extends State<ConsultarDados> {
                 ),
                 Container(
                   margin: EdgeInsets.all(40),
-                  child: txt('Limitações', aluno.limitacoes),
+                  child: WidgetTextFieldView('Limitações', aluno.limitacoes),
                 ),
               ],
             ),
@@ -145,66 +146,14 @@ class _ConsultarDadosState extends State<ConsultarDados> {
     );
   }
 
-  txt(rotulo, variavel) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 8),
-      child: Column(
-        children: [
-          Text(
-            rotulo,
-            style: TextStyle(
-              fontSize: 22,
-              color: Colors.white,
-            ),
-          ),
-          TextFormField(
-            style: Theme.of(context).textTheme.headline5,
-            controller: TextEditingController(text: variavel),
-            enabled: false,
-            validator: (value) {
-              if (value == null || value.isEmpty) {
-                return 'Obrigatório';
-              }
-              return null;
-            },
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderSide: BorderSide(color: Theme.of(context).primaryColor),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(15),
-                ),
-                borderSide: BorderSide(
-                  color: Theme.of(context).primaryColor,
-                  width: 2,
-                ),
-              ),
-              fillColor: Colors.white,
-              filled: true,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  campo(tamanho, rotulo, variavel) {
-    return Container(
-      width: tamanho,
-      child: txt(rotulo, variavel),
-    );
-  }
-
   linha3Campos(tamanho, rotulo, variavel, tamanho1, rotulo1, variavel1,
       tamanho2, rotulo2, variavel2) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        campo(tamanho, rotulo, variavel),
-        campo(tamanho1, rotulo1, variavel1),
-        campo(tamanho2, rotulo2, variavel2),
+        WidgetTextFieldView(rotulo, variavel),
+        WidgetTextFieldView(rotulo, variavel),
+        WidgetTextFieldView(rotulo, variavel),
       ],
     );
   }
@@ -213,8 +162,8 @@ class _ConsultarDadosState extends State<ConsultarDados> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        campo(tamanho, rotulo, variavel),
-        campo(tamanho1, rotulo1, variavel1),
+        WidgetTextFieldView(rotulo, variavel),
+        WidgetTextFieldView(rotulo, variavel),
       ],
     );
   }

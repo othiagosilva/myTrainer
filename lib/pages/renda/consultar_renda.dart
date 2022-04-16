@@ -148,23 +148,17 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
 
     return Container(
       padding: EdgeInsets.all(16),
-      child: Column(
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        crossAxisAlignment: CrossAxisAlignment.end,
         children: [
-          Row(
+          Column(
             children: [
               Container(
                 margin: EdgeInsets.fromLTRB(0, 0, 100, 0),
                 child:
                     Text('Nome', style: Theme.of(context).textTheme.headline3),
               ),
-              Container(
-                child:
-                    Text('Valor', style: Theme.of(context).textTheme.headline3),
-              ),
-            ],
-          ),
-          Row(
-            children: [
               Container(
                 margin: EdgeInsets.fromLTRB(0, 0, 16, 0),
                 padding: EdgeInsets.all(5),
@@ -178,8 +172,17 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
                   borderRadius: BorderRadius.circular(16),
                 ),
               ),
+            ],
+          ),
+          Column(
+            children: [
               Container(
-                width: 100,
+                margin: EdgeInsets.fromLTRB(0, 0, 20, 0),
+                child:
+                    Text('Valor', style: Theme.of(context).textTheme.headline3),
+              ),
+              Container(
+                width: 80,
                 padding: EdgeInsets.all(5),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
@@ -191,10 +194,14 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
                   borderRadius: BorderRadius.circular(16),
                 ),
               ),
-              alterButton(data, id),
-              removeButton(data, name),
             ],
-          )
+          ),
+          Column(children: [
+            alterButton(data, id),
+          ]),
+          Column(children: [
+            removeButton(data, name),
+          ]),
         ],
       ),
     );
@@ -254,7 +261,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
     );
   }
 
-  removeButton(dados, nomeRenda) {
+  removeButton(dados, incomeName) {
     return IconButton(
       icon: Icon(
         Icons.delete,
@@ -262,7 +269,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
       ),
       color: Theme.of(context).primaryColor,
       onPressed: () {
-        removeConfirmationPopUp(dados, nomeRenda);
+        removeConfirmationPopUp(dados, incomeName);
       },
     );
   }

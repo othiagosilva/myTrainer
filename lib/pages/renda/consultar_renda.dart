@@ -153,9 +153,9 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
         crossAxisAlignment: CrossAxisAlignment.end,
         children: [
           Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Container(
-                margin: EdgeInsets.fromLTRB(0, 0, 100, 0),
                 child:
                     Text('Nome', style: Theme.of(context).textTheme.headline3),
               ),
@@ -281,7 +281,7 @@ class _ConsultarRendaState extends State<ConsultarRenda> {
 
   removeConfirmationPopUpContent(data, incomeName) {
     return Container(
-      height: 180,
+      height: 150,
       child: Column(
         children: [
           Container(

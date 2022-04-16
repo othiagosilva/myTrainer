@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 import 'package:intl/intl.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:my_trainer/pages/agendamento/available_hours.dart';
 import 'package:my_trainer/pages/login_page.dart';
 import 'package:my_trainer/pages/register_page.dart';
 import 'package:my_trainer/pages/about_page.dart';
@@ -42,6 +43,7 @@ Future<void> main() async {
             'alterar_dados': (context) => AlterarExcluir(),
             'agendar': (context) => Agendar(),
             'consultar_agendamento': (context) => ConsultarAgendamento(),
+            'horarios_disponiveis': (context) => AvailableHours(),
             'cadastrar_treino': (context) => CadastrarTreino(),
             'consultar_treino': (context) => ConsultarTreino(),
             'feedback': (context) => FeedbackAluno(),

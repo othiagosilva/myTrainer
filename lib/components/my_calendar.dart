@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:my_trainer/components/show_dialog.dart';
 import 'package:my_trainer/components/show_message.dart';
 import 'package:my_trainer/components/text_field.dart';
@@ -41,22 +42,9 @@ class _MyCalendarState extends State<MyCalendar> {
       lastDay: _lastDay,
       focusedDay: _focusedDay,
       calendarFormat: _calendarFormat,
-      headerStyle: HeaderStyle(
-        formatButtonVisible: false,
-        titleCentered: true,
-        leftChevronIcon: Icon(Icons.chevron_left, color: Colors.white),
-        rightChevronIcon: Icon(Icons.chevron_right, color: Colors.white),
-      ),
-      calendarStyle: CalendarStyle(
-        todayDecoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.secondary,
-          shape: BoxShape.circle,
-        ),
-        selectedDecoration: BoxDecoration(
-          color: Theme.of(context).primaryColor,
-          shape: BoxShape.circle,
-        ),
-      ),
+      headerStyle: headerStyle(),
+      daysOfWeekStyle: daysOfWeekStyle(),
+      calendarStyle: calendarStyle(),
       selectedDayPredicate: (day) {
         return isSameDay(_selectedDay, day);
       },
@@ -79,6 +67,59 @@ class _MyCalendarState extends State<MyCalendar> {
       onPageChanged: (focusedDay) {
         _focusedDay = focusedDay;
       },
+    );
+  }
+
+  headerStyle() {
+    return HeaderStyle(
+      formatButtonVisible: false,
+      titleCentered: true,
+      titleTextStyle: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold),
+      leftChevronIcon: Icon(Icons.chevron_left, color: Colors.white),
+      rightChevronIcon: Icon(Icons.chevron_right, color: Colors.white),
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.secondary,
+      ),
+    );
+  }
+
+  daysOfWeekStyle() {
+    return DaysOfWeekStyle(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.secondary,
+      ),
+      weekdayStyle: TextStyle(
+        color: Colors.white,
+        fontSize: 16,
+      ),
+      weekendStyle: TextStyle(
+        color: Colors.white,
+        fontSize: 16,
+      ),
+    );
+  }
+
+  calendarStyle() {
+    return CalendarStyle(
+      todayDecoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.secondary,
+        shape: BoxShape.circle,
+      ),
+      selectedDecoration: BoxDecoration(
+        color: Theme.of(context).primaryColor,
+        shape: BoxShape.circle,
+      ),
+      weekendTextStyle: TextStyle(
+        color: Theme.of(context).primaryColor,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+      ),
+      defaultTextStyle: TextStyle(
+        color: Colors.black,
+        fontWeight: FontWeight.bold,
+        fontSize: 16,
+      ),
+      rowDecoration: BoxDecoration(color: Colors.white),
     );
   }
 
@@ -107,6 +148,12 @@ class _MyCalendarState extends State<MyCalendar> {
     );
   }
 
+  formatDate(date) {
+    var formatter = new DateFormat('dd-MM-yyyy');
+    String formattedDate = formatter.format(date);
+    return formattedDate;
+  }
+
   confirmClassButton() {
     return ElevatedButton(
       child: buttonLabel('Confirmar'),
@@ -114,10 +161,10 @@ class _MyCalendarState extends State<MyCalendar> {
       onPressed: () {
         if (_txtAthleteID.text.isNotEmpty) {
           FirebaseFirestore.instance.collection('aula').add({
+            'data': formatDate(_selectedDay).toString(),
             'codAluno': _txtAthleteID.text,
-            'data': _selectedDay.toString(),
           });
-          showMessage('Adicionada com sucesso', context);
+          showMessage('Agendadado com sucesso', context);
           Navigator.pop(context);
           FocusScope.of(context).unfocus();
           _txtAthleteID.text = '';

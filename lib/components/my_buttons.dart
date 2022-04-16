@@ -5,6 +5,7 @@ buttonLabel(label) {
     label,
     style: TextStyle(
       fontSize: 20,
+      letterSpacing: 0,
     ),
   );
 }

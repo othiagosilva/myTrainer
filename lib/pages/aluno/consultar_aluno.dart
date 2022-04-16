@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/components/logout.dart';
+import 'package:my_trainer/components/my_buttons.dart';
+import 'package:my_trainer/components/show_message.dart';
 import 'package:my_trainer/model/aluno.dart';
 
 class ConsultarAluno extends StatefulWidget {
@@ -147,37 +149,6 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
     );
   }
 
-  botaoCancelar() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 8),
-      child: ElevatedButton(
-        child: Text(
-          'Não',
-          style: TextStyle(
-            fontSize: 24,
-          ),
-        ),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-            Theme.of(context).colorScheme.secondary,
-          ),
-          elevation: MaterialStateProperty.all<double>(0),
-          fixedSize: MaterialStateProperty.all<Size>(
-            Size(100, 50),
-          ),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-          ),
-        ),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
-    );
-  }
-
   botaoIcone(icone, rota, aluno) {
     return Container(
       child: IconButton(
@@ -261,15 +232,12 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
                       setState(() {
                         alunos.doc(aluno.id).delete();
                         Navigator.pop(context);
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text('Aluno removido com sucesso'),
-                          duration: Duration(seconds: 2),
-                        ));
+                        showMessage('Aluno removido', context);
                       });
                     },
                   ),
                 ),
-                botaoCancelar(),
+                cancelButton(context),
               ],
             ),
           ],

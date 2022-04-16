@@ -1,6 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/components/logout.dart';
+import 'package:my_trainer/components/my_buttons.dart';
+import 'package:my_trainer/components/show_message.dart';
 import 'package:my_trainer/components/text_field.dart';
 
 class CadastrarDados extends StatefulWidget {
@@ -79,9 +81,6 @@ class _CadastrarDadosState extends State<CadastrarDados> {
                         'Altura',
                         altura,
                       ),
-                      //
-                      // CONSTRUÇÃO DOS RADIOS.
-                      //
                       Container(
                         child: Row(
                           children: [
@@ -131,12 +130,8 @@ class _CadastrarDadosState extends State<CadastrarDados> {
                     ],
                   ),
                 ),
-
                 linha2Campos(
                     100.0, 'Cintura', cintura, 100.0, 'Quadril', quadril),
-                //
-                // DOBRAS CUTÂNEAS
-                //
                 Container(
                   margin: EdgeInsets.all(40.0),
                   child: Text('DOBRAS CUTÂNEAS',
@@ -168,9 +163,6 @@ class _CadastrarDadosState extends State<CadastrarDados> {
                     campo(100.0, 'Coxa', dobraCoxa),
                   ],
                 ),
-                //
-                // PERIMETRIA
-                //
                 Container(
                   margin: EdgeInsets.all(40.0),
                   child: Text('PERIMETRIA',
@@ -194,41 +186,11 @@ class _CadastrarDadosState extends State<CadastrarDados> {
                   margin: EdgeInsets.all(16.0),
                   child: WidgetTextField('Limitações', limitacoes),
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Container(
-                //       width: 100,
-                //       child: WidgetTextField('IMC', imc),
-                //     ),
-                //     Container(
-                //       width: 100,
-                //       child: WidgetTextField('Razão CQ', razaoCinturaQuadril),
-                //     ),
-                //     Container(
-                //       width: 100,
-                //       child: WidgetTextField('% Gordura', percentualGordura),
-                //     ),
-                //   ],
-                // ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Container(
-                //       width: 140,
-                //       child: WidgetTextField('Massa Magra', massaMagra),
-                //     ),
-                //     Container(
-                //       width: 140,
-                //       child: WidgetTextField('Massa Gorda', massaGorda),
-                //     ),
-                //   ],
-                // ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     botaoCadastrar(),
-                    botaoCancelar(),
+                    cancelButton(context),
                   ],
                 ),
               ],
@@ -243,26 +205,8 @@ class _CadastrarDadosState extends State<CadastrarDados> {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8.0),
       child: ElevatedButton(
-        child: Text(
-          'Cadastrar',
-          style: TextStyle(
-            fontSize: 24,
-          ),
-        ),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-            Theme.of(context).primaryColor,
-          ),
-          elevation: MaterialStateProperty.all<double>(0),
-          fixedSize: MaterialStateProperty.all<Size>(
-            Size(150.0, 50.0),
-          ),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-          ),
-        ),
+        child: buttonLabel('Cadastrar'),
+        style: confirmButtonStyle(context),
         onPressed: () {
           if (formKey.currentState!.validate()) {
             FirebaseFirestore.instance.collection("alunos").doc(nome.text).set({
@@ -320,48 +264,9 @@ class _CadastrarDadosState extends State<CadastrarDados> {
               genero = "m";
               FocusScope.of(context).unfocus();
             });
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text(
-                  'Aluno Cadastrado com sucesso',
-                  style: Theme.of(context).textTheme.headline3,
-                ),
-                duration: Duration(seconds: 2),
-              ),
-            );
+            showMessage('Aluno Cadastrado', context);
             Navigator.pop(context);
           }
-        },
-      ),
-    );
-  }
-
-  botaoCancelar() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 8.0),
-      child: ElevatedButton(
-        child: Text(
-          'Cancelar',
-          style: TextStyle(
-            fontSize: 24,
-          ),
-        ),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-            Theme.of(context).colorScheme.secondary,
-          ),
-          elevation: MaterialStateProperty.all<double>(0),
-          fixedSize: MaterialStateProperty.all<Size>(
-            Size(150.0, 50.0),
-          ),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-          ),
-        ),
-        onPressed: () {
-          Navigator.pop(context);
         },
       ),
     );

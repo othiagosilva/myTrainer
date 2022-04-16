@@ -1,7 +1,10 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:my_trainer/components/show_message.dart';
+import 'package:my_trainer/components/text_field.dart';
 import 'package:my_trainer/model/aluno.dart';
 import 'package:my_trainer/components/logout.dart';
+import 'package:my_trainer/components/my_buttons.dart';
 
 class AlterarExcluir extends StatefulWidget {
   const AlterarExcluir({Key? key}) : super(key: key);
@@ -45,7 +48,7 @@ class _AlterarExcluirState extends State<AlterarExcluir> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                txt('Nome', aluno.nome),
+                WidgetTextField('Nome', aluno.nome),
                 linha3Campos(
                   100.0,
                   'Idade',
@@ -59,9 +62,6 @@ class _AlterarExcluirState extends State<AlterarExcluir> {
                 ),
                 linha2Campos(100.0, 'Cintura', aluno.cintura, 100.0, 'Quadril',
                     aluno.quadril),
-                //
-                // DOBRAS CUTÂNEAS
-                //
                 Container(
                   margin: EdgeInsets.all(40.0),
                   child: Text('DOBRAS CUTÂNEAS',
@@ -95,9 +95,6 @@ class _AlterarExcluirState extends State<AlterarExcluir> {
                     campo(135.0, 'Coxa', aluno.dobraCoxa),
                   ],
                 ),
-                //
-                // PERIMETRIA
-                //
                 Container(
                   margin: EdgeInsets.all(40.0),
                   child: Text('PERIMETRIA',
@@ -138,13 +135,13 @@ class _AlterarExcluirState extends State<AlterarExcluir> {
                 ),
                 Container(
                   margin: EdgeInsets.all(40),
-                  child: txt('Limitações', aluno.limitacoes),
+                  child: WidgetTextField('Limitações', aluno.limitacoes),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     botaoConfirmar(aluno),
-                    botaoCancelar(),
+                    cancelButton(context),
                   ],
                 ),
               ],
@@ -159,26 +156,8 @@ class _AlterarExcluirState extends State<AlterarExcluir> {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 8),
       child: ElevatedButton(
-        child: Text(
-          'Confirmar',
-          style: TextStyle(
-            fontSize: 24,
-          ),
-        ),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-            Theme.of(context).primaryColor,
-          ),
-          elevation: MaterialStateProperty.all<double>(0),
-          fixedSize: MaterialStateProperty.all<Size>(
-            Size(200, 50),
-          ),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-          ),
-        ),
+        child: buttonLabel('Confirmar'),
+        style: confirmButtonStyle(context),
         onPressed: () {
           FirebaseFirestore.instance.collection('alunos').doc(aluno.nome).set({
             "codAluno": aluno.cod,
@@ -208,105 +187,53 @@ class _AlterarExcluirState extends State<AlterarExcluir> {
             "genero": aluno.genero
           });
           Navigator.pop(context);
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              content: Text(
-                'Dados Alterados com sucesso',
-                style: Theme.of(context).textTheme.headline3,
-              ),
-              duration: Duration(seconds: 2),
-            ),
-          );
+          showMessage('Dados Alterados', context);
         },
-      ),
-    );
-  }
-
-  botaoCancelar() {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 8),
-      child: ElevatedButton(
-        child: Text(
-          'Cancelar',
-          style: TextStyle(
-            fontSize: 24,
-          ),
-        ),
-        style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all<Color>(
-            Theme.of(context).colorScheme.secondary,
-          ),
-          elevation: MaterialStateProperty.all<double>(0),
-          fixedSize: MaterialStateProperty.all<Size>(
-            Size(200, 50),
-          ),
-          shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-            RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(30.0),
-            ),
-          ),
-        ),
-        onPressed: () {
-          Navigator.pop(context);
-        },
-      ),
-    );
-  }
-
-  txt(rotulo, variavel) {
-    return Container(
-      padding: EdgeInsets.symmetric(vertical: 8),
-      child: Column(
-        children: [
-          Text(
-            rotulo,
-            style: TextStyle(
-              fontSize: 22,
-              color: Colors.white,
-            ),
-          ),
-          TextFormField(
-            style: Theme.of(context).textTheme.headline5,
-            controller: TextEditingController(text: variavel),
-            decoration: InputDecoration(
-              border: OutlineInputBorder(
-                borderSide: BorderSide(color: Theme.of(context).primaryColor),
-                borderRadius: BorderRadius.circular(15),
-              ),
-              focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(
-                  Radius.circular(15),
-                ),
-                borderSide: BorderSide(
-                  color: Theme.of(context).primaryColor,
-                  width: 2,
-                ),
-              ),
-              fillColor: Colors.white,
-              filled: true,
-            ),
-          ),
-        ],
       ),
     );
   }
 
   campo(tamanho, rotulo, variavel) {
     return Container(
-      width: tamanho,
-      child: txt(rotulo, variavel),
-    );
+        width: tamanho,
+        child: TextField(
+          enabled: false,
+          decoration: InputDecoration(
+            labelText: 'Nome',
+            labelStyle: TextStyle(color: Theme.of(context).primaryColor),
+            border: OutlineInputBorder(
+              borderSide: BorderSide(color: Theme.of(context).primaryColor),
+              borderRadius: BorderRadius.circular(10),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderRadius: BorderRadius.all(
+                Radius.circular(10),
+              ),
+              borderSide: BorderSide(
+                color: Theme.of(context).primaryColor,
+                width: 1.5,
+              ),
+            ),
+            fillColor: Colors.white,
+            filled: true,
+            contentPadding:
+                EdgeInsets.symmetric(vertical: 0.5, horizontal: 10.0),
+          ),
+        ));
   }
 
   linha3Campos(tamanho, rotulo, variavel, tamanho1, rotulo1, variavel1,
       tamanho2, rotulo2, variavel2) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        campo(tamanho, rotulo, variavel),
-        campo(tamanho1, rotulo1, variavel1),
-        campo(tamanho2, rotulo2, variavel2),
-      ],
+    return Container(
+      margin: EdgeInsets.fromLTRB(0, 8, 0, 8),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          campo(tamanho, rotulo, variavel),
+          campo(tamanho1, rotulo1, variavel1),
+          campo(tamanho2, rotulo2, variavel2),
+        ],
+      ),
     );
   }
 

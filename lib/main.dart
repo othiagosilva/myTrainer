@@ -1,5 +1,7 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
+import 'package:intl/intl.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:my_trainer/pages/login_page.dart';
 import 'package:my_trainer/pages/register_page.dart';
 import 'package:my_trainer/pages/about_page.dart';
@@ -21,28 +23,30 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
 
-  runApp(
-    MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'myTrainer',
-      theme: myTrainerTheme,
-      initialRoute: 'login',
-      routes: {
-        'login': (context) => LoginPage(),
-        'cadastro': (context) => RegisterPage(),
-        'sobre': (context) => SobrePage(),
-        'home': (context) => HomePage(),
-        'cadastrar_dados': (context) => CadastrarDados(),
-        'consultar_aluno': (context) => ConsultarAluno(),
-        'consultar_dados': (context) => ConsultarDados(),
-        'alterar_dados': (context) => AlterarExcluir(),
-        'agendar': (context) => Agendar(),
-        'consultar_agendamento': (context) => ConsultarAgendamento(),
-        'cadastrar_treino': (context) => CadastrarTreino(),
-        'consultar_treino': (context) => ConsultarTreino(),
-        'feedback': (context) => FeedbackAluno(),
-        'consultar_renda': (context) => ConsultarRenda(),
-      },
-    ),
-  );
+  Intl.defaultLocale = 'pt_BR';
+
+  initializeDateFormatting().then((_) => runApp(
+        MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'myTrainer',
+          theme: myTrainerTheme,
+          initialRoute: 'login',
+          routes: {
+            'login': (context) => LoginPage(),
+            'cadastro': (context) => RegisterPage(),
+            'sobre': (context) => SobrePage(),
+            'home': (context) => HomePage(),
+            'cadastrar_dados': (context) => CadastrarDados(),
+            'consultar_aluno': (context) => ConsultarAluno(),
+            'consultar_dados': (context) => ConsultarDados(),
+            'alterar_dados': (context) => AlterarExcluir(),
+            'agendar': (context) => Agendar(),
+            'consultar_agendamento': (context) => ConsultarAgendamento(),
+            'cadastrar_treino': (context) => CadastrarTreino(),
+            'consultar_treino': (context) => ConsultarTreino(),
+            'feedback': (context) => FeedbackAluno(),
+            'consultar_renda': (context) => ConsultarRenda(),
+          },
+        ),
+      ));
 }

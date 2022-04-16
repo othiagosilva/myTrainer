@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_trainer/components/logout.dart';
+import 'package:my_trainer/components/my_calendar.dart';
 
 class Agendar extends StatefulWidget {
   const Agendar({Key? key}) : super(key: key);
@@ -27,6 +28,9 @@ class _AgendarState extends State<Agendar> {
         ],
       ),
       backgroundColor: Theme.of(context).backgroundColor,
+      body: SingleChildScrollView(
+        child: MyCalendar(),
+      ),
     );
   }
 }

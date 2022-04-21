@@ -38,7 +38,7 @@ class _CadastrarDadosState extends State<CadastrarDados> {
   TextEditingController perimetroPanturrilha = TextEditingController();
   TextEditingController limitacoes = TextEditingController();
   var genero = 'm';
-  int codAluno = 1;
+  late int codAluno;
 
   @override
   Widget build(BuildContext context) {

@@ -19,10 +19,13 @@ class _WidgetTextFieldViewState extends State<WidgetTextFieldView> {
         children: [
           Container(
             height: 50,
+            width: 100,
             child: TextFormField(
               style: Theme.of(context).textTheme.headline5,
+              textAlign: TextAlign.center,
               enabled: false,
-              initialValue: this.widget._initialValue,
+              controller: TextEditingController()
+                ..text = this.widget._initialValue,
               decoration: InputDecoration(
                 labelText: this.widget._label,
                 labelStyle: TextStyle(color: Theme.of(context).primaryColor),
@@ -39,7 +42,7 @@ class _WidgetTextFieldViewState extends State<WidgetTextFieldView> {
                     width: 1.5,
                   ),
                 ),
-                fillColor: Colors.white,
+                fillColor: Color.fromRGBO(255, 255, 255, 0.80),
                 filled: true,
                 contentPadding:
                     EdgeInsets.symmetric(vertical: 0.5, horizontal: 10.0),

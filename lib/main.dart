@@ -40,7 +40,7 @@ Future<void> main() async {
             'cadastrar_dados': (context) => CadastrarDados(),
             'consultar_aluno': (context) => ConsultarAluno(),
             'consultar_dados': (context) => ConsultarDados(),
-            'alterar_dados': (context) => AlterarExcluir(),
+            //'alterar_dados': (context) => AlterarExcluir(),
             'agendar': (context) => Agendar(),
             'consultar_agendamento': (context) => ConsultarAgendamento(),
             'horarios_disponiveis': (context) => AvailableHours(),

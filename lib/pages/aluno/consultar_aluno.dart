@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:my_trainer/components/logout.dart';
 import 'package:my_trainer/components/my_buttons.dart';
+import 'package:my_trainer/components/show_dialog.dart';
 import 'package:my_trainer/components/show_message.dart';
 import 'package:my_trainer/model/aluno.dart';
 
@@ -168,7 +169,7 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
     );
   }
 
-  botaoExcluir(aluno, nome) {
+  botaoExcluir(data, nome) {
     return Container(
       child: IconButton(
           icon: Icon(
@@ -177,71 +178,56 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
           ),
           color: Theme.of(context).primaryColor,
           onPressed: () {
-            mensagemConfirmacao(aluno, nome);
+            myShowDialog(excludeAthletePopUpContent(data, nome), context);
           }),
     );
   }
 
-  mensagemConfirmacao(aluno, nome) {
-    return showDialog(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(
-              Radius.circular(30),
+  excludeAthletePopUpContent(data, nome) {
+    return Container(
+      height: 150,
+      child: Column(
+        children: [
+          Container(
+            margin: EdgeInsets.fromLTRB(0, 0, 0, 32),
+            child: Text(
+              'Deseja excluir ' + nome + '?',
+              style: Theme.of(context).textTheme.headline3,
             ),
           ),
-          backgroundColor: Color.fromRGBO(238, 238, 238, 1),
-          content: Text(
-            'Deseja excluir ' + nome + '?',
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 32,
-              color: Colors.black,
-            ),
-          ),
-          actions: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  padding: EdgeInsets.symmetric(vertical: 8),
-                  child: ElevatedButton(
-                    child: Text(
-                      'Sim',
-                      style: TextStyle(
-                        fontSize: 24,
-                      ),
-                    ),
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all<Color>(
-                        Theme.of(context).primaryColor,
-                      ),
-                      elevation: MaterialStateProperty.all<double>(0),
-                      fixedSize: MaterialStateProperty.all<Size>(
-                        Size(100, 50),
-                      ),
-                      shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                        RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(30.0),
-                        ),
-                      ),
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        alunos.doc(aluno.id).delete();
-                        Navigator.pop(context);
-                        showMessage('Aluno removido', context);
-                      });
-                    },
-                  ),
-                ),
-                cancelButton(context),
-              ],
-            ),
-          ],
-        );
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              confirmDeletionButton(data),
+              cancelButton(context),
+            ],
+          )
+        ],
+      ),
+    );
+  }
+
+  confirmAlterButton(data, id) {
+    return ElevatedButton(
+      child: buttonLabel('Confirmar'),
+      style: confirmButtonStyle(context),
+      onPressed: () {
+        alunos.doc(data.id).delete();
+        Navigator.pop(context);
+      },
+    );
+  }
+
+  confirmDeletionButton(dados) {
+    return ElevatedButton(
+      child: buttonLabel('Confirmar'),
+      style: confirmButtonStyle(context),
+      onPressed: () {
+        setState(() {
+          alunos.doc(dados.id).delete();
+          Navigator.pop(context);
+          showMessage('Renda removida com sucesso', context);
+        });
       },
     );
   }

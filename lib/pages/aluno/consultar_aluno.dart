@@ -4,7 +4,6 @@ import 'package:my_trainer/components/logout.dart';
 import 'package:my_trainer/components/my_buttons.dart';
 import 'package:my_trainer/components/show_dialog.dart';
 import 'package:my_trainer/components/show_message.dart';
-import 'package:my_trainer/model/aluno.dart';
 
 class ConsultarAluno extends StatefulWidget {
   const ConsultarAluno({Key? key}) : super(key: key);
@@ -68,55 +67,6 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
 
   exibirItemColecao(dados) {
     String nome = dados.data()['nome'];
-    String idade = dados.data()['idade'];
-    String peso = dados.data()['peso'];
-    String altura = dados.data()['altura'];
-    String genero = dados.data()['genero'];
-    String cintura = dados.data()['cintura'];
-    String quadril = dados.data()['quadril'];
-    String dobraSubEscapular = dados.data()['dobraSubEscapular'];
-    String dobraTricipital = dados.data()['dobraTricipital'];
-    String dobraPeitoral = dados.data()['dobraPeitoral'];
-    String dobraAxilarMedio = dados.data()['dobraAxilarMedio'];
-    String dobraSupraIliaca = dados.data()['dobraSupraIliaca'];
-    String dobraAbdomen = dados.data()['dobraAbdomen'];
-    String dobraCoxa = dados.data()['dobraCoxa'];
-    String perimetroAbdomen = dados.data()['perimetroAbdomen'];
-    String perimetroTorax = dados.data()['perimetroTorax'];
-    String perimetroBracoRel = dados.data()['perimetroBracoRel'];
-    String perimetroBracoCon = dados.data()['perimetroBracoCon'];
-    String perimetroAntebraco = dados.data()['perimetroAntebraco'];
-    String perimetroCintura = dados.data()['perimetroCintura'];
-    String perimetroQuadril = dados.data()['perimetroQuadril'];
-    String perimetroCoxas = dados.data()['perimetroCoxas'];
-    String perimetroPanturrilha = dados.data()['perimetroPanturrilha'];
-    String limitacoes = dados.data()['limitacoes'];
-
-    Aluno aluno = new Aluno(
-        nome,
-        idade,
-        peso,
-        altura,
-        genero,
-        cintura,
-        quadril,
-        dobraSubEscapular,
-        dobraTricipital,
-        dobraPeitoral,
-        dobraAxilarMedio,
-        dobraSupraIliaca,
-        dobraAbdomen,
-        dobraCoxa,
-        perimetroAbdomen,
-        perimetroTorax,
-        perimetroBracoRel,
-        perimetroBracoCon,
-        perimetroAntebraco,
-        perimetroCintura,
-        perimetroQuadril,
-        perimetroCoxas,
-        perimetroPanturrilha,
-        limitacoes);
 
     return Container(
       padding: EdgeInsets.all(16),
@@ -137,10 +87,10 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
             ],
           ),
           Column(
-            children: [botaoIcone(Icons.edit, 'alterar_dados', aluno)],
+            children: [botaoIcone(Icons.edit, 'alterar_dados')],
           ),
           Column(
-            children: [botaoIcone(Icons.search, 'consultar_dados', aluno)],
+            children: [botaoIcone(Icons.search, 'consultar_dados')],
           ),
           Column(
             children: [botaoExcluir(dados, nome)],
@@ -150,7 +100,7 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
     );
   }
 
-  botaoIcone(icone, rota, aluno) {
+  botaoIcone(icone, rota) {
     return Container(
       child: IconButton(
         icon: Icon(
@@ -162,7 +112,6 @@ class _ConsultarAlunoState extends State<ConsultarAluno> {
           Navigator.pushNamed(
             context,
             rota,
-            arguments: aluno,
           );
         },
       ),

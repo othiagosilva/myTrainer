@@ -14,7 +14,7 @@ class HomeAluno extends StatelessWidget {
             Container(
               margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
             ),
-            HomeNavButton('Alunos', 'Consultar', 'consultar_aluno'),
+            HomeNavButton('Alunos', 'Consultar', 'consultar_dados'),
             Container(
               margin: EdgeInsets.fromLTRB(0, 0, 0, 40),
             ),

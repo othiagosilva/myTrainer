@@ -90,7 +90,7 @@ flutter pub get
 Pronto! O repositório está totalmente funcional na sua máquina. Bons estudos!
 
 # 🔬 Projeto de Pesquisa
-Pode ser encontrado <a href="https://docs.google.com/document/d/1915mZsfG2YaVHcAk_qGksdWsV0G047fH/edit?usp=sharing&ouid=108849066908443544932&rtpof=true&sd=true" target = "_blank">aqui</a>.
+Pode ser encontrado <a href="https://docs.google.com/document/d/1V7hbZRRHgj3k_LTX6n-s7irdkqBZ7fMN/edit?usp=sharing&ouid=108849066908443544932&rtpof=true&sd=true" target = "_blank">aqui</a>.
 
 # 🔨 Requisitos
 Podem ser encontrados <a href="https://docs.google.com/document/d/1FbV-cn-RwkuYXox6_q0WO51pl8v79pJ4A2pT678FHOw/edit?usp=sharing" target = "_blank">aqui</a>.
@@ -198,7 +198,7 @@ Theese links will guide to some documents required for the project. They're all 
 You can click in the links to see it if you want.
 
 # 🔬 Research
-<a href="https://docs.google.com/document/d/1915mZsfG2YaVHcAk_qGksdWsV0G047fH/edit?usp=sharing&ouid=108849066908443544932&rtpof=true&sd=true" target = "_blank">Here</a>
+<a href="https://docs.google.com/document/d/1V7hbZRRHgj3k_LTX6n-s7irdkqBZ7fMN/edit?usp=sharing&ouid=108849066908443544932&rtpof=true&sd=true" target = "_blank">Here</a>
 
 # 🔨 Requirements
 <a href="https://docs.google.com/document/d/1FbV-cn-RwkuYXox6_q0WO51pl8v79pJ4A2pT678FHOw/edit?usp=sharing" target = "_blank">Here</a>

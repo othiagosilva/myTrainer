@@ -69,7 +69,7 @@ flutter pub get
 ![image](https://user-images.githubusercontent.com/66854577/157441615-cea19d81-e760-4156-be02-f8495641faba.png)
 
 
-3- Congifuração Firebase <br><br>
+3- Configuração Firebase <br><br>
 	3.1. Criar um novo projeto <br>
 	-Acesse o <a href="https://firebase.google.com/" target="_blank">site do firebase</a> <br>
 	-Logue com sua conta Google e clique em "Ir para o Console"<br>
